@@ -1,0 +1,9 @@
+target/
+.working-stack/
+*.wstmp
+*.lock
+!Cargo.lock
+.pi/
+WS-TOOL.md
+tests/artifacts/
+__pycache__/
