@@ -22,9 +22,10 @@ fn context_links_all_goals_exact_paths_and_existing_boundaries_without_history_d
     let ws = sample(); let before = serde_json::to_string(&ws).unwrap();
     let out = render(&ws, None);
     for part in ["T-01 → T-03", "用户验收", "未批准不得执行", "3.plan[0].children[0]",
-                 "blocked：等真实输入", "FOCUS：具体下一步", "省略前2条", "3.results[4]", "等回执",
+                 "计划 [blocked]", "3.plan[0].children[0].progress.reason", "等真实输入", "FOCUS：具体下一步", "3.results[4]", "等回执",
                  "可能不含最新对话裁决", "事件时间不等于事实观察时间"] { assert!(out.contains(part), "{part}"); }
-    assert!(!out.contains("收件0未确认"));
+    assert!(out.contains("收件0未确认"));
+    assert!(!out.contains("省略前"));
     assert!(!out.contains("[PUSH]"));
     assert_eq!(serde_json::to_string(&ws).unwrap(), before);
 }
@@ -42,10 +43,14 @@ fn no_focus_keeps_roots_and_waits_explicit_selection_does_not_resume() {
 }
 
 #[test]
-fn long_content_is_marked_and_closed_selection_is_a_snapshot() {
+fn long_boundaries_are_complete_and_closed_selection_is_a_snapshot() {
     let mut ws = sample();
-    ws.frames.get_mut(&3).unwrap().content.remarks.insert("长内容".into(), t(&"长".repeat(300)));
-    assert!(render(&ws, None).contains("截断；get路径读取全文"));
+    let boundary = format!("{}；仍须用户批准", "长".repeat(300));
+    ws.frames.get_mut(&3).unwrap().content.remarks.insert("长内容".into(), t(&boundary));
+    let context = render(&ws, None);
+    assert!(context.contains(&boundary));
+    assert!(!context.contains("截断"));
+    assert!(!context.contains("\n下一步："));
     ws.pop("t9", 3, Outcome::DoneO(Closure {summary:t("完成子目标"), positive:vec![], negative:vec![], tangential:vec![], residuals:vec![]}), None, t("返回")).unwrap();
     let out = render(&ws, Some(3));
     assert!(out.contains("[done]")); assert!(out.contains("FOCUS：未指定"));

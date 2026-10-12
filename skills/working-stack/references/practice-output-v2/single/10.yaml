@@ -1,0 +1,314 @@
+title: 交付一个可用版本
+prefix: W
+notes:
+  checklist:
+    meta:
+    - appendix
+    body: 检查实现、直接测试与用户验收，三者不互相替代。
+  description:
+    meta: []
+    body: 本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：{{note:累计原则.body}}。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。
+  累计原则:
+    meta: []
+    body: 模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。
+frames:
+  1:
+    parent: null
+    title: 完成交付与验收
+    goal:
+    - 候选版本通过直接测试
+    - 用户确认约定的验收条件满足
+    origin: []
+    status:
+      kind: active
+    plan:
+    - text: 澄清验收条件
+      children: []
+      progress:
+        kind: in_progress
+      fork: []
+    - text: 准备候选：先核对材料，再最终重测
+      children: []
+      progress:
+        kind: ready
+      fork: []
+    - text: 请用户验收
+      children: []
+      progress:
+        kind: ready
+      fork: []
+    content:
+      results: []
+      side_effects: []
+      principles:
+      - rule: '{{5.principles[0]}}'
+        fate: null
+      remarks:
+        后续线索: 模拟用户取消本轮可选优化；仅保留线索，不构成本轮验收义务
+        顺序裁决: 模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.131527000Z
+      detail: 登记模拟委托的完整目标
+    - action: update
+      at: 2026-10-12T07:46:08.139600000Z
+      detail: 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan
+    - action: update
+      at: 2026-10-12T07:46:08.365833000Z
+      detail: 按新的模拟裁决更新父计划，不缩根目标；变更字段：content.remarks.顺序裁决、plan[1].text
+    - action: update
+      at: 2026-10-12T07:46:08.436232000Z
+      detail: 根帧记录裁决边界，不偷偷承诺将来实施；变更字段：content.remarks.后续线索
+    - action: update
+      at: 2026-10-12T07:46:08.671367000Z
+      detail: 承接自 W-05 原则1（released）；变更字段：content.principles
+  2:
+    parent: 1
+    title: 澄清验收条件
+    goal:
+    - 取得用户对争议条件的明确选择
+    origin: []
+    status:
+      kind: paused
+      reason: '[HumanReady] 等待用户选择验收条件的解释'
+    plan: []
+    content:
+      results: []
+      side_effects: []
+      principles: []
+      remarks:
+        待裁决: 两种解释都已列明，尚未取得选择
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.175874000Z
+      detail: 模拟发现独立裁决问题，解决后返回根计划
+    - action: update
+      at: 2026-10-12T07:46:08.183597000Z
+      detail: 记录已知事实与仍缺的判断；变更字段：content.remarks.待裁决
+    - action: pause
+      at: 2026-10-12T07:46:08.191643000Z
+      detail: '[HumanReady] 等待用户选择验收条件的解释'
+  3:
+    parent: 1
+    title: 准备并直接测试候选版本
+    goal:
+    - 共通部分实现并完成直接测试，争议条件留下显式接口
+    origin: []
+    status:
+      kind: active
+    plan:
+    - text: 实现共通部分
+      children: []
+      progress:
+        kind: item_done
+      fork: []
+    - text: 准备测试样例
+      children:
+      - text: 常见输入
+        children: []
+        progress:
+          kind: item_done
+        fork: []
+      - text: 边界输入
+        children: []
+        progress:
+          kind: item_done
+        fork: []
+      progress:
+        kind: item_done
+      fork: []
+    - text: 修正直接测试发现的问题
+      children: []
+      progress:
+        kind: ready
+      fork: []
+    - text: 核对材料后重新运行直接测试
+      children: []
+      progress:
+        kind: ready
+      fork:
+      - 5
+    content:
+      results: []
+      side_effects: []
+      principles: []
+      remarks:
+        材料核对依据: 见 {{5.results[0]}}
+        测试发现: 模拟：一个边界输入尚不符合约定，需要修正后重测
+        继续理由: 落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.228980000Z
+      detail: 共通部分不依赖等待中的裁决，可以并行推进
+    - action: update
+      at: 2026-10-12T07:46:08.237683000Z
+      detail: 建立本帧的实施计划与当前焦点；变更字段：plan
+    - action: update
+      at: 2026-10-12T07:46:08.286652000Z
+      detail: 模拟发现测试缺样例，在直接测试前补项；变更字段：plan
+    - action: update
+      at: 2026-10-12T07:46:08.296104000Z
+      detail: 把一个模糊步骤拆成可执行子项；变更字段：plan[1].children
+    - action: update
+      at: 2026-10-12T07:46:08.314840000Z
+      detail: 模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排；变更字段：plan
+    - action: update
+      at: 2026-10-12T07:46:08.328087000Z
+      detail: 登记具体失败，不把测试已运行写成通过；变更字段：content.remarks.测试发现
+    - action: update
+      at: 2026-10-12T07:46:08.375027000Z
+      detail: 同步实施路线及当前继续理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text
+    - action: pause
+      at: 2026-10-12T07:46:08.415667000Z
+      detail: 去向：新帧 W-04
+    - action: resume
+      at: 2026-10-12T07:46:08.446199000Z
+      detail: 承接自 W-04 的 pop；焦点转移
+    - action: pause
+      at: 2026-10-12T07:46:08.486014000Z
+      detail: 去向：新帧 W-05
+    - action: resume
+      at: 2026-10-12T07:46:08.561246000Z
+      detail: 模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端
+    - action: update
+      at: 2026-10-12T07:46:08.612244000Z
+      detail: 实施计划登记材料核对子帧，避免另建重复状态账；变更字段：plan[3].fork
+    - action: update
+      at: 2026-10-12T07:46:08.693305000Z
+      detail: 引用核对依据，不把所有原文再复制一遍；变更字段：content.remarks.材料核对依据
+    - action: update
+      at: 2026-10-12T07:46:08.748663000Z
+      detail: 模拟暂列一项补充检查；变更字段：plan
+    - action: update
+      at: 2026-10-12T07:46:08.760580000Z
+      detail: 明确此计划项的对象；变更字段：plan[2].text
+    - action: update
+      at: 2026-10-12T07:46:08.772372000Z
+      detail: 模拟调整步骤顺序，重复检查移到末尾；变更字段：plan[2].text、plan[3].fork、plan[3].text、plan[4].fork、plan[4].text
+    - action: update
+      at: 2026-10-12T07:46:08.787732000Z
+      detail: 模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划；变更字段：plan
+  4:
+    parent: 1
+    title: 评估可选优化
+    goal:
+    - 决定本轮是否实施可选优化
+    origin: []
+    status:
+      kind: expired
+      closure:
+        summary: 模拟用户终止本轮可选优化回合
+        positive:
+        - result: 保留收益与成本比较
+          evidence: ''
+    plan: []
+    content:
+      results:
+      - 模拟：已列出收益与成本，尚未实施
+      side_effects: []
+      principles: []
+      remarks: {}
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.415667000Z
+      detail: 模拟用户允许评估独立可选方案
+    - action: update
+      at: 2026-10-12T07:46:08.426099000Z
+      detail: 区分评估成果和实现成果；变更字段：content.results
+    - action: pop
+      at: 2026-10-12T07:46:08.446199000Z
+      detail: 按明确取消裁决退出，回到已暂停的实施帧
+  5:
+    parent: 3
+    title: 核对交付材料
+    goal:
+    - 核对候选版本的材料，并把核对依据交还实施帧
+    origin: []
+    status:
+      kind: done
+      closure:
+        summary: 模拟材料核对完成，依据交还实施帧
+        positive:
+        - result: 材料与版本对应关系已核对
+          evidence: ''
+    plan:
+    - text: 核对材料与版本对应关系
+      children: []
+      progress:
+        kind: item_done
+      fork: []
+    content:
+      results:
+      - 模拟：当前候选版本与交付材料一致
+      side_effects: []
+      principles:
+      - rule: 模拟已确认规则：交付证据与用户验收必须分别登记
+        fate:
+          kind: released_to
+          id: 1
+      - rule: 模拟局部规则：本次核对只使用当前候选版本材料
+        fate:
+          kind: kept_local
+      remarks: {}
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.486014000Z
+      detail: 模拟出现独立的材料核对上下文
+    - action: update
+      at: 2026-10-12T07:46:08.496182000Z
+      detail: 登记核对计划与两条有来源的模拟规则；变更字段：content.principles、plan
+    - action: pause
+      at: 2026-10-12T07:46:08.506026000Z
+      detail: 去向：新帧 W-06
+    - action: resume
+      at: 2026-10-12T07:46:08.601398000Z
+      detail: 模拟核对条件已齐备，进入改挂后的子帧
+    - action: update
+      at: 2026-10-12T07:46:08.660416000Z
+      detail: 模拟材料与版本对应关系核对完成；变更字段：plan[0].progress.kind
+    - action: update
+      at: 2026-10-12T07:46:08.671367000Z
+      detail: 核对目标达成；通用规则归根帧、局部规则保留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results
+    - action: pop
+      at: 2026-10-12T07:46:08.682651000Z
+      detail: 关闭子目标并返回实施帧
+  6:
+    parent: 1
+    title: 保留另一条可选线索
+    goal:
+    - 取得用户是否继续此线索的决定
+    origin: []
+    status:
+      kind: expired
+      closure:
+        summary: 模拟用户决定本轮不继续另一条可选线索
+        residuals:
+        - result: 线索保留为建议，不构成当前交付义务
+          evidence: ''
+    plan: []
+    content:
+      results: []
+      side_effects: []
+      principles: []
+      remarks: {}
+    log:
+    - action: push
+      at: 2026-10-12T07:46:08.506026000Z
+      detail: 模拟出现另一条独立旁支，保留回程
+    - action: pause
+      at: 2026-10-12T07:46:08.516141000Z
+      detail: '[HumanReady] 等待模拟用户决定是否继续可选线索'
+    - action: pop
+      at: 2026-10-12T07:46:08.704335000Z
+      detail: 模拟用户取消可选回合，恢复实施焦点
+log:
+- action: update
+  at: 2026-10-12T07:46:08.115056000Z
+  detail: 登记已有模拟裁决，不由重要性自行造原则
+- action: update
+  at: 2026-10-12T07:46:08.124087000Z
+  detail: 建立全局导览并引用单份已确认约束
+- action: update
+  at: 2026-10-12T07:46:08.246615000Z
+  detail: 登记一份共享检查提示，不复制到每个帧
+

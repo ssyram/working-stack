@@ -1,0 +1,17 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '准备并直接测试候选版本' --goal '共通部分实现并完成直接测试，争议条件留下显式接口' -r '共通部分不依赖等待中的裁决，可以并行推进'",
+    "stdout": "· 新建帧 W-03 准备并直接测试候选版本\n· 新增帧 W-03 准备并直接测试候选版本\n已提交 46b05aa52503833f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-add '实现共通部分' --plan-add '直接测试' --plan-set 0=in_progress -r '建立本帧的实施计划与当前焦点'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 fc0884654f4d5098\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note checklist --body '检查实现、直接测试与用户验收，三者不互相替代。' --meta appendix -r '登记一份共享检查提示，不复制到每个帧'",
+    "stdout": "· 新增 note checklist\n已提交 e7f77f4e0d9b211f\n",
+    "exit_code": 0
+  }
+]

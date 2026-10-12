@@ -1,0 +1,37 @@
+[
+  {
+    "command": "working-stack practice resume W-03 -r '模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n已提交 952f96b04dfefbbb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export yaml --out candidate.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 -c 'from pathlib import Path; p=Path(\"candidate.yaml\"); t=p.read_text(); p.write_text(t.replace(\"\\n  5:\\n    parent: 1\\n\",\"\\n  5:\\n    parent: 3\\n\",1))'",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice apply candidate.yaml -r '模拟归属澄清：材料核对由实施帧承担；不改最初PUSH历史'",
+    "stdout": "· W-05: 改挂（parent 变更）\n已提交 4fb412fe0d09a369\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-05 -r '模拟核对条件已齐备，进入改挂后的子帧'",
+    "stdout": "· W-05: status paused → active\n· W-05: log +1\n已提交 ba7f5c4e4db326f3\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3]' --value '{\"text\":\"核对材料后重新运行直接测试\",\"fork\":[5]}' -r '实施计划登记材料核对子帧，避免另建重复状态账'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 be73f3b882d86e3f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan[3]' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan[3]\",\"value\":{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},\"version\":\"be73f3b882d86e3f\"}\n",
+    "exit_code": 0
+  }
+]

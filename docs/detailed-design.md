@@ -87,6 +87,8 @@ Principle 与 ClosureItem 的可重读字段格式及对应解码合同统一见
 
 **print_tree(ws)**：仅树块。
 
+全局导览打印/读取：description只在#标题后输出，所有行按note正文编码；note_markdown的Header.at_title标记只属MD附件，区分空导览与旧分节形式。有标记时read_description恢复原meta/空白/空正文并消费附件；无标记时使用旧散文导入规则，旧共享内容节仍能读。Note核心结构不改。具体合同见note-meta.md。
+
 ### 4.9 import（解析 WS-TOOL/WS-MAIN 家族）
 
 **import_md(md) -> Result<(WorkingStack, Vec<String> warnings)>**
@@ -111,7 +113,8 @@ Principle 与 ClosureItem 的可重读字段格式及对应解码合同统一见
 查询动词（只读，`--json` 供 AI）：`show tree|frame|log|timeline|notes|pops`，加：
 - `timeline` / `show timeline`：全帧及栈级事件按解析后的RFC3339时刻稳定排序，带来源/日志下标，未知时间不补造；CLI新事件用纳秒表示。完整合同见 `timeline.md`。
 - `show overview`：/recalibration Print A——每根行：goal 首段、path(root→focus)、paused tips+理由、FOCUS 项、下一 ready 项。
-- `show focus`：焦点帧全节 + FOCUS 项 + 阻塞点。
+- `show focus`：焦点帧全节 + FOCUS项 + 阻塞点。
+- `show context [ID]`：只读导览/所选父链/暂停末端，呈现全部本链结果及外部执行事项、完整正文及显式引用来源，不读全历史、不语义筛选、不切焦点。context_view调用既有render展开，MD输出仍format_st保持引用；合同见context-view.md。
 - `import <md> -o out.yaml`。
 路径 get 与 set/insert/remove/move 见 `path-edit/README.md`；候选在内存完成后复用 apply_events/apply_checks/save。apply_events 对发生变化的帧追加原因事件，对 note 变化追加栈级事件；无净变化不追加。生命周期及日志不属于路径编辑器写域。
 

@@ -31,6 +31,7 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
         previous_md = previous_yaml = ''
         first_goals = None
         old_push = None
+        implementation_push = None
         sections_saved = []
 
         def run(command, payload=None):
@@ -78,6 +79,23 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
             (destination / (prefix + '.yaml.diff')).write_text(''.join(difflib.unified_diff(
                 previous_yaml.splitlines(True), yaml.splitlines(True), fromfile='previous.yaml', tofile='current.yaml')))
             (destination / (prefix + '.commands.json')).write_text(json.dumps(events[before:], ensure_ascii=False, indent=2))
+            snapshot = cwd / ('stage-' + prefix + '.md')
+            snapshot.write_text(md)
+            imported = './stage-' + prefix + '.yaml'
+            run([binary, 'import', str(snapshot), '-o', imported])
+            restored = json.loads(run([binary, imported, 'export', 'json']))
+            assert restored['notes'] == model['notes']
+            assert '全局范围约束' in context and '验收仍由用户决定' in context
+            if '3' in model['frames']:
+                push3 = [event for event in model['frames']['3']['log'] if event['action'] == 'push'][0]
+                if implementation_push is not None:
+                    assert push3 == implementation_push
+                implementation_push = push3
+            if title.startswith('4A.'):
+                assert '先核对材料' in model['frames']['1']['plan'][1]['text']
+                assert model['frames']['3']['plan'][3]['text'] == '核对材料后重新运行直接测试'
+                assert '顺序裁决' in model['frames']['1']['content']['remarks']
+                assert '继续理由' in model['frames']['3']['content']['remarks']
             if first_goals is None:
                 first_goals = model['frames']['1']['goal']
             assert model['frames']['1']['goal'] == first_goals
@@ -120,7 +138,8 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
             assert not git.exists() and not (cwd / '.git').exists()
         result = {'mode': mode, 'commands': len(events), 'frames': 6, 'stages': sections_saved,
                   'root_goals_preserved': True, 'reparent_keeps_push_history': True,
-                  'awaiting_acceptance_stays_open': True, 'validate': 'OK'}
+                  'awaiting_acceptance_stays_open': True, 'route_change_updates_parent': True,
+                  'all_stage_notes_roundtrip': True, 'validate': 'OK'}
         (destination / 'report.json').write_text(json.dumps(result, ensure_ascii=False, indent=2))
         results.append(result)
 (args.output / 'report.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))

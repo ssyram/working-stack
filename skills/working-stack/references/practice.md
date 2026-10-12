@@ -10,12 +10,14 @@
 
 ```sh
 working-stack practice init --title '交付一个可用版本' --prefix W
+working-stack practice note '累计原则' --body '模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。' -r '登记已有模拟裁决，不由重要性自行造原则'
+working-stack practice note description --body '本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：{{note:累计原则.body}}。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。' -r '建立全局导览并引用单份已确认约束'
 working-stack practice push --title '完成交付与验收' --goal '候选版本通过直接测试' --goal '用户确认约定的验收条件满足' -r '登记模拟委托的完整目标'
 working-stack practice update W-01 --plan-add '澄清验收条件' --plan-add '准备并测试候选版本' --plan-add '请用户验收' --plan-set 0=in_progress -r '把根目标分成当前可执行计划并落实当前步骤'
 working-stack practice show context
 ```
 
-此时只有W-01，焦点在根帧。三个计划项只是执行安排，不是三个自动完成的目标。
+此时只有W-01，焦点在根帧。三个计划项只是执行安排，不是三个自动完成的目标。description在#标题后打印，context会展开累计原则正文；普通文字指向checklist不自动全文读取，不是新字段或强制note名。
 
 ## 2. 新信息：验收条件尚有一个独立裁决问题
 
@@ -64,6 +66,18 @@ working-stack practice update W-03 --remark '测试发现=模拟：一个边界�
 
 计划改了，根目标没改；失败不能通过缩小目标或把测试项勾成Done消除。
 
+## 4A. 用户裁决改变路线：更新父计划与继续理由
+
+模拟用户明确新的顺序：先核对交付材料，再完成最终重测；用户验收权不变。不能只在实施子帧追加一句消息，父帧仍让接手者沿旧安排走。修改责任所属计划与备注，不把这次裁决倒写为原PUSH原因，也不改变根目标凑完成。
+
+```sh
+working-stack practice update W-01 --plan-text '1=准备候选：先核对材料，再最终重测' --remark '顺序裁决=模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户' -r '按新的模拟裁决更新父计划，不缩根目标'
+working-stack practice update W-03 --plan-text '3=核对材料后重新运行直接测试' --remark '继续理由=落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收' -r '同步实施路线及当前继续理由，保留原进入历史'
+working-stack practice show context
+```
+
+这里“为何仍要推进”是当前解释，“原先为何进入”是历史；无需强制“当前判断”模板。实际改了哪些内容以本阶段diff为准。
+
 ## 5. 出现可选线索：独立支线与取消
 
 模拟用户曾允许评估一个可选优化，所以进入W-04。随后用户明确取消，本轮不实施；保留线索不代表给根帧增加必须完成的义务。
@@ -99,7 +113,7 @@ working-stack practice export yaml --out candidate.yaml
 python3 -c 'from pathlib import Path; p=Path("candidate.yaml"); t=p.read_text(); p.write_text(t.replace("\n  5:\n    parent: 1\n","\n  5:\n    parent: 3\n",1))'
 working-stack practice apply candidate.yaml -r '模拟归属澄清：材料核对由实施帧承担；不改最初PUSH历史'
 working-stack practice resume W-05 -r '模拟核对条件已齐备，进入改挂后的子帧'
-working-stack practice set 'W-03.plan[3]' --value '{"text":"重新运行直接测试并核对材料","fork":[5]}' -r '实施计划登记材料核对子帧，避免另建重复状态账'
+working-stack practice set 'W-03.plan[3]' --value '{"text":"核对材料后重新运行直接测试","fork":[5]}' -r '实施计划登记材料核对子帧，避免另建重复状态账'
 working-stack practice get 'W-03.plan[3]' --json
 ```
 
@@ -203,7 +217,7 @@ working-stack practice export md --out practice.md
 
 ## 10. 全部实际输出与diff
 
-[完整输出索引](practice-output/README.md)包含managed/single各14阶段的真实MD、YAML、逐阶段diff、context视图和完整命令回执。索引还直接展示初始完整MD/YAML、多para状态、改挂diff、待验收与收尾diff；最终文件和时间线也完整保存，不只给模型自述。
+[本版完整输出索引](practice-output-v2/README.md)包含managed/single各15阶段的真实MD、YAML、逐阶段diff、context视图和完整命令回执。索引还直接展示初始完整MD/YAML、多para状态、改挂diff、待验收与收尾diff；最终文件和时间线也完整保存，不只给模型自述。
 
 重跑：先`cargo build --locked`，再`python3 tests/practice-case.py target/practice-replay --binary target/debug/working-stack`。案例命令从本文代码块读取，测试断言根目标不漂移、改挂不改PUSH历史、验收前保持open、原则承接与Correct存在；managed仅跟踪栈文件、single不自动Git。模拟事实不是这些结构测试能证明的业务真相。
 

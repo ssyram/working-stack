@@ -17,17 +17,17 @@ Rust 对应 `type Meta = Vec<String>`；native JSON/YAML 为字符串数组，�
 
 顺序扫描 meta：每个适用的位置提示覆盖当前位置，每个可解析的 order 覆盖当前 order。未知提示（例如分类名称）、不存在的位置（如 after:missing）、格式不适用的 order 均忽略；字符串原样保存在 meta，仍参与持久化及机械 diff。没有额外校验器、重试或纠正。
 
-文件头散文导入为 `description` note，meta 为 `["before:tree"]`；其打印也走统一 note 机制，不依赖 key 的特殊行为。
+`description`约定为全局导览，正文直接打印在#标题后，不输出共享内容/工作线说明包装，也不在别的位置重复。该用途使位置/顺序提示不适用，但原meta仍完整保留；其他notes布局不变。无附件的文件头散文导入为description、默认meta为`["before:tree"]`，不自动创建空导览。
 
 ## 承载、引用与操作（叶子合同）
 
 - CLI note 使用重复 `--meta`；JSON 使用 `args.meta` 字符串数组。省略 body 为读取；提供 body 为写入，meta 默认为空列表。
 - 引用 `note:key.meta[i]` 得到第 i 个字符串；没有 `.kind/.shared` 字段。meta 是普通 String，不解析内部插值。
-- Markdown 正文 note 标题只显示可读名称，不展示JSON key/meta。内部信息集中于全文末尾 `## 格式信息`，以 `> notes: [...]` 引用行保存各note的key/meta；这不是业务内容。正文继续缩进和SourcefulText转义。import用附录匹配显示标题，恢复内部身份/提示；正文重排时按名称匹配，显示名重复则按同名出现顺序匹配。
+- Markdown普通note标题只显示可读名称，不展示JSON key/meta。内部信息在文末`## 格式信息`的`> notes: [...]`中；description附件另记`at_title:true`，仅是打印协议、不是核心Note字段，用于区分空的标题下导览与旧分节note。正文每行保留可恢复的两空格缩进（包括空行）及SourcefulText转义；导览的##字面行不会成为WS栏目。import按附件恢复原meta、空白及空正文；其他note按显示标题匹配，同名则按出现顺序。
 - 既有 Markdown 的 `### note:key（类别，shared）` 输入仍可导入为普通提示列表；旧 native 对象不再符合新模型。本工作区当前栈显式迁移一次，不引入运行时双模型兼容。
 
 ## 合同推理与测试
 
-布局扫描每次只更新派生的 `(位置,order)`；整个过程中不修改 note。过滤到唯一位置后排序，再输出全部正文和原 meta，因此未知提示不会改变布局，也不会消失。打印/导入使用末尾格式附录的完整JSON附件且正文缩进，避免提示含标点或正文标题改变结构。
+description先作为标题下正文输出，附件携带at_title；其余notes过滤到唯一位置后排序。全过程不修改note，未知提示不改变布局也不消失。MD保留原引用表达，不将展开内容写回；context作为查询视图可展开。格式附件与正文缩进共同保证身份、meta及正文边界，旧分节description继续可读。
 
 测试：默认 Appendix、所有位置、排序/同键序、冲突提示顺序、未知和不适用提示忽略且保留；JSON/YAML、MD 多轮往返；meta 下标引用；CLI/JSON/Web 仍共用操作链；真实 WS-MAIN 的备注与 notes 再导入保持。

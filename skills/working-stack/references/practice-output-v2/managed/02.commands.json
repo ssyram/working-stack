@@ -1,0 +1,22 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '澄清验收条件' --goal '取得用户对争议条件的明确选择' -r '模拟发现独立裁决问题，解决后返回根计划'",
+    "stdout": "· 新建帧 W-02 澄清验收条件\n· 新增帧 W-02 澄清验收条件\n已提交 cf4f8c02938678be\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --remark '待裁决=两种解释都已列明，尚未取得选择' -r '记录已知事实与仍缺的判断'",
+    "stdout": "· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 82483d55ee30bf80\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-02 -r '[HumanReady] 等待用户选择验收条件的解释'",
+    "stdout": "· W-02: status active → paused\n· W-02: log +1\n已提交 f494d838300220cb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 完成交付与验收\n[W-02] [PAUSED] 澄清验收条件\n\n",
+    "exit_code": 0
+  }
+]

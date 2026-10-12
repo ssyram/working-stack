@@ -1,0 +1,21 @@
+--- previous.yaml
++++ current.yaml
+@@ -176,6 +176,18 @@
+     - action: update
+       at: 2026-10-12T07:46:06.826821000Z
+       detail: 引用核对依据，不把所有原文再复制一遍；变更字段：content.remarks.材料核对依据
++    - action: update
++      at: 2026-10-12T07:46:06.925763000Z
++      detail: 模拟暂列一项补充检查；变更字段：plan
++    - action: update
++      at: 2026-10-12T07:46:06.957289000Z
++      detail: 明确此计划项的对象；变更字段：plan[2].text
++    - action: update
++      at: 2026-10-12T07:46:06.988945000Z
++      detail: 模拟调整步骤顺序，重复检查移到末尾；变更字段：plan[2].text、plan[3].fork、plan[3].text、plan[4].fork、plan[4].text
++    - action: update
++      at: 2026-10-12T07:46:07.025291000Z
++      detail: 模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划；变更字段：plan
+   4:
+     parent: 1
+     title: 评估可选优化

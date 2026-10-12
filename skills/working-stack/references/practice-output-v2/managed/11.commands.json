@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice set 'W-03.plan[2].progress' --value '\"done\"' -r '模拟修正已完成'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 93a3d06795cf2791\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '模拟直接重测通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 32ef6fb7c6462ea5\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --result-add '模拟：共通部分直接测试通过，争议条件保留显式接口' -r '记录本帧实际达成范围，不代签用户验收'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 b462bc35ad206adb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '共通候选版本准备完成且直接测试通过' --pos '模拟测试结果满足本帧目标' -r '本帧目标达成；根帧仍需裁决与验收'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 cf95f9be19836f7e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show overview",
+    "stdout": "栈：交付一个可用版本\n[W-01] 完成交付与验收 —— 候选版本通过直接测试\n焦点：无（整线暂停或异常多焦点——show tree 查看）\nPaused 分支：\n  - [W-02] 澄清验收条件 —— [HumanReady] 等待用户选择验收条件的解释\n已 pop：4 帧\n\n",
+    "exit_code": 0
+  }
+]

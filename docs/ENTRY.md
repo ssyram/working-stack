@@ -77,7 +77,7 @@ AI 推荐 JSON stdin：
 printf '%s\n' '{"stack":"mytask","op":"show","args":{"what":"context"}}' | working-stack
 ```
 
-恢复工作方向优先 `show context [ID]`：一次读取目标链、当前计划路径、结果/备注与暂停条件，不把写入记录当用户最新意图。当前事实替换与多帧候选用法见 `working-stack doc context-view`；完整历史按需 `show log ID` 或 timeline。
+复工先理解本栈description导览，再从`show context [ID]`取得责任链、计划路径、已记录结果/实际执行事项与暂停条件。description就是Markdown标题下段落；可介绍全局原则等材料位置，正文显式引用会展开，普通note指路仍按需读取。字段齐全和最近写入不代表方向正确或用户最新意图。填写/替换当前内容及多帧候选用法见`working-stack doc context-view`；完整历史按需show log或timeline。
 
 事件时间线可汇总所有帧/全局日志按实际时间输出，含来源与原日志下标；使用方法见 `working-stack doc timeline`。
 

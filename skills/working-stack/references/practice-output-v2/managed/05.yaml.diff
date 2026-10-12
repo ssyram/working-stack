@@ -1,0 +1,58 @@
+--- previous.yaml
++++ current.yaml
+@@ -27,7 +27,7 @@
+       progress:
+         kind: in_progress
+       fork: []
+-    - text: 准备并测试候选版本
++    - text: 准备候选：先核对材料，再最终重测
+       children: []
+       progress:
+         kind: ready
+@@ -41,7 +41,8 @@
+       results: []
+       side_effects: []
+       principles: []
+-      remarks: {}
++      remarks:
++        顺序裁决: 模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户
+     log:
+     - action: push
+       at: 2026-10-12T07:46:05.670682000Z
+@@ -49,6 +50,9 @@
+     - action: update
+       at: 2026-10-12T07:46:05.698579000Z
+       detail: 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan
++    - action: update
++      at: 2026-10-12T07:46:06.138660000Z
++      detail: 按新的模拟裁决更新父计划，不缩根目标；变更字段：content.remarks.顺序裁决、plan[1].text
+   2:
+     parent: 1
+     title: 澄清验收条件
+@@ -109,7 +113,7 @@
+       progress:
+         kind: ready
+       fork: []
+-    - text: 重新运行直接测试
++    - text: 核对材料后重新运行直接测试
+       children: []
+       progress:
+         kind: ready
+@@ -120,6 +124,7 @@
+       principles: []
+       remarks:
+         测试发现: 模拟：一个边界输入尚不符合约定，需要修正后重测
++        继续理由: 落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收
+     log:
+     - action: push
+       at: 2026-10-12T07:46:05.870085000Z
+@@ -139,6 +144,9 @@
+     - action: update
+       at: 2026-10-12T07:46:06.079534000Z
+       detail: 登记具体失败，不把测试已运行写成通过；变更字段：content.remarks.测试发现
++    - action: update
++      at: 2026-10-12T07:46:06.168579000Z
++      detail: 同步实施路线及当前继续理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text
+ log:
+ - action: update
+   at: 2026-10-12T07:46:05.612477000Z

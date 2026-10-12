@@ -1,0 +1,387 @@
+[
+  {
+    "command": "working-stack practice init --title '交付一个可用版本' --prefix W",
+    "stdout": "· 初始化空栈\n已提交 081cb36ba91dd330\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note '累计原则' --body '模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。' -r '登记已有模拟裁决，不由重要性自行造原则'",
+    "stdout": "· 新增 note 累计原则\n已提交 db7d2fc70f9ff3e8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note description --body '本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：{{note:累计原则.body}}。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。' -r '建立全局导览并引用单份已确认约束'",
+    "stdout": "· 新增 note description\n已提交 622d467c971defc8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push --title '完成交付与验收' --goal '候选版本通过直接测试' --goal '用户确认约定的验收条件满足' -r '登记模拟委托的完整目标'",
+    "stdout": "· 新建帧 W-01 完成交付与验收\n· 新增帧 W-01 完成交付与验收\n已提交 8f10fdea6bc30652\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --plan-add '澄清验收条件' --plan-add '准备并测试候选版本' --plan-add '请用户验收' --plan-set 0=in_progress -r '把根目标分成当前可执行计划并落实当前步骤'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 9a828ccde0d64d14\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\nTOP：[W-01] 完成交付与验收\nFOCUS：澄清验收条件\n\n## [W-01] 完成交付与验收 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：澄清验收条件\n计划 [ready]\n- `1.plan[1]`：准备并测试候选版本\n计划 [ready]\n- `1.plan[2]`：请用户验收\n最近记录：2026-10-12T07:46:08.139600000Z [UPDATE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '澄清验收条件' --goal '取得用户对争议条件的明确选择' -r '模拟发现独立裁决问题，解决后返回根计划'",
+    "stdout": "· 新建帧 W-02 澄清验收条件\n· 新增帧 W-02 澄清验收条件\n已提交 c55d10352fc863bf\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --remark '待裁决=两种解释都已列明，尚未取得选择' -r '记录已知事实与仍缺的判断'",
+    "stdout": "· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 f074a26b73819d6b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-02 -r '[HumanReady] 等待用户选择验收条件的解释'",
+    "stdout": "· W-02: status active → paused\n· W-02: log +1\n已提交 d6886d25e828f521\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 完成交付与验收\n[W-02] [PAUSED] 澄清验收条件\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '准备并直接测试候选版本' --goal '共通部分实现并完成直接测试，争议条件留下显式接口' -r '共通部分不依赖等待中的裁决，可以并行推进'",
+    "stdout": "· 新建帧 W-03 准备并直接测试候选版本\n· 新增帧 W-03 准备并直接测试候选版本\n已提交 c3178b02a476ab1f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-add '实现共通部分' --plan-add '直接测试' --plan-set 0=in_progress -r '建立本帧的实施计划与当前焦点'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 8f3825e7f88f40c5\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note checklist --body '检查实现、直接测试与用户验收，三者不互相替代。' --meta appendix -r '登记一份共享检查提示，不复制到每个帧'",
+    "stdout": "· 新增 note checklist\n已提交 14cb11a7d61c5f1b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice insert 'W-03.plan[1]' --value '\"准备测试样例\"' -r '模拟发现测试缺样例，在直接测试前补项'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e0b39ead8b20c1e2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[1]' --value '{\"text\":\"准备测试样例\",\"children\":[\"常见输入\",\"边界输入\"]}' -r '把一个模糊步骤拆成可执行子项'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 97f30183dae792ac\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"in_progress\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"直接测试\"}],\"version\":\"97f30183dae792ac\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 准备并直接测试候选版本\nFOCUS：实现共通部分\n\n## [W-01] 完成交付与验收 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：澄清验收条件\n计划 [ready]\n- `1.plan[1]`：准备并测试候选版本\n计划 [ready]\n- `1.plan[2]`：请用户验收\n最近记录：2026-10-12T07:46:08.139600000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 准备并直接测试候选版本 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n未完成计划：\n计划 [in_progress]\n- `3.plan[0]`：实现共通部分\n计划 [ready]\n- `3.plan[1]`：准备测试样例\n计划 [ready]\n- `3.plan[1].children[0]`：常见输入\n计划 [ready]\n- `3.plan[1].children[1]`：边界输入\n计划 [ready]\n- `3.plan[2]`：直接测试\n最近记录：2026-10-12T07:46:08.296104000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 澄清验收条件；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 等待用户选择验收条件的解释\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan' --value '[{\"text\":\"实现共通部分\",\"progress\":\"done\"},{\"text\":\"准备测试样例\",\"progress\":\"done\",\"children\":[{\"text\":\"常见输入\",\"progress\":\"done\"},{\"text\":\"边界输入\",\"progress\":\"done\"}]},\"修正直接测试发现的问题\",\"重新运行直接测试\"]' -r '模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 6ef131caaa030597\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '测试发现=模拟：一个边界输入尚不符合约定，需要修正后重测' -r '登记具体失败，不把测试已运行写成通过'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 fb247383b418ea5b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --plan-text '1=准备候选：先核对材料，再最终重测' --remark '顺序裁决=模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户' -r '按新的模拟裁决更新父计划，不缩根目标'",
+    "stdout": "· W-01: plan 改变\n· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 17372deb0d939330\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-text '3=核对材料后重新运行直接测试' --remark '继续理由=落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收' -r '同步实施路线及当前继续理由，保留原进入历史'",
+    "stdout": "· W-03: plan 改变\n· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 48cf73e7d3484f21\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 准备并直接测试候选版本\nFOCUS：未指定；ready项只是待做计划，不自动选择下一步。\n\n## [W-01] 完成交付与验收 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：澄清验收条件\n计划 [ready]\n- `1.plan[1]`：准备候选：先核对材料，再最终重测\n计划 [ready]\n- `1.plan[2]`：请用户验收\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户\n最近记录：2026-10-12T07:46:08.365833000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 准备并直接测试候选版本 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n未完成计划：\n计划 [ready]\n- `3.plan[2]`：修正直接测试发现的问题\n计划 [ready]\n- `3.plan[3]`：核对材料后重新运行直接测试\n备注 测试发现（get `3.remarks`）：\n- `3.remarks`：模拟：一个边界输入尚不符合约定，需要修正后重测\n备注 继续理由（get `3.remarks`）：\n- `3.remarks`：落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收\n最近记录：2026-10-12T07:46:08.375027000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 澄清验收条件；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 等待用户选择验收条件的解释\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '评估可选优化' --goal '决定本轮是否实施可选优化' -r '模拟用户允许评估独立可选方案'",
+    "stdout": "· 新建帧 W-04 评估可选优化\n· 新增帧 W-04 评估可选优化\n· W-03: status active → paused\n· W-03: log +1\n已提交 22faa6b1e109249a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-04 --result-add '模拟：已列出收益与成本，尚未实施' -r '区分评估成果和实现成果'",
+    "stdout": "· W-04: content（结果/原则/备注）改变\n· W-04: log +1\n已提交 ed32882444c3047b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '后续线索=模拟用户取消本轮可选优化；仅保留线索，不构成本轮验收义务' -r '根帧记录裁决边界，不偷偷承诺将来实施'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 3203931c62e26dd1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-04 --expired --summary '模拟用户终止本轮可选优化回合' --pos '保留收益与成本比较' --focus-to W-03 -r '按明确取消裁决退出，回到已暂停的实施帧'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n· W-04: status active → expired\n· W-04: log +1\n已提交 d28e4d6c62db82c9\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '核对交付材料' --goal '核对候选版本的材料，并把核对依据交还实施帧' -r '模拟出现独立的材料核对上下文'",
+    "stdout": "· 新建帧 W-05 核对交付材料\n· 新增帧 W-05 核对交付材料\n· W-03: status active → paused\n· W-03: log +1\n已提交 fd322dbdae744077\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --plan-add '核对材料与版本对应关系' --principle-add '模拟已确认规则：交付证据与用户验收必须分别登记' --principle-add '模拟局部规则：本次核对只使用当前候选版本材料' -r '登记核对计划与两条有来源的模拟规则'",
+    "stdout": "· W-05: plan 改变\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 d22d4ca89219316d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '保留另一条可选线索' --goal '取得用户是否继续此线索的决定' -r '模拟出现另一条独立旁支，保留回程'",
+    "stdout": "· 新建帧 W-06 保留另一条可选线索\n· 新增帧 W-06 保留另一条可选线索\n· W-05: status active → paused\n· W-05: log +1\n已提交 3b6e1f66c4c48303\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-06 -r '[HumanReady] 等待模拟用户决定是否继续可选线索'",
+    "stdout": "· W-06: status active → paused\n· W-06: log +1\n已提交 3150b9d6c104cc0f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 完成交付与验收\n- [W-02] [PAUSED] 澄清验收条件\n- [W-03] [PAUSED] 准备并直接测试候选版本\n- [W-05] [PAUSED] 核对交付材料\n- [W-06] [PAUSED] 保留另一条可选线索\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-03 -r '模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n已提交 2c1a682eb4b4ed6c\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export yaml --out candidate.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 -c 'from pathlib import Path; p=Path(\"candidate.yaml\"); t=p.read_text(); p.write_text(t.replace(\"\\n  5:\\n    parent: 1\\n\",\"\\n  5:\\n    parent: 3\\n\",1))'",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice apply candidate.yaml -r '模拟归属澄清：材料核对由实施帧承担；不改最初PUSH历史'",
+    "stdout": "· W-05: 改挂（parent 变更）\n已提交 e5a3751a41b094b2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-05 -r '模拟核对条件已齐备，进入改挂后的子帧'",
+    "stdout": "· W-05: status paused → active\n· W-05: log +1\n已提交 6b2ef2ee7858d367\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3]' --value '{\"text\":\"核对材料后重新运行直接测试\",\"fork\":[5]}' -r '实施计划登记材料核对子帧，避免另建重复状态账'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 6aa062c8e3a2da49\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan[3]' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan[3]\",\"value\":{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},\"version\":\"6aa062c8e3a2da49\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-05.plan[0].progress' --value '\"done\"' -r '模拟材料与版本对应关系核对完成'",
+    "stdout": "· W-05: plan 改变\n· W-05: log +1\n已提交 07f0cd4cb0823281\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --result-add '模拟：当前候选版本与交付材料一致' --settle 0=release:W-01 --settle 1=kept_local -r '核对目标达成；通用规则归根帧、局部规则保留本帧'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 e1cb4d580908ea43\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-05 --summary '模拟材料核对完成，依据交还实施帧' --pos '材料与版本对应关系已核对' -r '关闭子目标并返回实施帧'",
+    "stdout": "· W-05: status active → done\n· W-05: log +1\n已提交 d252825a2579e965\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '材料核对依据=见 {{W-05.results[0]}}' -r '引用核对依据，不把所有原文再复制一遍'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 f7d10e8c62838452\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-06 --expired --summary '模拟用户决定本轮不继续另一条可选线索' --residual '线索保留为建议，不构成当前交付义务' -r '模拟用户取消可选回合，恢复实施焦点'",
+    "stdout": "· W-06: status paused → expired\n· W-06: log +1\n已提交 9dc4cbb63c1e0e56\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice insert 'W-03.plan[2]' --value '\"重复核对候选材料\"' -r '模拟暂列一项补充检查'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 8b326cff16f0d6ff\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[2].text' --value '\"再核对候选材料\"' -r '明确此计划项的对象'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 d2e899376f7da243\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice move 'W-03.plan' --from 'W-03.plan[2]' -r '模拟调整步骤顺序，重复检查移到末尾'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 dc7c84bd8e05fbc1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"修正直接测试发现的问题\"},{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"再核对候选材料\"}],\"version\":\"dc7c84bd8e05fbc1\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice remove 'W-03.plan[4]' -r '模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 74f0995c6a9cda1d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[2].progress' --value '\"done\"' -r '模拟修正已完成'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e1e043f612e5594e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '模拟直接重测通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 2abd2043e8dd4a6a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --result-add '模拟：共通部分直接测试通过，争议条件保留显式接口' -r '记录本帧实际达成范围，不代签用户验收'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 d21af1754851acbd\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '共通候选版本准备完成且直接测试通过' --pos '模拟测试结果满足本帧目标' -r '本帧目标达成；根帧仍需裁决与验收'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 74d33b6348ef1f9a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show overview",
+    "stdout": "栈：交付一个可用版本\n[W-01] 完成交付与验收 —— 候选版本通过直接测试\n焦点：无（整线暂停或异常多焦点——show tree 查看）\nPaused 分支：\n  - [W-02] 澄清验收条件 —— [HumanReady] 等待用户选择验收条件的解释\n已 pop：4 帧\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --reopen active -r '模拟核实首次Done依据有误：一次重测未完成，需纠正关闭判断'",
+    "stdout": "· W-03: status done → active\n· W-03: log +1\n已提交 5a6e54d118ef05e5\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"in_progress\"' -r '模拟纠正计划误记，保留材料核对fork'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 a9078023016fe1f9\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '误记更正=模拟：上次Done误把未完成重测当成通过；Correct保留原关闭摘要' --principle-add '模拟事实误列为原则：本轮直接测试已经通过' -r '记录原判断为何失效，不抹去第一次Done'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 28ceb7f3189cf5cc\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --settle 0=reclass:results -r '模拟识别这是待依据支撑的事实，不是约束后续行为的规则，转存结果'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 86e720b5a6b11e38\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '模拟补跑直接测试，此次确实通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 fa54dfd2d7aef1fc\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --result-add '模拟：补跑直接测试通过；第一次Done是误记，不能倒写成当时已证实' -r '区分原错误判断与后来真实依据'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 9a140a0b08d13de6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '模拟补跑完成且直接测试通过，误关闭已更正' --pos '此次补跑测试结果与材料核对依据' -r '按补齐后的依据重新关闭同一子目标'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 b776bba2262bcad4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-02 -r '模拟收到用户对争议条件的明确选择'",
+    "stdout": "· W-02: status paused → active\n· W-02: log +1\n已提交 0f261d6848f1079c\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --result-add '模拟：用户明确选择第一种解释，候选版本的显式接口与之相符' -r '保存决定与适用范围'",
+    "stdout": "· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 163922bb3c3125b8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-02 --summary '争议条件已有明确且适用的用户裁决' --pos '模拟用户选择已登记' -r '返回根帧落实验收安排'",
+    "stdout": "· W-02: status active → done\n· W-02: log +1\n已提交 554cf2bdc8749160\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[0].progress' --value '\"done\"' -r '裁决子目标已完成'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 99bd84fe25e24cad\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[1].progress' --value '\"done\"' -r '候选版本与已明确条件一致且直接测试通过'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 ac15d9c0251b5c2d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"blocked:等待用户验收\"' -r '候选交付不等于验收'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 08273fac2539d40a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-01 -r '[HumanReady] 候选版本已交付，等待用户确认验收条件满足'",
+    "stdout": "· W-01: status active → paused\n· W-01: log +1\n已提交 4614a2c423d93129\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context W-01",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\n所选分支（不切换焦点）：[W-01] 完成交付与验收\nFOCUS：请用户验收\n\n## [W-01] 完成交付与验收 [paused]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [blocked]\n- `1.plan[2]`：请用户验收\n- `1.plan[2].progress.reason`：等待用户验收\n备注 后续线索（get `1.remarks`）：\n- `1.remarks`：模拟用户取消本轮可选优化；仅保留线索，不构成本轮验收义务\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户\n原则处置 [null]\n- `1.content.principles[0].rule`：模拟已确认规则：交付证据与用户验收必须分别登记\n  引用来源：5.principles[0]\n- `1.status.reason`：[HumanReady] 候选版本已交付，等待用户确认验收条件满足\n最近记录：2026-10-12T07:46:09.109574000Z [PAUSE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n- [W-01] 完成交付与验收；show context W-01查看该分支。\n- `1.status.reason`：[HumanReady] 候选版本已交付，等待用户确认验收条件满足\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-01 -r '模拟用户确认约定验收条件全部满足'",
+    "stdout": "· W-01: status paused → active\n· W-01: log +1\n已提交 01999fe60068ee69\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"done\"' -r '登记模拟用户验收事实'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 ef6f40d23053f8e6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --result-add '模拟：直接测试通过，且用户确认全部约定验收条件满足' -r '两项根目标的依据均已具备'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 375ed2a00a1043a8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --settle 0=kept_local -r '模拟已确认的通用规则由根帧持有，退出前明确处置'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 9c2f6949f825fb39\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-01 --summary '模拟委托的两项根目标均满足' --pos '直接测试结果与模拟用户验收确认' -r '对照完整原目标收尾'",
+    "stdout": "· W-01: status active → done\n· W-01: log +1\n已提交 68542c6675fc2e67\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice validate",
+    "stdout": "OK\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice timeline",
+    "stdout": "# 事件时间线\n\n同刻事件仅保留稳定展示顺序；时间不完整的记录列在末尾，不推断因果。\n\n- [2026-10-12T07:46:08.115056000Z] [stack log[0]] [UPDATE] 登记已有模拟裁决，不由重要性自行造原则\n- [2026-10-12T07:46:08.124087000Z] [stack log[1]] [UPDATE] 建立全局导览并引用单份已确认约束\n- [2026-10-12T07:46:08.131527000Z] [W-01 log[0]] [PUSH] 登记模拟委托的完整目标\n- [2026-10-12T07:46:08.139600000Z] [W-01 log[1]] [UPDATE] 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan\n- [2026-10-12T07:46:08.175874000Z] [W-02 log[0]] [PUSH] 模拟发现独立裁决问题，解决后返回根计划\n- [2026-10-12T07:46:08.183597000Z] [W-02 log[1]] [UPDATE] 记录已知事实与仍缺的判断；变更字段：content.remarks.待裁决\n- [2026-10-12T07:46:08.191643000Z] [W-02 log[2]] [PAUSE] [HumanReady] 等待用户选择验收条件的解释\n- [2026-10-12T07:46:08.228980000Z] [W-03 log[0]] [PUSH] 共通部分不依赖等待中的裁决，可以并行推进\n- [2026-10-12T07:46:08.237683000Z] [W-03 log[1]] [UPDATE] 建立本帧的实施计划与当前焦点；变更字段：plan\n- [2026-10-12T07:46:08.246615000Z] [stack log[2]] [UPDATE] 登记一份共享检查提示，不复制到每个帧\n- [2026-10-12T07:46:08.286652000Z] [W-03 log[2]] [UPDATE] 模拟发现测试缺样例，在直接测试前补项；变更字段：plan\n- [2026-10-12T07:46:08.296104000Z] [W-03 log[3]] [UPDATE] 把一个模糊步骤拆成可执行子项；变更字段：plan[1].children\n- [2026-10-12T07:46:08.314840000Z] [W-03 log[4]] [UPDATE] 模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排；变更字段：plan\n- [2026-10-12T07:46:08.328087000Z] [W-03 log[5]] [UPDATE] 登记具体失败，不把测试已运行写成通过；变更字段：content.remarks.测试发现\n- [2026-10-12T07:46:08.365833000Z] [W-01 log[2]] [UPDATE] 按新的模拟裁决更新父计划，不缩根目标；变更字段：content.remarks.顺序裁决、plan[1].text\n- [2026-10-12T07:46:08.375027000Z] [W-03 log[6]] [UPDATE] 同步实施路线及当前继续理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text\n- [2026-10-12T07:46:08.415667000Z] [W-03 log[7]] [PAUSE] 去向：新帧 W-04\n- [2026-10-12T07:46:08.415667000Z] [W-04 log[0]] [PUSH] 模拟用户允许评估独立可选方案\n- [2026-10-12T07:46:08.426099000Z] [W-04 log[1]] [UPDATE] 区分评估成果和实现成果；变更字段：content.results\n- [2026-10-12T07:46:08.436232000Z] [W-01 log[3]] [UPDATE] 根帧记录裁决边界，不偷偷承诺将来实施；变更字段：content.remarks.后续线索\n- [2026-10-12T07:46:08.446199000Z] [W-03 log[8]] [RESUME] 承接自 W-04 的 pop；焦点转移\n- [2026-10-12T07:46:08.446199000Z] [W-04 log[2]] [POP] 按明确取消裁决退出，回到已暂停的实施帧\n- [2026-10-12T07:46:08.486014000Z] [W-03 log[9]] [PAUSE] 去向：新帧 W-05\n- [2026-10-12T07:46:08.486014000Z] [W-05 log[0]] [PUSH] 模拟出现独立的材料核对上下文\n- [2026-10-12T07:46:08.496182000Z] [W-05 log[1]] [UPDATE] 登记核对计划与两条有来源的模拟规则；变更字段：content.principles、plan\n- [2026-10-12T07:46:08.506026000Z] [W-05 log[2]] [PAUSE] 去向：新帧 W-06\n- [2026-10-12T07:46:08.506026000Z] [W-06 log[0]] [PUSH] 模拟出现另一条独立旁支，保留回程\n- [2026-10-12T07:46:08.516141000Z] [W-06 log[1]] [PAUSE] [HumanReady] 等待模拟用户决定是否继续可选线索\n- [2026-10-12T07:46:08.561246000Z] [W-03 log[10]] [RESUME] 模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端\n- [2026-10-12T07:46:08.601398000Z] [W-05 log[3]] [RESUME] 模拟核对条件已齐备，进入改挂后的子帧\n- [2026-10-12T07:46:08.612244000Z] [W-03 log[11]] [UPDATE] 实施计划登记材料核对子帧，避免另建重复状态账；变更字段：plan[3].fork\n- [2026-10-12T07:46:08.660416000Z] [W-05 log[4]] [UPDATE] 模拟材料与版本对应关系核对完成；变更字段：plan[0].progress.kind\n- [2026-10-12T07:46:08.671367000Z] [W-01 log[4]] [UPDATE] 承接自 W-05 原则1（released）；变更字段：content.principles\n- [2026-10-12T07:46:08.671367000Z] [W-05 log[5]] [UPDATE] 核对目标达成；通用规则归根帧、局部规则保留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results\n- [2026-10-12T07:46:08.682651000Z] [W-05 log[6]] [POP] 关闭子目标并返回实施帧\n- [2026-10-12T07:46:08.693305000Z] [W-03 log[12]] [UPDATE] 引用核对依据，不把所有原文再复制一遍；变更字段：content.remarks.材料核对依据\n- [2026-10-12T07:46:08.704335000Z] [W-06 log[2]] [POP] 模拟用户取消可选回合，恢复实施焦点\n- [2026-10-12T07:46:08.748663000Z] [W-03 log[13]] [UPDATE] 模拟暂列一项补充检查；变更字段：plan\n- [2026-10-12T07:46:08.760580000Z] [W-03 log[14]] [UPDATE] 明确此计划项的对象；变更字段：plan[2].text\n- [2026-10-12T07:46:08.772372000Z] [W-03 log[15]] [UPDATE] 模拟调整步骤顺序，重复检查移到末尾；变更字段：plan[2].text、plan[3].fork、plan[3].text、plan[4].fork、plan[4].text\n- [2026-10-12T07:46:08.787732000Z] [W-03 log[16]] [UPDATE] 模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划；变更字段：plan\n- [2026-10-12T07:46:08.833019000Z] [W-03 log[17]] [UPDATE] 模拟修正已完成；变更字段：plan[2].progress.kind\n- [2026-10-12T07:46:08.844528000Z] [W-03 log[18]] [UPDATE] 模拟直接重测通过；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:08.856403000Z] [W-03 log[19]] [UPDATE] 记录本帧实际达成范围，不代签用户验收；变更字段：content.results\n- [2026-10-12T07:46:08.867427000Z] [W-03 log[20]] [POP] 本帧目标达成；根帧仍需裁决与验收\n- [2026-10-12T07:46:08.917017000Z] [W-03 log[21]] [CORRECT] 模拟核实首次Done依据有误：一次重测未完成，需纠正关闭判断\n  原 Closure：[done] 共通候选版本准备完成且直接测试通过\n- [2026-10-12T07:46:08.928647000Z] [W-03 log[22]] [UPDATE] 模拟纠正计划误记，保留材料核对fork；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:08.940585000Z] [W-03 log[23]] [UPDATE] 记录原判断为何失效，不抹去第一次Done；变更字段：content.principles、content.remarks.误记更正\n- [2026-10-12T07:46:08.952504000Z] [W-03 log[24]] [UPDATE] 模拟识别这是待依据支撑的事实，不是约束后续行为的规则，转存结果；变更字段：content.principles[0].fate、content.results\n- [2026-10-12T07:46:08.964487000Z] [W-03 log[25]] [UPDATE] 模拟补跑直接测试，此次确实通过；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:08.976293000Z] [W-03 log[26]] [UPDATE] 区分原错误判断与后来真实依据；变更字段：content.results\n- [2026-10-12T07:46:08.988461000Z] [W-03 log[27]] [POP] 按补齐后的依据重新关闭同一子目标\n- [2026-10-12T07:46:09.037459000Z] [W-02 log[3]] [RESUME] 模拟收到用户对争议条件的明确选择\n- [2026-10-12T07:46:09.048496000Z] [W-02 log[4]] [UPDATE] 保存决定与适用范围；变更字段：content.results\n- [2026-10-12T07:46:09.060576000Z] [W-02 log[5]] [POP] 返回根帧落实验收安排\n- [2026-10-12T07:46:09.072584000Z] [W-01 log[5]] [UPDATE] 裁决子目标已完成；变更字段：plan[0].progress.kind\n- [2026-10-12T07:46:09.084983000Z] [W-01 log[6]] [UPDATE] 候选版本与已明确条件一致且直接测试通过；变更字段：plan[1].progress.kind\n- [2026-10-12T07:46:09.097543000Z] [W-01 log[7]] [UPDATE] 候选交付不等于验收；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T07:46:09.109574000Z] [W-01 log[8]] [PAUSE] [HumanReady] 候选版本已交付，等待用户确认验收条件满足\n- [2026-10-12T07:46:09.164212000Z] [W-01 log[9]] [RESUME] 模拟用户确认约定验收条件全部满足\n- [2026-10-12T07:46:09.176747000Z] [W-01 log[10]] [UPDATE] 登记模拟用户验收事实；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T07:46:09.189648000Z] [W-01 log[11]] [UPDATE] 两项根目标的依据均已具备；变更字段：content.results\n- [2026-10-12T07:46:09.201782000Z] [W-01 log[12]] [UPDATE] 模拟已确认的通用规则由根帧持有，退出前明确处置；变更字段：content.principles[0].fate\n- [2026-10-12T07:46:09.214662000Z] [W-01 log[13]] [POP] 对照完整原目标收尾\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export md --out practice.md",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "{\"stack\":\"practice\",\"op\":\"show\",\"args\":{\"what\":\"context\"}}",
+    "stdout": "{\"diff\":[],\"ok\":true,\"text\":\"# 工作上下文：交付一个可用版本\\n\\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\\n\\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\\n  引用来源：note:累计原则.body\\n\\n焦点：无；不自动选择暂停分支。\\n\\n## 暂停末端（不代表后台停止）\\n\\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\\n\",\"version\":null,\"warnings\":[]}\n",
+    "exit_code": 0
+  }
+]

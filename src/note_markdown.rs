@@ -5,7 +5,12 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 #[derive(Serialize, Deserialize)]
-pub struct Header { key: String, meta: Meta }
+pub struct Header {
+    key: String,
+    meta: Meta,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    at_title: bool,
+}
 
 fn title(key: &str) -> String {
     match key {
@@ -39,6 +44,28 @@ pub fn attachments(md: &str) -> Result<Vec<Header>, String> {
         }
     }
     Ok(vec![])
+}
+
+pub fn read_description(body: &[&str], headers: &mut Vec<Header>) -> Result<Option<Note>, String> {
+    if let Some(index) = headers.iter().position(|h| h.key == "description" && h.at_title) {
+        let header = headers.remove(index);
+        let text = body.iter().filter_map(|line| {
+            line.strip_prefix("  ").or_else(|| (!line.is_empty()).then_some(*line))
+        }).collect::<Vec<_>>().join("\n");
+        return Ok(Some(Note { meta: header.meta, body: parse_st(&text)? }));
+    }
+    let text = body.join("\n");
+    let text = text.trim();
+    if text.is_empty() { Ok(None) }
+    else { Ok(Some(Note { meta: vec!["before:tree".into()], body: parse_st(text)? })) }
+}
+
+pub fn emit_description(ws: &WorkingStack, out: &mut String, headers: &mut Vec<Header>) {
+    if let Some(note) = ws.notes.get("description") {
+        headers.push(Header { key: "description".into(), meta: note.meta.clone(), at_title: true });
+        for line in format_st(&note.body).split('\n') { out.push_str(&format!("  {line}\n")); }
+        out.push('\n');
+    }
 }
 
 pub fn read_section(body: &[&str], notes: &mut BTreeMap<String,Note>, headers: &mut Vec<Header>) -> Result<(),String> {
@@ -77,13 +104,13 @@ fn finish(current: Option<(String,Meta,bool)>, buffer: &mut Vec<String>, notes: 
 pub fn emit(ws: &WorkingStack, position: Position, out: &mut String, headers: &mut Vec<Header>) {
     let mut notes: Vec<_> = ws.notes.iter().filter_map(|(key, note)| {
         let (p, order) = layout(&note.meta);
-        (p == position).then_some((order, key, note))
+        (key != "description" && p == position).then_some((order, key, note))
     }).collect();
     notes.sort_by(|a, b| (a.0, a.1).cmp(&(b.0, b.1)));
     if notes.is_empty() { return; }
     out.push_str(if position == Position::Appendix { "## Appendix\n\n" } else { "## 共享内容\n\n" });
     for (_, key, note) in notes {
-        headers.push(Header{key:key.clone(),meta:note.meta.clone()});
+        headers.push(Header{key:key.clone(),meta:note.meta.clone(),at_title:false});
         out.push_str(&format!("### {}\n\n",title(key)));
         for line in format_st(&note.body).split('\n') { out.push_str(&format!("  {line}\n")); }
         out.push('\n');

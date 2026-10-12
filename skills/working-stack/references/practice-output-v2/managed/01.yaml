@@ -1,0 +1,55 @@
+title: 交付一个可用版本
+prefix: W
+notes:
+  description:
+    meta: []
+    body: 本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：{{note:累计原则.body}}。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。
+  累计原则:
+    meta: []
+    body: 模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。
+frames:
+  1:
+    parent: null
+    title: 完成交付与验收
+    goal:
+    - 候选版本通过直接测试
+    - 用户确认约定的验收条件满足
+    origin: []
+    status:
+      kind: active
+    plan:
+    - text: 澄清验收条件
+      children: []
+      progress:
+        kind: in_progress
+      fork: []
+    - text: 准备并测试候选版本
+      children: []
+      progress:
+        kind: ready
+      fork: []
+    - text: 请用户验收
+      children: []
+      progress:
+        kind: ready
+      fork: []
+    content:
+      results: []
+      side_effects: []
+      principles: []
+      remarks: {}
+    log:
+    - action: push
+      at: 2026-10-12T07:46:05.670682000Z
+      detail: 登记模拟委托的完整目标
+    - action: update
+      at: 2026-10-12T07:46:05.698579000Z
+      detail: 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan
+log:
+- action: update
+  at: 2026-10-12T07:46:05.612477000Z
+  detail: 登记已有模拟裁决，不由重要性自行造原则
+- action: update
+  at: 2026-10-12T07:46:05.643108000Z
+  detail: 建立全局导览并引用单份已确认约束
+

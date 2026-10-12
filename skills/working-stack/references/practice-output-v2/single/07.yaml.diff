@@ -1,0 +1,85 @@
+--- previous.yaml
++++ current.yaml
+@@ -90,7 +90,8 @@
+     - 共通部分实现并完成直接测试，争议条件留下显式接口
+     origin: []
+     status:
+-      kind: active
++      kind: paused
++      reason: 去向：新帧 W-05
+     plan:
+     - text: 实现共通部分
+       children: []
+@@ -157,6 +158,9 @@
+     - action: resume
+       at: 2026-10-12T07:46:08.446199000Z
+       detail: 承接自 W-04 的 pop；焦点转移
++    - action: pause
++      at: 2026-10-12T07:46:08.486014000Z
++      detail: 去向：新帧 W-05
+   4:
+     parent: 1
+     title: 评估可选优化
+@@ -187,6 +191,62 @@
+     - action: pop
+       at: 2026-10-12T07:46:08.446199000Z
+       detail: 按明确取消裁决退出，回到已暂停的实施帧
++  5:
++    parent: 1
++    title: 核对交付材料
++    goal:
++    - 核对候选版本的材料，并把核对依据交还实施帧
++    origin: []
++    status:
++      kind: paused
++      reason: 去向：新帧 W-06
++    plan:
++    - text: 核对材料与版本对应关系
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    content:
++      results: []
++      side_effects: []
++      principles:
++      - rule: 模拟已确认规则：交付证据与用户验收必须分别登记
++        fate: null
++      - rule: 模拟局部规则：本次核对只使用当前候选版本材料
++        fate: null
++      remarks: {}
++    log:
++    - action: push
++      at: 2026-10-12T07:46:08.486014000Z
++      detail: 模拟出现独立的材料核对上下文
++    - action: update
++      at: 2026-10-12T07:46:08.496182000Z
++      detail: 登记核对计划与两条有来源的模拟规则；变更字段：content.principles、plan
++    - action: pause
++      at: 2026-10-12T07:46:08.506026000Z
++      detail: 去向：新帧 W-06
++  6:
++    parent: 1
++    title: 保留另一条可选线索
++    goal:
++    - 取得用户是否继续此线索的决定
++    origin: []
++    status:
++      kind: paused
++      reason: '[HumanReady] 等待模拟用户决定是否继续可选线索'
++    plan: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks: {}
++    log:
++    - action: push
++      at: 2026-10-12T07:46:08.506026000Z
++      detail: 模拟出现另一条独立旁支，保留回程
++    - action: pause
++      at: 2026-10-12T07:46:08.516141000Z
++      detail: '[HumanReady] 等待模拟用户决定是否继续可选线索'
+ log:
+ - action: update
+   at: 2026-10-12T07:46:08.115056000Z

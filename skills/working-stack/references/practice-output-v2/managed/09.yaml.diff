@@ -1,0 +1,120 @@
+--- previous.yaml
++++ current.yaml
+@@ -40,7 +40,9 @@
+     content:
+       results: []
+       side_effects: []
+-      principles: []
++      principles:
++      - rule: '{{5.principles[0]}}'
++        fate: null
+       remarks:
+         后续线索: 模拟用户取消本轮可选优化；仅保留线索，不构成本轮验收义务
+         顺序裁决: 模拟用户新增顺序：材料核对先于最终重测；验收仍留给用户
+@@ -57,6 +59,9 @@
+     - action: update
+       at: 2026-10-12T07:46:06.301016000Z
+       detail: 根帧记录裁决边界，不偷偷承诺将来实施；变更字段：content.remarks.后续线索
++    - action: update
++      at: 2026-10-12T07:46:06.763946000Z
++      detail: 承接自 W-05 原则1（released）；变更字段：content.principles
+   2:
+     parent: 1
+     title: 澄清验收条件
+@@ -128,6 +133,7 @@
+       side_effects: []
+       principles: []
+       remarks:
++        材料核对依据: 见 {{5.results[0]}}
+         测试发现: 模拟：一个边界输入尚不符合约定，需要修正后重测
+         继续理由: 落实父帧候选准备责任；先修正问题并核对材料，再完成最终重测，不能代签验收
+     log:
+@@ -167,6 +173,9 @@
+     - action: update
+       at: 2026-10-12T07:46:06.661781000Z
+       detail: 实施计划登记材料核对子帧，避免另建重复状态账；变更字段：plan[3].fork
++    - action: update
++      at: 2026-10-12T07:46:06.826821000Z
++      detail: 引用核对依据，不把所有原文再复制一遍；变更字段：content.remarks.材料核对依据
+   4:
+     parent: 1
+     title: 评估可选优化
+@@ -204,21 +213,30 @@
+     - 核对候选版本的材料，并把核对依据交还实施帧
+     origin: []
+     status:
+-      kind: active
++      kind: done
++      closure:
++        summary: 模拟材料核对完成，依据交还实施帧
++        positive:
++        - result: 材料与版本对应关系已核对
++          evidence: ''
+     plan:
+     - text: 核对材料与版本对应关系
+       children: []
+       progress:
+-        kind: ready
+-      fork: []
+-    content:
+-      results: []
++        kind: item_done
++      fork: []
++    content:
++      results:
++      - 模拟：当前候选版本与交付材料一致
+       side_effects: []
+       principles:
+       - rule: 模拟已确认规则：交付证据与用户验收必须分别登记
+-        fate: null
++        fate:
++          kind: released_to
++          id: 1
+       - rule: 模拟局部规则：本次核对只使用当前候选版本材料
+-        fate: null
++        fate:
++          kind: kept_local
+       remarks: {}
+     log:
+     - action: push
+@@ -233,6 +251,15 @@
+     - action: resume
+       at: 2026-10-12T07:46:06.631118000Z
+       detail: 模拟核对条件已齐备，进入改挂后的子帧
++    - action: update
++      at: 2026-10-12T07:46:06.733491000Z
++      detail: 模拟材料与版本对应关系核对完成；变更字段：plan[0].progress.kind
++    - action: update
++      at: 2026-10-12T07:46:06.763946000Z
++      detail: 核对目标达成；通用规则归根帧、局部规则保留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results
++    - action: pop
++      at: 2026-10-12T07:46:06.795356000Z
++      detail: 关闭子目标并返回实施帧
+   6:
+     parent: 1
+     title: 保留另一条可选线索
+@@ -240,8 +267,12 @@
+     - 取得用户是否继续此线索的决定
+     origin: []
+     status:
+-      kind: paused
+-      reason: '[HumanReady] 等待模拟用户决定是否继续可选线索'
++      kind: expired
++      closure:
++        summary: 模拟用户决定本轮不继续另一条可选线索
++        residuals:
++        - result: 线索保留为建议，不构成当前交付义务
++          evidence: ''
+     plan: []
+     content:
+       results: []
+@@ -255,6 +286,9 @@
+     - action: pause
+       at: 2026-10-12T07:46:06.481465000Z
+       detail: '[HumanReady] 等待模拟用户决定是否继续可选线索'
++    - action: pop
++      at: 2026-10-12T07:46:06.858733000Z
++      detail: 模拟用户取消可选回合，恢复实施焦点
+ log:
+ - action: update
+   at: 2026-10-12T07:46:05.612477000Z

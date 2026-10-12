@@ -43,12 +43,8 @@ pub fn import_md(md: &str) -> Result<ImportOut, WsError> {
         desc.push(lines[i]);
         i += 1;
     }
-    let desc_txt: String = desc.join("\n").trim().to_string();
-    if !desc_txt.is_empty() {
-        ws.notes.insert(
-            "description".into(),
-            Note { meta: vec!["before:tree".into()], body: parse_st(&desc_txt).map_err(WsError::Parse)? },
-        );
+    if let Some(note) = crate::note_markdown::read_description(&desc, &mut note_headers).map_err(WsError::Parse)? {
+        ws.notes.insert("description".into(), note);
     }
 
     // 分节扫描

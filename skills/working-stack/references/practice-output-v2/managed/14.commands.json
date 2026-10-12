@@ -1,0 +1,42 @@
+[
+  {
+    "command": "working-stack practice resume W-01 -r '模拟用户确认约定验收条件全部满足'",
+    "stdout": "· W-01: status paused → active\n· W-01: log +1\n已提交 b3d973221176d27d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"done\"' -r '登记模拟用户验收事实'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 7a7b39405267c082\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --result-add '模拟：直接测试通过，且用户确认全部约定验收条件满足' -r '两项根目标的依据均已具备'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 02c7355c5eb69ba1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --settle 0=kept_local -r '模拟已确认的通用规则由根帧持有，退出前明确处置'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 c54c1eb35f27a9f5\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-01 --summary '模拟委托的两项根目标均满足' --pos '直接测试结果与模拟用户验收确认' -r '对照完整原目标收尾'",
+    "stdout": "· W-01: status active → done\n· W-01: log +1\n已提交 196edab6f2216e02\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice validate",
+    "stdout": "OK\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice timeline",
+    "stdout": "# 事件时间线\n\n同刻事件仅保留稳定展示顺序；时间不完整的记录列在末尾，不推断因果。\n\n- [2026-10-12T07:46:05.612477000Z] [stack log[0]] [UPDATE] 登记已有模拟裁决，不由重要性自行造原则\n- [2026-10-12T07:46:05.643108000Z] [stack log[1]] [UPDATE] 建立全局导览并引用单份已确认约束\n- [2026-10-12T07:46:05.670682000Z] [W-01 log[0]] [PUSH] 登记模拟委托的完整目标\n- [2026-10-12T07:46:05.698579000Z] [W-01 log[1]] [UPDATE] 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan\n- [2026-10-12T07:46:05.755595000Z] [W-02 log[0]] [PUSH] 模拟发现独立裁决问题，解决后返回根计划\n- [2026-10-12T07:46:05.783473000Z] [W-02 log[1]] [UPDATE] 记录已知事实与仍缺的判断；变更字段：content.remarks.待裁决\n- [2026-10-12T07:46:05.812108000Z] [W-02 log[2]] [PAUSE] [HumanReady] 等待用户选择验收条件的解释\n- [2026-10-12T07:46:05.870085000Z] [W-03 log[0]] [PUSH] 共通部分不依赖等待中的裁决，可以并行推进\n- [2026-10-12T07:46:05.898369000Z] [W-03 log[1]] [UPDATE] 建立本帧的实施计划与当前焦点；变更字段：plan\n- [2026-10-12T07:46:05.927266000Z] [stack log[2]] [UPDATE] 登记一份共享检查提示，不复制到每个帧\n- [2026-10-12T07:46:05.984028000Z] [W-03 log[2]] [UPDATE] 模拟发现测试缺样例，在直接测试前补项；变更字段：plan\n- [2026-10-12T07:46:06.012807000Z] [W-03 log[3]] [UPDATE] 把一个模糊步骤拆成可执行子项；变更字段：plan[1].children\n- [2026-10-12T07:46:06.049452000Z] [W-03 log[4]] [UPDATE] 模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排；变更字段：plan\n- [2026-10-12T07:46:06.079534000Z] [W-03 log[5]] [UPDATE] 登记具体失败，不把测试已运行写成通过；变更字段：content.remarks.测试发现\n- [2026-10-12T07:46:06.138660000Z] [W-01 log[2]] [UPDATE] 按新的模拟裁决更新父计划，不缩根目标；变更字段：content.remarks.顺序裁决、plan[1].text\n- [2026-10-12T07:46:06.168579000Z] [W-03 log[6]] [UPDATE] 同步实施路线及当前继续理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text\n- [2026-10-12T07:46:06.234215000Z] [W-03 log[7]] [PAUSE] 去向：新帧 W-04\n- [2026-10-12T07:46:06.234215000Z] [W-04 log[0]] [PUSH] 模拟用户允许评估独立可选方案\n- [2026-10-12T07:46:06.267770000Z] [W-04 log[1]] [UPDATE] 区分评估成果和实现成果；变更字段：content.results\n- [2026-10-12T07:46:06.301016000Z] [W-01 log[3]] [UPDATE] 根帧记录裁决边界，不偷偷承诺将来实施；变更字段：content.remarks.后续线索\n- [2026-10-12T07:46:06.331236000Z] [W-03 log[8]] [RESUME] 承接自 W-04 的 pop；焦点转移\n- [2026-10-12T07:46:06.331236000Z] [W-04 log[2]] [POP] 按明确取消裁决退出，回到已暂停的实施帧\n- [2026-10-12T07:46:06.391014000Z] [W-03 log[9]] [PAUSE] 去向：新帧 W-05\n- [2026-10-12T07:46:06.391014000Z] [W-05 log[0]] [PUSH] 模拟出现独立的材料核对上下文\n- [2026-10-12T07:46:06.421246000Z] [W-05 log[1]] [UPDATE] 登记核对计划与两条有来源的模拟规则；变更字段：content.principles、plan\n- [2026-10-12T07:46:06.451791000Z] [W-05 log[2]] [PAUSE] 去向：新帧 W-06\n- [2026-10-12T07:46:06.451791000Z] [W-06 log[0]] [PUSH] 模拟出现另一条独立旁支，保留回程\n- [2026-10-12T07:46:06.481465000Z] [W-06 log[1]] [PAUSE] [HumanReady] 等待模拟用户决定是否继续可选线索\n- [2026-10-12T07:46:06.548394000Z] [W-03 log[10]] [RESUME] 模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端\n- [2026-10-12T07:46:06.631118000Z] [W-05 log[3]] [RESUME] 模拟核对条件已齐备，进入改挂后的子帧\n- [2026-10-12T07:46:06.661781000Z] [W-03 log[11]] [UPDATE] 实施计划登记材料核对子帧，避免另建重复状态账；变更字段：plan[3].fork\n- [2026-10-12T07:46:06.733491000Z] [W-05 log[4]] [UPDATE] 模拟材料与版本对应关系核对完成；变更字段：plan[0].progress.kind\n- [2026-10-12T07:46:06.763946000Z] [W-01 log[4]] [UPDATE] 承接自 W-05 原则1（released）；变更字段：content.principles\n- [2026-10-12T07:46:06.763946000Z] [W-05 log[5]] [UPDATE] 核对目标达成；通用规则归根帧、局部规则保留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results\n- [2026-10-12T07:46:06.795356000Z] [W-05 log[6]] [POP] 关闭子目标并返回实施帧\n- [2026-10-12T07:46:06.826821000Z] [W-03 log[12]] [UPDATE] 引用核对依据，不把所有原文再复制一遍；变更字段：content.remarks.材料核对依据\n- [2026-10-12T07:46:06.858733000Z] [W-06 log[2]] [POP] 模拟用户取消可选回合，恢复实施焦点\n- [2026-10-12T07:46:06.925763000Z] [W-03 log[13]] [UPDATE] 模拟暂列一项补充检查；变更字段：plan\n- [2026-10-12T07:46:06.957289000Z] [W-03 log[14]] [UPDATE] 明确此计划项的对象；变更字段：plan[2].text\n- [2026-10-12T07:46:06.988945000Z] [W-03 log[15]] [UPDATE] 模拟调整步骤顺序，重复检查移到末尾；变更字段：plan[2].text、plan[3].fork、plan[3].text、plan[4].fork、plan[4].text\n- [2026-10-12T07:46:07.025291000Z] [W-03 log[16]] [UPDATE] 模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划；变更字段：plan\n- [2026-10-12T07:46:07.092020000Z] [W-03 log[17]] [UPDATE] 模拟修正已完成；变更字段：plan[2].progress.kind\n- [2026-10-12T07:46:07.123482000Z] [W-03 log[18]] [UPDATE] 模拟直接重测通过；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:07.155100000Z] [W-03 log[19]] [UPDATE] 记录本帧实际达成范围，不代签用户验收；变更字段：content.results\n- [2026-10-12T07:46:07.187061000Z] [W-03 log[20]] [POP] 本帧目标达成；根帧仍需裁决与验收\n- [2026-10-12T07:46:07.262325000Z] [W-03 log[21]] [CORRECT] 模拟核实首次Done依据有误：一次重测未完成，需纠正关闭判断\n  原 Closure：[done] 共通候选版本准备完成且直接测试通过\n- [2026-10-12T07:46:07.296730000Z] [W-03 log[22]] [UPDATE] 模拟纠正计划误记，保留材料核对fork；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:07.329151000Z] [W-03 log[23]] [UPDATE] 记录原判断为何失效，不抹去第一次Done；变更字段：content.principles、content.remarks.误记更正\n- [2026-10-12T07:46:07.361272000Z] [W-03 log[24]] [UPDATE] 模拟识别这是待依据支撑的事实，不是约束后续行为的规则，转存结果；变更字段：content.principles[0].fate、content.results\n- [2026-10-12T07:46:07.395463000Z] [W-03 log[25]] [UPDATE] 模拟补跑直接测试，此次确实通过；变更字段：plan[3].progress.kind\n- [2026-10-12T07:46:07.427852000Z] [W-03 log[26]] [UPDATE] 区分原错误判断与后来真实依据；变更字段：content.results\n- [2026-10-12T07:46:07.459831000Z] [W-03 log[27]] [POP] 按补齐后的依据重新关闭同一子目标\n- [2026-10-12T07:46:07.529869000Z] [W-02 log[3]] [RESUME] 模拟收到用户对争议条件的明确选择\n- [2026-10-12T07:46:07.561355000Z] [W-02 log[4]] [UPDATE] 保存决定与适用范围；变更字段：content.results\n- [2026-10-12T07:46:07.592709000Z] [W-02 log[5]] [POP] 返回根帧落实验收安排\n- [2026-10-12T07:46:07.625178000Z] [W-01 log[5]] [UPDATE] 裁决子目标已完成；变更字段：plan[0].progress.kind\n- [2026-10-12T07:46:07.658227000Z] [W-01 log[6]] [UPDATE] 候选版本与已明确条件一致且直接测试通过；变更字段：plan[1].progress.kind\n- [2026-10-12T07:46:07.691103000Z] [W-01 log[7]] [UPDATE] 候选交付不等于验收；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T07:46:07.724920000Z] [W-01 log[8]] [PAUSE] [HumanReady] 候选版本已交付，等待用户确认验收条件满足\n- [2026-10-12T07:46:07.802353000Z] [W-01 log[9]] [RESUME] 模拟用户确认约定验收条件全部满足\n- [2026-10-12T07:46:07.833415000Z] [W-01 log[10]] [UPDATE] 登记模拟用户验收事实；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T07:46:07.867451000Z] [W-01 log[11]] [UPDATE] 两项根目标的依据均已具备；变更字段：content.results\n- [2026-10-12T07:46:07.900387000Z] [W-01 log[12]] [UPDATE] 模拟已确认的通用规则由根帧持有，退出前明确处置；变更字段：content.principles[0].fate\n- [2026-10-12T07:46:07.933214000Z] [W-01 log[13]] [POP] 对照完整原目标收尾\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export md --out practice.md",
+    "stdout": "",
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,35 @@
+--- previous.yaml
++++ current.yaml
+@@ -45,6 +45,32 @@
+     - action: update
+       at: 2026-10-12T07:46:08.139600000Z
+       detail: 把根目标分成当前可执行计划并落实当前步骤；变更字段：plan
++  2:
++    parent: 1
++    title: 澄清验收条件
++    goal:
++    - 取得用户对争议条件的明确选择
++    origin: []
++    status:
++      kind: paused
++      reason: '[HumanReady] 等待用户选择验收条件的解释'
++    plan: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks:
++        待裁决: 两种解释都已列明，尚未取得选择
++    log:
++    - action: push
++      at: 2026-10-12T07:46:08.175874000Z
++      detail: 模拟发现独立裁决问题，解决后返回根计划
++    - action: update
++      at: 2026-10-12T07:46:08.183597000Z
++      detail: 记录已知事实与仍缺的判断；变更字段：content.remarks.待裁决
++    - action: pause
++      at: 2026-10-12T07:46:08.191643000Z
++      detail: '[HumanReady] 等待用户选择验收条件的解释'
+ log:
+ - action: update
+   at: 2026-10-12T07:46:08.115056000Z

@@ -60,6 +60,7 @@ pub fn export_markdown(ws: &WorkingStack) -> String {
     if let Some(t) = &ws.title {
         s.push_str(&format!("# {t}\n\n"));
     }
+    crate::note_markdown::emit_description(ws, &mut s, &mut note_headers);
     emit_notes(ws, Position::BeforeTree, &mut s, &mut note_headers);
     s.push_str("## 栈状态\n\n```text\n");
     s.push_str(&tree_text(ws));

@@ -149,7 +149,8 @@ serde 类双向 codec：`parse :: Text -> WorkingStack`、`format :: WorkingStac
 ### P
 - `tree`：live 森林；para 仅在兄弟分叉处缩进；末端帧标 `TOP` / `TOP/PAUSED`（焦点帧且其 FOCUS 项=Blocked 时）`[PAUSED]`；origin 首段 `[digression]` → 概览标 `[digression]`；Paused reason 首段 `[HumanReady]` 等约定标记 → Mark 并从显示文本截取；popped 折叠为计数行。
 - `frame`：栏目化排版（goal/plan/FOCUS 高亮/content/principles+fate/Closure 三方向+residuals/log 尾部）。
-- `timeline`：跨帧 Event 按时间合并；`export md`：人读文档（含已 pop 帧达成情况）。
+- `timeline`：跨帧Event按时间合并；`export md`：人读文档（含已pop帧达成情况）。description作为标题下导览，引用保持原表达；其附件at_title只属于打印/解析协议，不进入核心Note结构。
+- `show context [ID]`：导览、所选父链、暂停末端及显式引用的复工材料，正文不按固定字符数/最近条数删减。复用既有render，只读不切焦点，不无条件读全notes/logs，也不判记录有效性；合同见context-view.md。
 - 打印永不回写数据；标记识别只影响显示。
 - Note.meta 为字符串列表，不改变业务语义；默认 Appendix。打印器按顺序应用认识且适用的位置/排序提示，其余忽略但保留。具体合同见 `note-meta.md`。
 

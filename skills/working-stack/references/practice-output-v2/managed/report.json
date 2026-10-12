@@ -1,0 +1,73 @@
+{
+  "mode": "managed",
+  "commands": 77,
+  "frames": 6,
+  "stages": [
+    {
+      "prefix": "01",
+      "title": "1. 初始委托：产物可用，并由用户按约定验收"
+    },
+    {
+      "prefix": "02",
+      "title": "2. 新信息：验收条件尚有一个独立裁决问题"
+    },
+    {
+      "prefix": "03",
+      "title": "3. 不依赖该裁决的工作继续：建立para"
+    },
+    {
+      "prefix": "04",
+      "title": "4. 实施中发现缺口：插项、拆分、重拟，不滥建帧"
+    },
+    {
+      "prefix": "05",
+      "title": "4A. 用户裁决改变路线：更新父计划与继续理由"
+    },
+    {
+      "prefix": "06",
+      "title": "5. 出现可选线索：独立支线与取消"
+    },
+    {
+      "prefix": "07",
+      "title": "5A. 多个para：先保留上下文，再修正归属"
+    },
+    {
+      "prefix": "08",
+      "title": "5A1. 改挂责任归属：不重写最初PUSH"
+    },
+    {
+      "prefix": "09",
+      "title": "5A2. 子帧收尾与原则归属"
+    },
+    {
+      "prefix": "10",
+      "title": "5B. 计划重排与移除：先读路径，再按新位置操作"
+    },
+    {
+      "prefix": "11",
+      "title": "6. 候选产物完成：只关闭对应子目标"
+    },
+    {
+      "prefix": "12",
+      "title": "6A. 误关闭更正：保留错误历史，不倒写成功"
+    },
+    {
+      "prefix": "13",
+      "title": "7. 等待结束：恢复旧帧，不重建问题"
+    },
+    {
+      "prefix": "14",
+      "title": "8. 只有收到验收事实，才关闭根帧"
+    },
+    {
+      "prefix": "15",
+      "title": "9. 同一操作的JSON输入与只读浏览"
+    }
+  ],
+  "root_goals_preserved": true,
+  "reparent_keeps_push_history": true,
+  "awaiting_acceptance_stays_open": true,
+  "route_change_updates_parent": true,
+  "all_stage_notes_roundtrip": true,
+  "validate": "OK"
+}

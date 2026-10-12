@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '核对交付材料' --goal '核对候选版本的材料，并把核对依据交还实施帧' -r '模拟出现独立的材料核对上下文'",
+    "stdout": "· 新建帧 W-05 核对交付材料\n· 新增帧 W-05 核对交付材料\n· W-03: status active → paused\n· W-03: log +1\n已提交 4a59bb6a3ffdfbe2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --plan-add '核对材料与版本对应关系' --principle-add '模拟已确认规则：交付证据与用户验收必须分别登记' --principle-add '模拟局部规则：本次核对只使用当前候选版本材料' -r '登记核对计划与两条有来源的模拟规则'",
+    "stdout": "· W-05: plan 改变\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 9195125819a739d1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '保留另一条可选线索' --goal '取得用户是否继续此线索的决定' -r '模拟出现另一条独立旁支，保留回程'",
+    "stdout": "· 新建帧 W-06 保留另一条可选线索\n· 新增帧 W-06 保留另一条可选线索\n· W-05: status active → paused\n· W-05: log +1\n已提交 8b443f7a7757075f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-06 -r '[HumanReady] 等待模拟用户决定是否继续可选线索'",
+    "stdout": "· W-06: status active → paused\n· W-06: log +1\n已提交 23332ee1b07f3431\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 完成交付与验收\n- [W-02] [PAUSED] 澄清验收条件\n- [W-03] [PAUSED] 准备并直接测试候选版本\n- [W-05] [PAUSED] 核对交付材料\n- [W-06] [PAUSED] 保留另一条可选线索\n\n",
+    "exit_code": 0
+  }
+]

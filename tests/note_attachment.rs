@@ -7,7 +7,9 @@ fn footer_preserves_raw_keys_hints_whitespace_and_readable_body() {
     ws.notes.insert("description".into(),Note{meta:vec!["before:tree".into(),"unknown".into()],body:parse_st(" \n说明\n").unwrap()});
     ws.notes.insert("import-cache".into(),Note{meta:vec!["appendix".into()],body:parse_st("## 原小节\n正文").unwrap()});
     let md=export_markdown(&ws);
-    assert!(md.contains("### 工作线说明\n"));
+    assert!(md.starts_with("# 干净输出\n\n   \n  说明\n  \n\n## 栈状态"));
+    assert!(!md.contains("### 工作线说明\n"));
+    assert_eq!(md.matches("说明").count(), 1);
     assert!(md.contains("### 补充内容\n"));
     assert!(!md.contains("### note:"));
     let boundary=md.find("## 格式信息").unwrap();

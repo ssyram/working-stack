@@ -1,0 +1,62 @@
+--- previous.yaml
++++ current.yaml
+@@ -90,8 +90,7 @@
+     - 共通部分实现并完成直接测试，争议条件留下显式接口
+     origin: []
+     status:
+-      kind: paused
+-      reason: 去向：新帧 W-05
++      kind: active
+     plan:
+     - text: 实现共通部分
+       children: []
+@@ -122,7 +121,8 @@
+       children: []
+       progress:
+         kind: ready
+-      fork: []
++      fork:
++      - 5
+     content:
+       results: []
+       side_effects: []
+@@ -161,6 +161,12 @@
+     - action: pause
+       at: 2026-10-12T07:46:08.486014000Z
+       detail: 去向：新帧 W-05
++    - action: resume
++      at: 2026-10-12T07:46:08.561246000Z
++      detail: 模拟改挂前恢复承担责任的父帧；Paused仅用于分支末端
++    - action: update
++      at: 2026-10-12T07:46:08.612244000Z
++      detail: 实施计划登记材料核对子帧，避免另建重复状态账；变更字段：plan[3].fork
+   4:
+     parent: 1
+     title: 评估可选优化
+@@ -192,14 +198,13 @@
+       at: 2026-10-12T07:46:08.446199000Z
+       detail: 按明确取消裁决退出，回到已暂停的实施帧
+   5:
+-    parent: 1
++    parent: 3
+     title: 核对交付材料
+     goal:
+     - 核对候选版本的材料，并把核对依据交还实施帧
+     origin: []
+     status:
+-      kind: paused
+-      reason: 去向：新帧 W-06
++      kind: active
+     plan:
+     - text: 核对材料与版本对应关系
+       children: []
+@@ -225,6 +230,9 @@
+     - action: pause
+       at: 2026-10-12T07:46:08.506026000Z
+       detail: 去向：新帧 W-06
++    - action: resume
++      at: 2026-10-12T07:46:08.601398000Z
++      detail: 模拟核对条件已齐备，进入改挂后的子帧
+   6:
+     parent: 1
+     title: 保留另一条可选线索

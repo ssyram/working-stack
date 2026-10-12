@@ -1,0 +1,59 @@
+--- previous.yaml
++++ current.yaml
+@@ -1,6 +1,10 @@
+ title: 交付一个可用版本
+ prefix: W
+ notes:
++  checklist:
++    meta:
++    - appendix
++    body: 检查实现、直接测试与用户验收，三者不互相替代。
+   description:
+     meta: []
+     body: 本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：{{note:累计原则.body}}。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。
+@@ -71,6 +75,37 @@
+     - action: pause
+       at: 2026-10-12T07:46:05.812108000Z
+       detail: '[HumanReady] 等待用户选择验收条件的解释'
++  3:
++    parent: 1
++    title: 准备并直接测试候选版本
++    goal:
++    - 共通部分实现并完成直接测试，争议条件留下显式接口
++    origin: []
++    status:
++      kind: active
++    plan:
++    - text: 实现共通部分
++      children: []
++      progress:
++        kind: in_progress
++      fork: []
++    - text: 直接测试
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks: {}
++    log:
++    - action: push
++      at: 2026-10-12T07:46:05.870085000Z
++      detail: 共通部分不依赖等待中的裁决，可以并行推进
++    - action: update
++      at: 2026-10-12T07:46:05.898369000Z
++      detail: 建立本帧的实施计划与当前焦点；变更字段：plan
+ log:
+ - action: update
+   at: 2026-10-12T07:46:05.612477000Z
+@@ -78,4 +113,7 @@
+ - action: update
+   at: 2026-10-12T07:46:05.643108000Z
+   detail: 建立全局导览并引用单份已确认约束
++- action: update
++  at: 2026-10-12T07:46:05.927266000Z
++  detail: 登记一份共享检查提示，不复制到每个帧
+ 

@@ -1,0 +1,32 @@
+[
+  {
+    "command": "working-stack practice insert 'W-03.plan[1]' --value '\"准备测试样例\"' -r '模拟发现测试缺样例，在直接测试前补项'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e0b39ead8b20c1e2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[1]' --value '{\"text\":\"准备测试样例\",\"children\":[\"常见输入\",\"边界输入\"]}' -r '把一个模糊步骤拆成可执行子项'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 97f30183dae792ac\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"in_progress\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"直接测试\"}],\"version\":\"97f30183dae792ac\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接可用版本的交付与验收，不记录全部内部执行流水。全局范围约束：模拟用户已确认：产物直接测试与用户验收分别建立；共通部分可先推进，最终验收仍由用户决定。。共享检查提示在note checklist中，需要时读取；具体裁决与继续理由保留在所属帧。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 准备并直接测试候选版本\nFOCUS：实现共通部分\n\n## [W-01] 完成交付与验收 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：澄清验收条件\n计划 [ready]\n- `1.plan[1]`：准备并测试候选版本\n计划 [ready]\n- `1.plan[2]`：请用户验收\n最近记录：2026-10-12T07:46:08.139600000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 准备并直接测试候选版本 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n未完成计划：\n计划 [in_progress]\n- `3.plan[0]`：实现共通部分\n计划 [ready]\n- `3.plan[1]`：准备测试样例\n计划 [ready]\n- `3.plan[1].children[0]`：常见输入\n计划 [ready]\n- `3.plan[1].children[1]`：边界输入\n计划 [ready]\n- `3.plan[2]`：直接测试\n最近记录：2026-10-12T07:46:08.296104000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 澄清验收条件；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 等待用户选择验收条件的解释\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan' --value '[{\"text\":\"实现共通部分\",\"progress\":\"done\"},{\"text\":\"准备测试样例\",\"progress\":\"done\",\"children\":[{\"text\":\"常见输入\",\"progress\":\"done\"},{\"text\":\"边界输入\",\"progress\":\"done\"}]},\"修正直接测试发现的问题\",\"重新运行直接测试\"]' -r '模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 6ef131caaa030597\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '测试发现=模拟：一个边界输入尚不符合约定，需要修正后重测' -r '登记具体失败，不把测试已运行写成通过'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 fb247383b418ea5b\n",
+    "exit_code": 0
+  }
+]
