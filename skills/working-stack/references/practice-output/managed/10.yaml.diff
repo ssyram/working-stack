@@ -1,0 +1,56 @@
+--- previous.yaml
++++ current.yaml
+@@ -85,7 +85,12 @@
+     - 共通部分实现并完成直接测试，争议条件留下显式接口
+     origin: []
+     status:
+-      kind: active
++      kind: done
++      closure:
++        summary: 共通候选版本准备完成且直接测试通过
++        positive:
++        - result: 模拟测试结果满足本帧目标
++          evidence: ''
+     plan:
+     - text: 实现共通部分
+       children: []
+@@ -110,16 +115,17 @@
+     - text: 修正直接测试发现的问题
+       children: []
+       progress:
+-        kind: ready
++        kind: item_done
+       fork: []
+     - text: 重新运行直接测试并核对材料
+       children: []
+       progress:
+-        kind: ready
++        kind: item_done
+       fork:
+       - 5
+     content:
+-      results: []
++      results:
++      - 模拟：共通部分直接测试通过，争议条件保留显式接口
+       side_effects: []
+       principles: []
+       remarks:
+@@ -174,6 +180,18 @@
+     - action: update
+       at: 2026-10-12T04:15:57.050842000Z
+       detail: 模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划；变更字段：plan
++    - action: update
++      at: 2026-10-12T04:15:57.143257000Z
++      detail: 模拟修正已完成；变更字段：plan[2].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:57.197363000Z
++      detail: 模拟直接重测通过；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:57.254585000Z
++      detail: 记录本帧实际达成范围，不代签用户验收；变更字段：content.results
++    - action: pop
++      at: 2026-10-12T04:15:57.310100000Z
++      detail: 本帧目标达成；根帧仍需裁决与验收
+   4:
+     parent: 1
+     title: 评估可选优化

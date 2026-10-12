@@ -1,0 +1,22 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '评估可选优化' --goal '决定本轮是否实施可选优化' -r '模拟用户允许评估独立可选方案'",
+    "stdout": "· 新建帧 W-04 评估可选优化\n· 新增帧 W-04 评估可选优化\n· W-03: status active → paused\n· W-03: log +1\n已提交 7ad96a064baa87d5\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-04 --result-add '模拟：已列出收益与成本，尚未实施' -r '区分评估成果和实现成果'",
+    "stdout": "· W-04: content（结果/原则/备注）改变\n· W-04: log +1\n已提交 57c6d054a33b049f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '后续线索=模拟用户取消本轮可选优化；仅保留线索，不构成本轮验收义务' -r '根帧记录裁决边界，不偷偷承诺将来实施'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 e9c2b7caeae85adf\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-04 --expired --summary '模拟用户终止本轮可选优化回合' --pos '保留收益与成本比较' --focus-to W-03 -r '按明确取消裁决退出，回到已暂停的实施帧'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n· W-04: status active → expired\n· W-04: log +1\n已提交 c8540ffdf9e7ffdd\n",
+    "exit_code": 0
+  }
+]

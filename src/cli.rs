@@ -58,6 +58,7 @@ enum Cmd {
         prefix: Option<String>,
     },
     /// 新建子帧（parent 省略 = 建根帧）
+    #[command(after_help = "例：working-stack mytask push T-01 --title '实施' --goal '产物经直接测试' -r '进入实施'\n随后：working-stack mytask update T-02 --plan-add '准备样例' --plan-set 0=in_progress -r '落实当前步骤'\ngoal不等于FOCUS；上下文：working-stack mytask show context")]
     Push {
         parent: Option<String>,
         #[arg(long)]
@@ -101,6 +102,7 @@ enum Cmd {
         #[arg(short = 'r')]
         reason: String,
     },
+    #[command(after_help = "追加新结果＋覆盖备注＋改计划：\nworking-stack mytask update T-02 --result-add '报告已返回' --remark '当前状态=结论待确认' --plan-set 0=done -r '收到报告'\n替换旧结果：working-stack mytask set 'T-02.results[0]' --value '\"报告已返回，待确认\"' -r '替换旧运行状态'\n恢复方向：working-stack mytask show context\n多帧候选：export yaml → 修改候选 → apply；当前apply无提交前预览。")]
     Update {
         id: String,
         #[arg(long)]
@@ -158,7 +160,7 @@ enum Cmd {
     Remove { path: String, #[arg(short = 'r')] reason: String },
     /// 移动内容；目标按删除来源后的结构解释
     Move { path: String, #[arg(long)] from: String, #[arg(short = 'r')] reason: String },
-    /// 查询：tree|frame|log|timeline|notes|pops|overview|focus
+    /// 查询：context|tree|frame|log|timeline|notes|pops|overview|focus
     Show { what: String, id: Option<String> },
 
     Validate,
@@ -356,7 +358,7 @@ pub fn run(args: &[String]) -> Result<i32, WsError> {
                 ws.principle_add(&at, pid, st(x)?, r.clone())?;
             }
             for x in remark {
-                let (t, b) = x.split_once('=').ok_or_else(|| WsError::Usage(format!("remark 需 title=body：{x}")))?;
+                let (t, b) = x.split_once('=').ok_or_else(|| WsError::Usage(format!("remark 需 title=body：{x}；例：--remark '当前状态=已返回，待用户确认'")))?;
                 ws.remark_set(&at, pid, t.to_string(), st(b)?, r.clone())?;
             }
             for x in plan_add {
@@ -711,6 +713,13 @@ fn show(ws: &WorkingStack, what: &str, id: Option<&str>) -> Result<String, WsErr
             }
             Ok(s)
         }
+        "context" => {
+            let selected = id.map(|value| ws.parse_id(value)
+                .filter(|fid| ws.frames.contains_key(fid))
+                .ok_or_else(|| WsError::Usage("show context 的帧不存在或id不合法".into())))
+                .transpose()?;
+            Ok(crate::context_view::render(ws, selected))
+        }
         "overview" => Ok(overview(ws)),
         "focus" => {
             let f = ws.focus().ok_or_else(|| WsError::Usage("当前无焦点（整线暂停或多焦点，见 show tree）".into()))?;
@@ -720,7 +729,7 @@ fn show(ws: &WorkingStack, what: &str, id: Option<&str>) -> Result<String, WsErr
             }
             Ok(s)
         }
-        other => Err(WsError::Usage(format!("show 子命令：tree|frame|log|timeline|notes|pops|overview|focus（未知 {other}）"))),
+        other => Err(WsError::Usage(format!("show 子命令：context|tree|frame|log|timeline|notes|pops|overview|focus（未知 {other}）"))),
     }
 }
 

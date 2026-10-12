@@ -4,6 +4,7 @@
 pub mod text;
 pub mod model;
 pub mod view;
+pub mod context_view;
 pub mod timeline;
 pub mod commit_log;
 pub mod resolve;

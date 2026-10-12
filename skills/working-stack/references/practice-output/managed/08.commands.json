@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice set 'W-05.plan[0].progress' --value '\"done\"' -r '模拟材料与版本对应关系核对完成'",
+    "stdout": "· W-05: plan 改变\n· W-05: log +1\n已提交 90b299ae13ab79ce\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --result-add '模拟：当前候选版本与交付材料一致' --settle 0=release:W-01 --settle 1=kept_local -r '核对目标达成；通用规则归根帧、局部规则保留本帧'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 489613fe86aaf218\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-05 --summary '模拟材料核对完成，依据交还实施帧' --pos '材料与版本对应关系已核对' -r '关闭子目标并返回实施帧'",
+    "stdout": "· W-05: status active → done\n· W-05: log +1\n已提交 287abbf7e7973ea6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '材料核对依据=见 {{W-05.results[0]}}' -r '引用核对依据，不把所有原文再复制一遍'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 4f885373e239cb46\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-06 --expired --summary '模拟用户决定本轮不继续另一条可选线索' --residual '线索保留为建议，不构成当前交付义务' -r '模拟用户取消可选回合，恢复实施焦点'",
+    "stdout": "· W-06: status paused → expired\n· W-06: log +1\n已提交 3dedb8bcb73a624d\n",
+    "exit_code": 0
+  }
+]

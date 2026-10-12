@@ -1,0 +1,37 @@
+[
+  {
+    "command": "working-stack practice update W-03 --reopen active -r '模拟核实首次Done依据有误：一次重测未完成，需纠正关闭判断'",
+    "stdout": "· W-03: status done → active\n· W-03: log +1\n已提交 855c3776673ee32e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"in_progress\"' -r '模拟纠正计划误记，保留材料核对fork'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 f7d97ff656e30fb1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '误记更正=模拟：上次Done误把未完成重测当成通过；Correct保留原关闭摘要' --principle-add '模拟事实误列为原则：本轮直接测试已经通过' -r '记录原判断为何失效，不抹去第一次Done'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 b7f38184fdb04b66\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --settle 0=reclass:results -r '模拟识别这是待依据支撑的事实，不是约束后续行为的规则，转存结果'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 25ea2933674a1dd3\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '模拟补跑直接测试，此次确实通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 be63b9cdcc3f1e72\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --result-add '模拟：补跑直接测试通过；第一次Done是误记，不能倒写成当时已证实' -r '区分原错误判断与后来真实依据'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 8a3c9729e6677cb7\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '模拟补跑完成且直接测试通过，误关闭已更正' --pos '此次补跑测试结果与材料核对依据' -r '按补齐后的依据重新关闭同一子目标'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 ae5d9fee72e23f91\n",
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,86 @@
+--- previous.yaml
++++ current.yaml
+@@ -14,22 +14,24 @@
+     - 用户确认约定的验收条件满足
+     origin: []
+     status:
+-      kind: active
++      kind: paused
++      reason: '[HumanReady] 候选版本已交付，等待用户确认验收条件满足'
+     plan:
+     - text: 澄清验收条件
+       children: []
+       progress:
+-        kind: in_progress
++        kind: item_done
+       fork: []
+     - text: 准备并测试候选版本
+       children: []
+       progress:
+-        kind: ready
++        kind: item_done
+       fork: []
+     - text: 请用户验收
+       children: []
+       progress:
+-        kind: ready
++        kind: blocked
++        reason: 等待用户验收
+       fork: []
+     content:
+       results: []
+@@ -52,6 +54,18 @@
+     - action: update
+       at: 2026-10-12T04:15:56.617078000Z
+       detail: 承接自 W-05 原则1（released）；变更字段：content.principles
++    - action: update
++      at: 2026-10-12T04:15:58.006186000Z
++      detail: 裁决子目标已完成；变更字段：plan[0].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:58.062234000Z
++      detail: 候选版本与已明确条件一致且直接测试通过；变更字段：plan[1].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:58.118747000Z
++      detail: 候选交付不等于验收；变更字段：plan[2].progress.kind、plan[2].progress.reason
++    - action: pause
++      at: 2026-10-12T04:15:58.177293000Z
++      detail: '[HumanReady] 候选版本已交付，等待用户确认验收条件满足'
+   2:
+     parent: 1
+     title: 澄清验收条件
+@@ -59,11 +73,16 @@
+     - 取得用户对争议条件的明确选择
+     origin: []
+     status:
+-      kind: paused
+-      reason: '[HumanReady] 等待用户选择验收条件的解释'
++      kind: done
++      closure:
++        summary: 争议条件已有明确且适用的用户裁决
++        positive:
++        - result: 模拟用户选择已登记
++          evidence: ''
+     plan: []
+     content:
+-      results: []
++      results:
++      - 模拟：用户明确选择第一种解释，候选版本的显式接口与之相符
+       side_effects: []
+       principles: []
+       remarks:
+@@ -78,6 +97,15 @@
+     - action: pause
+       at: 2026-10-12T04:15:55.190277000Z
+       detail: '[HumanReady] 等待用户选择验收条件的解释'
++    - action: resume
++      at: 2026-10-12T04:15:57.839304000Z
++      detail: 模拟收到用户对争议条件的明确选择
++    - action: update
++      at: 2026-10-12T04:15:57.892405000Z
++      detail: 保存决定与适用范围；变更字段：content.results
++    - action: pop
++      at: 2026-10-12T04:15:57.948955000Z
++      detail: 返回根帧落实验收安排
+   3:
+     parent: 1
+     title: 准备并直接测试候选版本

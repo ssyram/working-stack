@@ -64,8 +64,8 @@ WS_DOCUMENTATION_PATH=/path/to/docs working-stack doc
 ```bash
 working-stack mytask init --title '工作线' --prefix T
 working-stack mytask push --title '当前工作' --goal '完成判据' -r '进入原因'
-working-stack mytask show overview
-working-stack mytask update T-01 --plan-add '第一步' -r '细化计划'
+working-stack mytask update T-01 --plan-add '第一步' --plan-set 0=in_progress -r '落实当前焦点'
+working-stack mytask show context
 working-stack mytask web
 ```
 
@@ -74,8 +74,10 @@ mytask 是托管名称；single/独立文件模式直接传 stack.yaml、path/st
 AI 推荐 JSON stdin：
 
 ```bash
-printf '%s\n' '{"stack":"mytask","op":"show","args":{"what":"overview"}}' | working-stack
+printf '%s\n' '{"stack":"mytask","op":"show","args":{"what":"context"}}' | working-stack
 ```
+
+恢复工作方向优先 `show context [ID]`：一次读取目标链、当前计划路径、结果/备注与暂停条件，不把写入记录当用户最新意图。当前事实替换与多帧候选用法见 `working-stack doc context-view`；完整历史按需 `show log ID` 或 timeline。
 
 事件时间线可汇总所有帧/全局日志按实际时间输出，含来源与原日志下标；使用方法见 `working-stack doc timeline`。
 

@@ -1,0 +1,22 @@
+[
+  {
+    "command": "working-stack practice init --title '交付一个可用版本' --prefix W",
+    "stdout": "· 初始化空栈\n已提交 081cb36ba91dd330\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push --title '完成交付与验收' --goal '候选版本通过直接测试' --goal '用户确认约定的验收条件满足' -r '登记模拟委托的完整目标'",
+    "stdout": "· 新建帧 W-01 完成交付与验收\n· 新增帧 W-01 完成交付与验收\n已提交 fb0291d6940fe894\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --plan-add '澄清验收条件' --plan-add '准备并测试候选版本' --plan-add '请用户验收' --plan-set 0=in_progress -r '把根目标分成当前可执行计划并落实当前步骤'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 061c3a9dc1c1df00\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：交付一个可用版本\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n责任路径：W-01\nTOP：[W-01] 完成交付与验收\nFOCUS：澄清验收条件\n\n## [W-01] 完成交付与验收 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n- `1.plan[0]` [in_progress] 澄清验收条件\n- `1.plan[1]` [ready] 准备并测试候选版本\n- `1.plan[2]` [ready] 请用户验收\n最近记录：2026-10-12T04:15:58.798559000Z [UPDATE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n\n下一步：对照最新用户裁决与以上计划/备注；只补读取影响当前判断的缺口，不把本视图当执行授权或全栈已校准证明。\n\n",
+    "exit_code": 0
+  }
+]

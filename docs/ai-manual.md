@@ -30,7 +30,10 @@
 ### 2.1 查看当前状态（最常用）
 
 ```bash
-# 一句话总览：目标、焦点、Paused 分支、下一步
+# 一次恢复方向：目标链、FOCUS、计划路径、结果/备注与暂停条件
+working-stack <NAME> show context
+
+# 更短总览：目标、焦点、Paused 分支
 working-stack <NAME> show overview
 
 # 树形视图（谁在栈上、谁暂停了）
@@ -87,6 +90,7 @@ working-stack <NAME> push --title "项目启动" --goal "完成 MVP" -r "初始�
 - `-r`（reason）必填：为什么进入这个上下文
 - push 后新帧自动成为 TOP；旧焦点自动 Paused
 - 同一父帧下多次 push = para（并行分支）
+- goal不等于当前FOCUS；push后用 `update T-02 --plan-add '第一步' --plan-set 0=in_progress -r '落实当前步骤'` 填首项。
 
 ### 3.2 pop — 结束工作
 
@@ -286,10 +290,14 @@ echo '{"stack":"mytask","op":"pop","args":{"id":"T-04","summary":"瓶颈定位�
 
 ## 5. 查询面（AI 工作流）
 
-### 4.1 /recalibration 对齐
+### 4.1 快速恢复方向（供调用方校准）
+
+优先 `working-stack <NAME> show context`；显式分支用 `show context T-02`。它合并根→所选帧的目标、未完成计划路径、近期结果、备注/原则与暂停条件，不输出完整日志。无焦点不会自动选分支；记录时间不等于事实时间，更不表示最新用户意图。对照本次用户裁决再决定下一步。范围和替换当前事实recipe见 `working-stack doc context-view`。
+
 
 ```bash
-working-stack <NAME> show overview    # 目标/焦点/分支/下一步
+working-stack <NAME> show context     # 一次恢复目标链/焦点/当前项及可编辑路径
+working-stack <NAME> show overview    # 更短的树与焦点总览
 working-stack <NAME> show focus       # 焦点帧全节 + FOCUS 项
 working-stack <NAME> show tree        # 树结构
 ```
@@ -389,7 +397,7 @@ working-stack <NAME> show overview --json
 
 ## 10. 最佳实践
 
-1. **操作前先查**：`show overview` 了解当前焦点和分支，再决定操作。
+1. **操作前先查**：`show context` 取回当前目标链与焦点，对照本次用户消息；只需更短树总览时用 `show overview`。
 同次 `update` 在每个实际改变的帧只生成一条 Update，detail 保留原因并附净变更字段摘要；独立 Correct 等事件及历史记录不合并。无净变化不造 Update。
 
 2. **写有信息量的 reason**："用户要求先调查再修复" > "进入"。理由是变更记录的灵魂。

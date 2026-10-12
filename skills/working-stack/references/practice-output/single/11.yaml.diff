@@ -1,0 +1,66 @@
+--- previous.yaml
++++ current.yaml
+@@ -87,9 +87,9 @@
+     status:
+       kind: done
+       closure:
+-        summary: 共通候选版本准备完成且直接测试通过
++        summary: 模拟补跑完成且直接测试通过，误关闭已更正
+         positive:
+-        - result: 模拟测试结果满足本帧目标
++        - result: 此次补跑测试结果与材料核对依据
+           evidence: ''
+     plan:
+     - text: 实现共通部分
+@@ -126,11 +126,19 @@
+     content:
+       results:
+       - 模拟：共通部分直接测试通过，争议条件保留显式接口
+-      side_effects: []
+-      principles: []
++      - '{{3.principles[0]}}'
++      - 模拟：补跑直接测试通过；第一次Done是误记，不能倒写成当时已证实
++      side_effects: []
++      principles:
++      - rule: 模拟事实误列为原则：本轮直接测试已经通过
++        fate:
++          kind: reclassified
++          target:
++            kind: results
+       remarks:
+         材料核对依据: 见 {{5.results[0]}}
+         测试发现: 模拟：一个边界输入尚不符合约定，需要修正后重测
++        误记更正: 模拟：上次Done误把未完成重测当成通过；Correct保留原关闭摘要
+     log:
+     - action: push
+       at: 2026-10-12T04:15:58.912195000Z
+@@ -192,6 +200,29 @@
+     - action: pop
+       at: 2026-10-12T04:15:59.693656000Z
+       detail: 本帧目标达成；根帧仍需裁决与验收
++    - action: correct
++      at: 2026-10-12T04:15:59.756420000Z
++      detail: |-
++        模拟核实首次Done依据有误：一次重测未完成，需纠正关闭判断
++        原 Closure：[done] 共通候选版本准备完成且直接测试通过
++    - action: update
++      at: 2026-10-12T04:15:59.773811000Z
++      detail: 模拟纠正计划误记，保留材料核对fork；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:59.791521000Z
++      detail: 记录原判断为何失效，不抹去第一次Done；变更字段：content.principles、content.remarks.误记更正
++    - action: update
++      at: 2026-10-12T04:15:59.808643000Z
++      detail: 模拟识别这是待依据支撑的事实，不是约束后续行为的规则，转存结果；变更字段：content.principles[0].fate、content.results
++    - action: update
++      at: 2026-10-12T04:15:59.825766000Z
++      detail: 模拟补跑直接测试，此次确实通过；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T04:15:59.843495000Z
++      detail: 区分原错误判断与后来真实依据；变更字段：content.results
++    - action: pop
++      at: 2026-10-12T04:15:59.861826000Z
++      detail: 按补齐后的依据重新关闭同一子目标
+   4:
+     parent: 1
+     title: 评估可选优化

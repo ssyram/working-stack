@@ -1,0 +1,63 @@
+--- previous.yaml
++++ current.yaml
+@@ -81,9 +81,29 @@
+     - text: 实现共通部分
+       children: []
+       progress:
+-        kind: in_progress
++        kind: item_done
+       fork: []
+-    - text: 直接测试
++    - text: 准备测试样例
++      children:
++      - text: 常见输入
++        children: []
++        progress:
++          kind: item_done
++        fork: []
++      - text: 边界输入
++        children: []
++        progress:
++          kind: item_done
++        fork: []
++      progress:
++        kind: item_done
++      fork: []
++    - text: 修正直接测试发现的问题
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    - text: 重新运行直接测试
+       children: []
+       progress:
+         kind: ready
+@@ -92,7 +112,8 @@
+       results: []
+       side_effects: []
+       principles: []
+-      remarks: {}
++      remarks:
++        测试发现: 模拟：一个边界输入尚不符合约定，需要修正后重测
+     log:
+     - action: push
+       at: 2026-10-12T04:15:55.281568000Z
+@@ -100,6 +121,18 @@
+     - action: update
+       at: 2026-10-12T04:15:55.334843000Z
+       detail: 建立本帧的实施计划与当前焦点；变更字段：plan
++    - action: update
++      at: 2026-10-12T04:15:55.475880000Z
++      detail: 模拟发现测试缺样例，在直接测试前补项；变更字段：plan
++    - action: update
++      at: 2026-10-12T04:15:55.529346000Z
++      detail: 把一个模糊步骤拆成可执行子项；变更字段：plan[1].children
++    - action: update
++      at: 2026-10-12T04:15:55.596332000Z
++      detail: 模拟测试发现问题：保留已完成步骤，替换尚未完成的测试安排；变更字段：plan
++    - action: update
++      at: 2026-10-12T04:15:55.650637000Z
++      detail: 登记具体失败，不把测试已运行写成通过；变更字段：content.remarks.测试发现
+ log:
+ - action: update
+   at: 2026-10-12T04:15:55.394142000Z

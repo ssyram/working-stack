@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice insert 'W-03.plan[2]' --value '\"重复核对候选材料\"' -r '模拟暂列一项补充检查'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 63207794594fd743\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[2].text' --value '\"再核对候选材料\"' -r '明确此计划项的对象'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 d77bc1872ff9e2ab\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice move 'W-03.plan' --from 'W-03.plan[2]' -r '模拟调整步骤顺序，重复检查移到末尾'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 c59f7f89c06b4e7f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"修正直接测试发现的问题\"},{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"重新运行直接测试并核对材料\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"再核对候选材料\"}],\"version\":\"c59f7f89c06b4e7f\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice remove 'W-03.plan[4]' -r '模拟确认与W-05的核对重复，无新增贡献，移除当前冗余计划'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 62fd2295d0864d64\n",
+    "exit_code": 0
+  }
+]
