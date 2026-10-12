@@ -1,0 +1,32 @@
+[
+  {
+    "command": "working-stack practice insert 'W-03.plan[1]' --value '\"准备测试样例\"' -r '技术准备发现缺样例，按既有授权补必要步骤'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e6cbc28b2fc776fb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[1]' --value '{\"text\":\"准备测试样例\",\"children\":[\"常见输入\",\"边界输入\"]}' -r '把样例步骤细化，不增加人类审阅关卡'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 577e6e68bf54f64b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"in_progress\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"直接测试\"}],\"version\":\"577e6e68bf54f64b\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 在授权内准备并直接测试候选\nFOCUS：实现共通部分\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：按授权准备并直接测试候选\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释\n最近记录：2026-10-12T08:30:06.837739000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 在授权内准备并直接测试候选 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n- `3.origin[0]`：据H01技术委派，成果支持根owner的可用性判断；不承担用户验收\n未完成计划：\n计划 [in_progress]\n- `3.plan[0]`：实现共通部分\n计划 [ready]\n- `3.plan[1]`：准备测试样例\n计划 [ready]\n- `3.plan[1].children[0]`：常见输入\n计划 [ready]\n- `3.plan[1].children[1]`：边界输入\n计划 [ready]\n- `3.plan[2]`：直接测试\n备注 本层Owner（get `3.remarks`）：\n- `3.remarks`：AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户\n最近记录：2026-10-12T08:30:07.028523000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 协助用户澄清条件选择；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan' --value '[{\"text\":\"实现共通部分\",\"progress\":\"done\"},{\"text\":\"准备测试样例\",\"progress\":\"done\",\"children\":[{\"text\":\"常见输入\",\"progress\":\"done\"},{\"text\":\"边界输入\",\"progress\":\"done\"}]},\"修正直接测试发现的问题\",\"重新运行直接测试\"]' -r '模拟技术回执暴露问题：保留已完成部分并重拟剩余工作'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 d7de625cf95adb1d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '测试发现=模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用' -r '记录具体对象与技术欠项，不迁怒用户'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 33346f5c23636bf4\n",
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,91 @@
+--- previous.yaml
++++ current.yaml
+@@ -45,7 +45,7 @@
+         fate: null
+       remarks:
+         Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
+-        候选报告｜人类协作: 对象：候选v1；AI已交技术材料，用户审阅/采信未反馈，状态未知；根责任仍欠可用性判断，不声称用户未读或完全理解
++        候选报告｜人类协作: 对象：v2及R1更正说明；AI已提供补跑依据，用户是否阅读更正尚无反馈，状态未知；AI需在沟通时解释v1/v2差别
+         后续线索: 据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论
+         顺序裁决: 据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留
+     log:
+@@ -67,6 +67,9 @@
+     - action: update
+       at: 2026-10-12T08:30:07.728762000Z
+       detail: 成果事实与最新人类状态分别登记；变更字段：content.remarks.候选报告｜人类协作
++    - action: update
++      at: 2026-10-12T08:30:07.911960000Z
++      detail: 更新最新人类协作对象，不反写过去理解；变更字段：content.remarks.候选报告｜人类协作
+   2:
+     parent: 1
+     title: 协助用户澄清条件选择
+@@ -112,9 +115,9 @@
+     status:
+       kind: done
+       closure:
+-        summary: 先按R1登记技术准备完成，根用户判断仍open
++        summary: 技术owner据R2确认v2准备目标达成，原误关已更正
+         positive:
+-        - result: 当时登记的R1结果与材料核对
++        - result: 模拟R2与材料对应证据；不声明用户已经采用
+           evidence: ''
+     plan:
+     - text: 实现共通部分
+@@ -150,14 +153,21 @@
+       - 5
+     content:
+       results:
+-      - 模拟R1：v1共通候选被登记为直接测试通过，争议条件仍显式；不表示用户已接受
+-      side_effects: []
+-      principles: []
++      - 模拟R2：v2补跑直接测试通过；v1通过判断曾被撤回，不能倒写成当时已证实。
++      - '{{3.principles[0]}}'
++      side_effects: []
++      principles:
++      - rule: 模拟事实误列为规则：v1候选材料对应关系已核对
++        fate:
++          kind: reclassified
++          target:
++            kind: results
+       remarks:
+         本层Owner: AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户
+         材料核对依据: 见 {{5.results[0]}}；用户阅读/采用状态仍由根责任登记
+         测试发现: 模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用
+         继续理由: 落实H03后的父帧候选准备责任；AI先修正问题并核对材料，再最终重测；不代签用户验收
++        误记更正: AI曾将R1未完成重测混答为通过；更正责任在AI，不能将其写成用户认识错误
+     log:
+     - action: push
+       at: 2026-10-12T08:30:06.957238000Z
+@@ -222,6 +232,32 @@
+     - action: pop
+       at: 2026-10-12T08:30:07.715321000Z
+       detail: 本层技术owner收尾，不将交付当用户认识完成
++    - action: correct
++      at: 2026-10-12T08:30:07.800490000Z
++      detail: |-
++        AI核实R1遗漏必要重测，原技术Done依据不成立；在原授权内纠正
++        原 Closure：[done] 先按R1登记技术准备完成，根用户判断仍open
++    - action: update
++      at: 2026-10-12T08:30:07.815422000Z
++      detail: 替换旧当前成果判断，保留错误依据，不无限append更正；变更字段：content.results[0]
++    - action: update
++      at: 2026-10-12T08:30:07.828361000Z
++      detail: 恢复真实未完重测，保留fork；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:07.842600000Z
++      detail: 保留错误及责任，识别事实并非行为规则；变更字段：content.principles、content.remarks.误记更正
++    - action: update
++      at: 2026-10-12T08:30:07.856468000Z
++      detail: 将已核对的材料事实从原则转存，不从重要性产生规范效力；变更字段：content.principles[0].fate、content.results
++    - action: update
++      at: 2026-10-12T08:30:07.870479000Z
++      detail: 设定模拟R2实际补跑通过；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:07.884390000Z
++      detail: 当前技术成果指向可靠补跑依据，保留必要反例；变更字段：content.results[0]
++    - action: pop
++      at: 2026-10-12T08:30:07.898594000Z
++      detail: 在已委派范围内据补齐依据收尾
+   4:
+     parent: 1
+     title: 形成可供Owner判断的优化方案

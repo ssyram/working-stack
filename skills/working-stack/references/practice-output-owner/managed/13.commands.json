@@ -1,0 +1,37 @@
+[
+  {
+    "command": "working-stack practice resume W-02 -r '收到模拟H05对条件解释的明确选择'",
+    "stdout": "· W-02: status paused → active\n· W-02: log +1\n已提交 69cc5379adccb186\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --result-add '据模拟H05：用户选择第一种解释；这只闭合条件选择，不等于接受候选v2的整体效果' --remark '用户协作=H05明确选择第一种条件，选择目标已成立；不推定全部报告审阅或所有细节理解' -r '保存具体选择及适用范围，不提升为全域接受'",
+    "stdout": "· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 6e065c2a951a366c\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-02 --summary '用户owner在H05完成条件选择' --pos 'H05的明确选择，只适用于该条件' -r '关闭本层已达裁决目标并返回根责任'",
+    "stdout": "· W-02: status active → done\n· W-02: log +1\n已提交 bb86ea47399e7757\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[0].progress' --value '\"done\"' -r '条件选择已明确'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 621ef0203bf8898e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[1].progress' --value '\"done\"' -r 'R2技术准备已达，不代签根用户判断'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 bbc65077b1b56da8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"in_progress\"' -r 'AI仍需帮助用户理解v2依据，不能直接全挂待用户'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 2ce995cbf830b9fe\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=据H05：条件选择明确，v2报告审阅/具体采信尚无反馈；AI欠v1/v2与效果边界说明，用户后续决定是否满足约定条件' -r '下一责任同时保留AI欠项与owner裁决'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 e4480b250c462a88\n",
+    "exit_code": 0
+  }
+]

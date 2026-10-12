@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '协助用户澄清条件选择' --goal '取得用户对争议条件的明确选择' -r 'H02涉及保留给用户的条件裁决，需要独立上下文'",
+    "stdout": "· 新建帧 W-02 协助用户澄清条件选择\n· 新增帧 W-02 协助用户澄清条件选择\n已提交 175dc12731d00ca0\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --plan-add '解释两种条件的对象、差异与依据' --plan-set 0=in_progress --remark '用户协作=据模拟H02：用户询问两种条件的覆盖差别；尚未选择，AI仍欠清楚解释。问题不等于用户误信候选错误' -r '保留用户具体问题及AI欠项，不给理解评分'",
+    "stdout": "· W-02: plan 改变\n· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 e50cff33a58361b7\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-02\nTOP：[W-02] 协助用户澄清条件选择\nFOCUS：解释两种条件的对象、差异与依据\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：按授权准备并直接测试候选\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释\n最近记录：2026-10-12T08:30:06.837739000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-02] 协助用户澄清条件选择 [active]\n- `2.goal[0]`：取得用户对争议条件的明确选择\n未完成计划：\n计划 [in_progress]\n- `2.plan[0]`：解释两种条件的对象、差异与依据\n备注 用户协作（get `2.remarks`）：\n- `2.remarks`：据模拟H02：用户询问两种条件的覆盖差别；尚未选择，AI仍欠清楚解释。问题不等于用户误信候选错误\n最近记录：2026-10-12T08:30:06.892887000Z [UPDATE]；历史用show log W-02查看。\n\n## 暂停末端（不代表后台停止）\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --result-add '模拟：AI已说明两种条件的适用对象与覆盖差别，尚无用户选择' --plan-set 0=done --remark '用户协作=对象：条件解释v1；据模拟H02后AI说明。解释材料已交，用户是否审阅/采信无反馈，状态未知；选择仍归用户，后续提问AI继续负责回答' -r '登记解释交付，不把交付变成用户已理解'",
+    "stdout": "· W-02: plan 改变\n· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 4331cb3b82d3e61e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-02 -r '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'",
+    "stdout": "· W-02: status active → paused\n· W-02: log +1\n已提交 db836bd1fac67934\n",
+    "exit_code": 0
+  }
+]

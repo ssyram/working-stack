@@ -11,13 +11,15 @@ data Note = Note { meta :: Meta, body :: SourcefulText }
 
 Rust 对应 `type Meta = Vec<String>`；native JSON/YAML 为字符串数组，缺省 `[]`。所有 note 仍为单份正文，可被任意帧引用，不需要共享开关。
 
-## Markdown 打印器（owner D.print）
+## Markdown 打印器（职责：D.print）
 
 本轮支持：`before:tree`、`after:tree`、`before:frames`、`after:frames`、`appendix`、`order:N`（N 为有符号整数）。位置缺省 Appendix；order 缺省 0。相同位置按 order 升序，再按 note key 排序；每份 note 仅打印一次。after:frames 在帧节后、栈变化记录前；Appendix 位于全文末尾。非 Appendix 组以“共享内容”为小节名。
 
 顺序扫描 meta：每个适用的位置提示覆盖当前位置，每个可解析的 order 覆盖当前 order。未知提示（例如分类名称）、不存在的位置（如 after:missing）、格式不适用的 order 均忽略；字符串原样保存在 meta，仍参与持久化及机械 diff。没有额外校验器、重试或纠正。
 
 `description`约定为全局导览，正文直接打印在#标题后，不输出共享内容/工作线说明包装，也不在别的位置重复。该用途使位置/顺序提示不适用，但原meta仍完整保留；其他notes布局不变。无附件的文件头散文导入为description、默认meta为`["before:tree"]`，不自动创建空导览。
+
+导览可以解释本层owner及授权边界、全局材料位置；正文声明不是权限引擎。最新人类协作说明也可用单份note，但须绑定具体对象/版本/对话来源，不把meta当owner/理解状态字段。布局提示不决定内容效力；填写指导见owner-collaboration.md。
 
 ## 承载、引用与操作（叶子合同）
 

@@ -1,0 +1,60 @@
+--- previous.yaml
++++ current.yaml
+@@ -0,0 +1,57 @@
++title: Owner判断候选是否可用
++prefix: W
++notes:
++  description:
++    meta: []
++    body: 本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：{{note:累计原则.body}}。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。
++  累计原则:
++    meta: []
++    body: 模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。
++frames:
++  1:
++    parent: null
++    title: 支持用户判断并完成交付
++    goal:
++    - 候选版本通过直接测试
++    - 用户确认约定的验收条件满足
++    origin: []
++    status:
++      kind: active
++    plan:
++    - text: 与用户澄清验收条件
++      children: []
++      progress:
++        kind: in_progress
++      fork: []
++    - text: 按授权准备并直接测试候选
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    - text: 协助用户判断候选是否满足约定条件
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks:
++        Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
++        候选报告｜人类协作: 对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释
++    log:
++    - action: push
++      at: 2026-10-12T08:30:03.420641000Z
++      detail: 依据H01登记完整委托，技术交付不替人类裁决
++    - action: update
++      at: 2026-10-12T08:30:03.452463000Z
++      detail: 把owner要求、AI责任与保留裁决登记到所属工作；变更字段：content.remarks.Owner与边界、content.remarks.候选报告｜人类协作、plan
++log:
++- action: update
++  at: 2026-10-12T08:30:03.357510000Z
++  detail: 登记明确模拟授权来源，不由调度身份取得裁决权
++- action: update
++  at: 2026-10-12T08:30:03.389124000Z
++  detail: 建立owner范围与材料导览，不复制动态进度账
++

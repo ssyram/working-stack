@@ -1,6 +1,6 @@
 # Working Stack：核心语言与交互变换的 Top-Down 设计
 
-> 状态：供用户确认的完整语言设计提案，不是已批准实现。
+> 状态：早期语言设计提案，仅作历史参照，不是当前实现或Owner协作规则。现行模型以playground.md为准，现行协作以owner-collaboration.md及SKILL为准；不从本稿另起schema。
 > 归属：`~/workspace/ai-tools/working-stack`。
 > 表达：借用 Haskell 的积类型、和类型、`Maybe`、列表及映射记法；所有类型与变换式都是规格，不是实现代码。
 

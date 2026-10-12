@@ -1,0 +1,61 @@
+--- previous.yaml
++++ current.yaml
+@@ -1,6 +1,10 @@
+ title: Owner判断候选是否可用
+ prefix: W
+ notes:
++  checklist:
++    meta:
++    - appendix
++    body: 技术回执、AI采用的结论、用户理解/采用与根验收分别登记；不因计划全勾推断后者。
+   description:
+     meta: []
+     body: 本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：{{note:累计原则.body}}。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。
+@@ -82,6 +86,39 @@
+     - action: pause
+       at: 2026-10-12T08:30:03.625296000Z
+       detail: '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'
++  3:
++    parent: 1
++    title: 在授权内准备并直接测试候选
++    goal:
++    - 共通部分实现并完成直接测试，争议条件留下显式接口
++    origin:
++    - 据H01技术委派，成果支持根owner的可用性判断；不承担用户验收
++    status:
++      kind: active
++    plan:
++    - text: 实现共通部分
++      children: []
++      progress:
++        kind: in_progress
++      fork: []
++    - text: 直接测试
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks:
++        本层Owner: AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户
++    log:
++    - action: push
++      at: 2026-10-12T08:30:03.693820000Z
++      detail: 共通部分不依赖等待中的选择，主线程可在授权内推进
++    - action: update
++      at: 2026-10-12T08:30:03.727437000Z
++      detail: 明确局部自治责任，不为每个技术步骤新增人审；变更字段：content.remarks.本层Owner、plan
+ log:
+ - action: update
+   at: 2026-10-12T08:30:03.357510000Z
+@@ -89,4 +126,7 @@
+ - action: update
+   at: 2026-10-12T08:30:03.389124000Z
+   detail: 建立owner范围与材料导览，不复制动态进度账
++- action: update
++  at: 2026-10-12T08:30:03.761699000Z
++  detail: 单份检查提示，不复制到每个帧
+ 

@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice set 'W-05.plan[0].progress' --value '\"done\"' -r '模拟对应检查通过，属于本层技术判断'",
+    "stdout": "· W-05: plan 改变\n· W-05: log +1\n已提交 8621f3f20b3a3c4a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --result-add '模拟：当前候选与交付材料对应关系已核对，供上层采用；不证明用户已读/接受' --settle 0=release:W-01 --settle 1=kept_local -r '技术目标达成，通用规则归根责任、局部规则留本帧'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 86407b16a63ab774\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-05 --summary '技术owner在H01范围内确认材料核对达成' --pos '模拟材料对应检查依据，交还上层使用' -r '关闭已委派技术子目标，不代签用户验收'",
+    "stdout": "· W-05: status active → done\n· W-05: log +1\n已提交 208f940a2a2513e4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '材料核对依据=见 {{W-05.results[0]}}；用户阅读/采用状态仍由根责任登记' -r '明确技术成果与人类协作不是同一事实'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 b3c58e00bdd15b36\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-06 --expired --summary '模拟Owner取消尚未完成的线索取证回合' --residual '保留线索，不构成当前交付义务' -r '据明确取消收尾，不包装成已完成方案'",
+    "stdout": "· W-06: status paused → expired\n· W-06: log +1\n已提交 3958e9163d97a747\n",
+    "exit_code": 0
+  }
+]

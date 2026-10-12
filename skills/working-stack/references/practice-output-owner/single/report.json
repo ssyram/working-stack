@@ -1,0 +1,85 @@
+{
+  "mode": "single",
+  "commands": 90,
+  "frames": 6,
+  "stages": [
+    {
+      "prefix": "01",
+      "title": "1. H01：用户委托与有界自治，不把目标变成AI清单"
+    },
+    {
+      "prefix": "02",
+      "title": "2. H02：接住用户问题，AI先履行解释义务"
+    },
+    {
+      "prefix": "03",
+      "title": "3. 共通部分可推进：AI技术owner不被人工关卡堵住"
+    },
+    {
+      "prefix": "04",
+      "title": "4. 技术缺口改plan：不把发现问题推成用户认识有错"
+    },
+    {
+      "prefix": "05",
+      "title": "4A. H03：用户裁决改变路线，父责任同步"
+    },
+    {
+      "prefix": "06",
+      "title": "5. Owner取消可选回合：成果不等于已采用"
+    },
+    {
+      "prefix": "07",
+      "title": "5A. 多para与局部技术owner"
+    },
+    {
+      "prefix": "08",
+      "title": "5A1. 改挂责任，不重写原owner授权或PUSH"
+    },
+    {
+      "prefix": "09",
+      "title": "5A2. 技术owner据证据收尾，不等待用户理解每个底层细节"
+    },
+    {
+      "prefix": "10",
+      "title": "5B. 计划重排/删除服务Owner目的，不以忙碌证明进展"
+    },
+    {
+      "prefix": "11",
+      "title": "6. 技术交付v1不推出人类已经理解或采用"
+    },
+    {
+      "prefix": "12",
+      "title": "6A. 技术误关闭更正：AI承担错误，不归成用户偏差"
+    },
+    {
+      "prefix": "13",
+      "title": "7. H05：条件选择完成，不代表报告整体接受"
+    },
+    {
+      "prefix": "14",
+      "title": "7A. H06：复杂plan/result的人类状态，有对象与来源"
+    },
+    {
+      "prefix": "15",
+      "title": "7B. H07/H08：解释、有限采用和剩余未知"
+    },
+    {
+      "prefix": "16",
+      "title": "8. H09：Owner明确验收，不要求全部细节理解才结束"
+    },
+    {
+      "prefix": "17",
+      "title": "9. JSON只读继承：查询不制造认识或授权"
+    }
+  ],
+  "root_goals_preserved": true,
+  "reparent_keeps_push_history": true,
+  "awaiting_acceptance_stays_open": true,
+  "route_change_updates_parent": true,
+  "all_stage_notes_roundtrip": true,
+  "technical_autonomy_without_human_gate": true,
+  "ai_explanation_debt_stays_active": true,
+  "partial_human_adoption_is_not_acceptance": true,
+  "h09_acceptance_without_all_details_read": true,
+  "validate": "OK"
+}

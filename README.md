@@ -1,6 +1,6 @@
 # working-stack
 
-用户拥有、人/AI 共用的工作状态树。核心语言蓝本：[`playground.md`](playground.md)；设计：[`docs/principles.md`](docs/principles.md)（Q）+ [`docs/architecture.md`](docs/architecture.md)（D.root）+ [`docs/detailed-design.md`](docs/detailed-design.md)（函数合同）。
+以本层owner为主体、人/AI共用的工作状态树：继承目的、认识依据、剩余责任与下一步，不以AI交付代替用户理解/采用。用户主导时AI协助；明确委派的局部自治中主线程AI可在授权内裁决，不代签上层保留权。协作与复杂项状态填写见[`docs/owner-collaboration.md`](docs/owner-collaboration.md)。核心语言蓝本：[`playground.md`](playground.md)；设计：[`docs/principles.md`](docs/principles.md)（Q）+ [`docs/architecture.md`](docs/architecture.md)（D.root）+ [`docs/detailed-design.md`](docs/detailed-design.md)（函数合同）。
 
 ## 安装
 
@@ -71,6 +71,7 @@ working-stack mytask edit -r '手工整理'
 ## 查询面（AI 工作流：/recalibration、/occams-razor）
 
 ```sh
+working-stack mytask show context    # Owner复工材料：导览/责任/依据/当前协作说明（已录入）
 working-stack mytask show overview   # 根目标/焦点路径/TOP+FOCUS/Paused 分支/已 pop 计数
 working-stack mytask show focus      # 焦点帧全节 + FOCUS 项
 working-stack mytask show tree       # 栈状态树（TOP/TOP-PAUSED/PAUSED 派生标记）
@@ -85,6 +86,8 @@ working-stack list
 ```
 
 全部命令支持 `--json`（含 diff/版本指纹/warnings，供 AI 消费）。
+
+完整Owner中心教程及真实MD/YAML/diff：[skills/working-stack/references/practice.md](skills/working-stack/references/practice.md)。人类状态按具体对象/版本/来源有据说明，不增理解枚举；授权内技术完成与用户保留的整体验收分开。
 
 ## 语义速查
 

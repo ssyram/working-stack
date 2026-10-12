@@ -1,0 +1,27 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '核对供Owner使用的交付材料' --goal '核对候选与材料对应关系，将依据交还实施责任' -r '独立核对目的与回程，按H01委派的技术标准执行'",
+    "stdout": "· 新建帧 W-05 核对供Owner使用的交付材料\n· 新增帧 W-05 核对供Owner使用的交付材料\n· W-03: status active → paused\n· W-03: log +1\n已提交 905ddae6f317fdfe\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --plan-add '核对材料与版本对应关系' --principle-add '据模拟H04确认：证据交付与owner采用必须分别登记' --principle-add '本层技术规则：只核对当前候选的材料对应关系' --remark '本层Owner=据H01，AI主线程负责技术核对达成；不判断用户已读报告，根验收仍归用户' -r '登记有效来源及局部判断边界，不只列AI待办'",
+    "stdout": "· W-05: plan 改变\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 79a5d2e257ae832e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '形成另一条线索的取证安排' --goal '形成有依据的线索取证安排，供owner判断是否继续' -r '模拟Owner允许暂留独立线索，不承诺实施'",
+    "stdout": "· 新建帧 W-06 形成另一条线索的取证安排\n· 新增帧 W-06 形成另一条线索的取证安排\n· W-05: status active → paused\n· W-05: log +1\n已提交 b8ccf0713ccfe5aa\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-06 -r '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'",
+    "stdout": "· W-06: status active → paused\n· W-06: log +1\n已提交 a0e538e5b7d121d0\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 支持用户判断并完成交付\n- [W-02] [PAUSED] 协助用户澄清条件选择\n- [W-03] [PAUSED] 在授权内准备并直接测试候选\n- [W-05] [PAUSED] 核对供Owner使用的交付材料\n- [W-06] [PAUSED] 形成另一条线索的取证安排\n\n",
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "command": "working-stack practice resume W-03 -r '恢复承担核对责任的技术父帧；Paused只用于tip'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n已提交 eddcae140a355140\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export yaml --out candidate.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 -c 'from pathlib import Path; p=Path(\"candidate.yaml\"); t=p.read_text(); p.write_text(t.replace(\"\\n  5:\\n    parent: 1\\n\",\"\\n  5:\\n    parent: 3\\n\",1))'",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice apply candidate.yaml -r '核对归实施责任，原授权范围与PUSH历史保留'",
+    "stdout": "· W-05: 改挂（parent 变更）\n已提交 f841b28670a901a6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-05 -r '按已委派核对标准继续本层技术工作'",
+    "stdout": "· W-05: status paused → active\n· W-05: log +1\n已提交 a2dfff0bb49e91d4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3]' --value '{\"text\":\"核对材料后重新运行直接测试\",\"fork\":[5]}' -r '技术计划定位核对子责任，不复制另一份进度账'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 633854ad4360b1db\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan[3]' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan[3]\",\"value\":{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},\"version\":\"633854ad4360b1db\"}\n",
+    "exit_code": 0
+  }
+]

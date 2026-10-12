@@ -1,6 +1,6 @@
 # Working Stack 使用入口
 
-Working Stack 保存用户的工作目标、分支、暂停上下文和结论。人和 AI 操作同一份栈文件；CLI 与 Web 共用操作链，日志由工具生成。
+Working Stack以本层owner为主体保存工作与认识进程：目的、已有依据/选择、未完成责任和下一步。用户主导时AI协助用户理解与裁决；明确委派的局部自治中主线程AI可作本层判断，不代签上层保留权。人/AI操作同一栈文件，CLI与Web共用操作链，日志自动生成。
 
 ## 怎么使用本入口
 
@@ -12,6 +12,7 @@ Working Stack 保存用户的工作目标、分支、暂停上下文和结论。
 
 ```bash
 working-stack doc                 # ENTRY.md 置顶，其他文档自动列举
+working-stack doc owner-collaboration  # Owner协作及复杂项人类状态填写
 working-stack doc ai-manual       # AI 全面使用手册
 working-stack --help              # 命令语法
 ```
@@ -47,7 +48,7 @@ skills/
     SKILL.md
 ```
 
-附带的 SKILL 介绍用户目标、帧/计划、注意力、结束与证据等语义管理，不重复操作手册。需要 Agent 使用时，把 skills/working-stack 目录放到所用 Agent 宿主的 skills 目录；工具不替你修改宿主配置或全局提示词。
+附带SKILL介绍owner中心的协作、帧/计划、注意力与结束依据，不把AI交付当人类理解/接受，也不把自治任务全部绑到人审。完整教程含owner要求、提问与裁决、AI欠项、技术自治及真实输出；操作格式仍由手册承担。需要 Agent 使用时，把 skills/working-stack 目录放到所用 Agent 宿主的 skills 目录；工具不替你修改宿主配置或全局提示词。
 
 默认 `cargo build` 是 debug：读取编译时仓库的 docs；`cargo build --release`：读取可执行文件旁的 documentation。手动直接运行 target/release 二进制时，先复制 docs 到 target/release/documentation，或指定环境变量。
 
@@ -77,7 +78,7 @@ AI 推荐 JSON stdin：
 printf '%s\n' '{"stack":"mytask","op":"show","args":{"what":"context"}}' | working-stack
 ```
 
-复工先理解本栈description导览，再从`show context [ID]`取得责任链、计划路径、已记录结果/实际执行事项与暂停条件。description就是Markdown标题下段落；可介绍全局原则等材料位置，正文显式引用会展开，普通note指路仍按需读取。字段齐全和最近写入不代表方向正确或用户最新意图。填写/替换当前内容及多帧候选用法见`working-stack doc context-view`；完整历史按需show log或timeline。
+复工先理解description中本层owner的目的/授权及材料定位，再从`show context [ID]`取得责任链、计划路径、已记录结果/实际执行事项与暂停条件。人类对哪些命题已对齐、AI尚欠什么及谁有权决定，由调用方依据对话写入；工具不读心/认定批准。description就是Markdown标题下段落；可介绍全局原则等材料位置，正文显式引用会展开，普通note指路仍按需读取。字段齐全和最近写入不代表方向正确或用户最新意图。填写/替换当前内容及多帧候选用法见`working-stack doc context-view`；完整历史按需show log或timeline。
 
 事件时间线可汇总所有帧/全局日志按实际时间输出，含来源与原日志下标；使用方法见 `working-stack doc timeline`。
 

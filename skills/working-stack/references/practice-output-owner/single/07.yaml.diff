@@ -1,0 +1,86 @@
+--- previous.yaml
++++ current.yaml
+@@ -102,7 +102,8 @@
+     origin:
+     - 据H01技术委派，成果支持根owner的可用性判断；不承担用户验收
+     status:
+-      kind: active
++      kind: paused
++      reason: 去向：新帧 W-05
+     plan:
+     - text: 实现共通部分
+       children: []
+@@ -170,6 +171,9 @@
+     - action: resume
+       at: 2026-10-12T08:30:07.198133000Z
+       detail: 承接自 W-04 的 pop；焦点转移
++    - action: pause
++      at: 2026-10-12T08:30:07.248340000Z
++      detail: 去向：新帧 W-05
+   4:
+     parent: 1
+     title: 形成可供Owner判断的优化方案
+@@ -200,6 +204,63 @@
+     - action: pop
+       at: 2026-10-12T08:30:07.198133000Z
+       detail: 按owner取消退出，返回已暂停的技术责任
++  5:
++    parent: 1
++    title: 核对供Owner使用的交付材料
++    goal:
++    - 核对候选与材料对应关系，将依据交还实施责任
++    origin: []
++    status:
++      kind: paused
++      reason: 去向：新帧 W-06
++    plan:
++    - text: 核对材料与版本对应关系
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    content:
++      results: []
++      side_effects: []
++      principles:
++      - rule: 据模拟H04确认：证据交付与owner采用必须分别登记
++        fate: null
++      - rule: 本层技术规则：只核对当前候选的材料对应关系
++        fate: null
++      remarks:
++        本层Owner: 据H01，AI主线程负责技术核对达成；不判断用户已读报告，根验收仍归用户
++    log:
++    - action: push
++      at: 2026-10-12T08:30:07.248340000Z
++      detail: 独立核对目的与回程，按H01委派的技术标准执行
++    - action: update
++      at: 2026-10-12T08:30:07.260044000Z
++      detail: 登记有效来源及局部判断边界，不只列AI待办；变更字段：content.principles、content.remarks.本层Owner、plan
++    - action: pause
++      at: 2026-10-12T08:30:07.272146000Z
++      detail: 去向：新帧 W-06
++  6:
++    parent: 1
++    title: 形成另一条线索的取证安排
++    goal:
++    - 形成有依据的线索取证安排，供owner判断是否继续
++    origin: []
++    status:
++      kind: paused
++      reason: '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'
++    plan: []
++    content:
++      results: []
++      side_effects: []
++      principles: []
++      remarks: {}
++    log:
++    - action: push
++      at: 2026-10-12T08:30:07.272146000Z
++      detail: 模拟Owner允许暂留独立线索，不承诺实施
++    - action: pause
++      at: 2026-10-12T08:30:07.284244000Z
++      detail: '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'
+ log:
+ - action: update
+   at: 2026-10-12T08:30:06.813408000Z

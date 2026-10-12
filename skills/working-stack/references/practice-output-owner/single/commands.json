@@ -1,0 +1,452 @@
+[
+  {
+    "command": "working-stack practice init --title 'Owner判断候选是否可用' --prefix W",
+    "stdout": "· 初始化空栈\n已提交 98db67bb99240dd6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note '累计原则' --body '模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。' -r '登记明确模拟授权来源，不由调度身份取得裁决权'",
+    "stdout": "· 新增 note 累计原则\n已提交 de4d5e3b6d6afaf2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note description --body '本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：{{note:累计原则.body}}。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。' -r '建立owner范围与材料导览，不复制动态进度账'",
+    "stdout": "· 新增 note description\n已提交 cffc55d034b37feb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push --title '支持用户判断并完成交付' --goal '候选版本通过直接测试' --goal '用户确认约定的验收条件满足' -r '依据H01登记完整委托，技术交付不替人类裁决'",
+    "stdout": "· 新建帧 W-01 支持用户判断并完成交付\n· 新增帧 W-01 支持用户判断并完成交付\n已提交 5ecfc042e1a853ed\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --plan-add '与用户澄清验收条件' --plan-add '按授权准备并直接测试候选' --plan-add '协助用户判断候选是否满足约定条件' --plan-set 0=in_progress --remark 'Owner与边界=据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收' --remark '候选报告｜人类协作=对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释' -r '把owner要求、AI责任与保留裁决登记到所属工作'",
+    "stdout": "· W-01: plan 改变\n· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 44691c729ce283ee\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\nTOP：[W-01] 支持用户判断并完成交付\nFOCUS：与用户澄清验收条件\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：按授权准备并直接测试候选\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释\n最近记录：2026-10-12T08:30:06.837739000Z [UPDATE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '协助用户澄清条件选择' --goal '取得用户对争议条件的明确选择' -r 'H02涉及保留给用户的条件裁决，需要独立上下文'",
+    "stdout": "· 新建帧 W-02 协助用户澄清条件选择\n· 新增帧 W-02 协助用户澄清条件选择\n已提交 175dc12731d00ca0\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --plan-add '解释两种条件的对象、差异与依据' --plan-set 0=in_progress --remark '用户协作=据模拟H02：用户询问两种条件的覆盖差别；尚未选择，AI仍欠清楚解释。问题不等于用户误信候选错误' -r '保留用户具体问题及AI欠项，不给理解评分'",
+    "stdout": "· W-02: plan 改变\n· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 e50cff33a58361b7\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-02\nTOP：[W-02] 协助用户澄清条件选择\nFOCUS：解释两种条件的对象、差异与依据\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：按授权准备并直接测试候选\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释\n最近记录：2026-10-12T08:30:06.837739000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-02] 协助用户澄清条件选择 [active]\n- `2.goal[0]`：取得用户对争议条件的明确选择\n未完成计划：\n计划 [in_progress]\n- `2.plan[0]`：解释两种条件的对象、差异与依据\n备注 用户协作（get `2.remarks`）：\n- `2.remarks`：据模拟H02：用户询问两种条件的覆盖差别；尚未选择，AI仍欠清楚解释。问题不等于用户误信候选错误\n最近记录：2026-10-12T08:30:06.892887000Z [UPDATE]；历史用show log W-02查看。\n\n## 暂停末端（不代表后台停止）\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --result-add '模拟：AI已说明两种条件的适用对象与覆盖差别，尚无用户选择' --plan-set 0=done --remark '用户协作=对象：条件解释v1；据模拟H02后AI说明。解释材料已交，用户是否审阅/采信无反馈，状态未知；选择仍归用户，后续提问AI继续负责回答' -r '登记解释交付，不把交付变成用户已理解'",
+    "stdout": "· W-02: plan 改变\n· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 4331cb3b82d3e61e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-02 -r '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'",
+    "stdout": "· W-02: status active → paused\n· W-02: log +1\n已提交 db836bd1fac67934\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '在授权内准备并直接测试候选' --goal '共通部分实现并完成直接测试，争议条件留下显式接口' --origin '据H01技术委派，成果支持根owner的可用性判断；不承担用户验收' -r '共通部分不依赖等待中的选择，主线程可在授权内推进'",
+    "stdout": "· 新建帧 W-03 在授权内准备并直接测试候选\n· 新增帧 W-03 在授权内准备并直接测试候选\n已提交 6ce0bb792de5a678\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-add '实现共通部分' --plan-add '直接测试' --plan-set 0=in_progress --remark '本层Owner=AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户' -r '明确局部自治责任，不为每个技术步骤新增人审'",
+    "stdout": "· W-03: plan 改变\n· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 112325a18109c12a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note checklist --body '技术回执、AI采用的结论、用户理解/采用与根验收分别登记；不因计划全勾推断后者。' --meta appendix -r '单份检查提示，不复制到每个帧'",
+    "stdout": "· 新增 note checklist\n已提交 5dccb3ae2053cd36\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice insert 'W-03.plan[1]' --value '\"准备测试样例\"' -r '技术准备发现缺样例，按既有授权补必要步骤'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e6cbc28b2fc776fb\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[1]' --value '{\"text\":\"准备测试样例\",\"children\":[\"常见输入\",\"边界输入\"]}' -r '把样例步骤细化，不增加人类审阅关卡'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 577e6e68bf54f64b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"in_progress\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"直接测试\"}],\"version\":\"577e6e68bf54f64b\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 在授权内准备并直接测试候选\nFOCUS：实现共通部分\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：按授权准备并直接测试候选\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：将交付的候选及报告；据H01。用户提出可用性要求，尚无报告审阅反馈，审阅/具体采信状态未知；AI仍欠可用材料及解释\n最近记录：2026-10-12T08:30:06.837739000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 在授权内准备并直接测试候选 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n- `3.origin[0]`：据H01技术委派，成果支持根owner的可用性判断；不承担用户验收\n未完成计划：\n计划 [in_progress]\n- `3.plan[0]`：实现共通部分\n计划 [ready]\n- `3.plan[1]`：准备测试样例\n计划 [ready]\n- `3.plan[1].children[0]`：常见输入\n计划 [ready]\n- `3.plan[1].children[1]`：边界输入\n计划 [ready]\n- `3.plan[2]`：直接测试\n备注 本层Owner（get `3.remarks`）：\n- `3.remarks`：AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户\n最近记录：2026-10-12T08:30:07.028523000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 协助用户澄清条件选择；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan' --value '[{\"text\":\"实现共通部分\",\"progress\":\"done\"},{\"text\":\"准备测试样例\",\"progress\":\"done\",\"children\":[{\"text\":\"常见输入\",\"progress\":\"done\"},{\"text\":\"边界输入\",\"progress\":\"done\"}]},\"修正直接测试发现的问题\",\"重新运行直接测试\"]' -r '模拟技术回执暴露问题：保留已完成部分并重拟剩余工作'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 d7de625cf95adb1d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '测试发现=模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用' -r '记录具体对象与技术欠项，不迁怒用户'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 33346f5c23636bf4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --plan-text '1=准备候选：先核对材料，再最终重测' --remark '顺序裁决=据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留' --remark '候选报告｜人类协作=据模拟H03：用户已明确选择准备顺序；最终候选审阅尚无反馈，状态未知；AI仍欠材料核对和可靠重测，不将顺序许可当验收' -r '从用户实际选择更新父责任，不仅记AI收到消息'",
+    "stdout": "· W-01: plan 改变\n· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 091a2591e1b6a9d8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-text '3=核对材料后重新运行直接测试' --remark '继续理由=落实H03后的父帧候选准备责任；AI先修正问题并核对材料，再最终重测；不代签用户验收' -r '同步局部自治路线及当前理由，保留原进入历史'",
+    "stdout": "· W-03: plan 改变\n· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 7a6f9bc560c58611\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01 → W-03\nTOP：[W-03] 在授权内准备并直接测试候选\nFOCUS：未指定；ready项只是待做计划，不自动选择下一步。\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[0]`：与用户澄清验收条件\n计划 [ready]\n- `1.plan[1]`：准备候选：先核对材料，再最终重测\n计划 [ready]\n- `1.plan[2]`：协助用户判断候选是否满足约定条件\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：据模拟H03：用户已明确选择准备顺序；最终候选审阅尚无反馈，状态未知；AI仍欠材料核对和可靠重测，不将顺序许可当验收\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留\n最近记录：2026-10-12T08:30:07.100534000Z [UPDATE]；历史用show log W-01查看。\n\n## [W-03] 在授权内准备并直接测试候选 [active]\n- `3.goal[0]`：共通部分实现并完成直接测试，争议条件留下显式接口\n- `3.origin[0]`：据H01技术委派，成果支持根owner的可用性判断；不承担用户验收\n未完成计划：\n计划 [ready]\n- `3.plan[2]`：修正直接测试发现的问题\n计划 [ready]\n- `3.plan[3]`：核对材料后重新运行直接测试\n备注 本层Owner（get `3.remarks`）：\n- `3.remarks`：AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户\n备注 测试发现（get `3.remarks`）：\n- `3.remarks`：模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用\n备注 继续理由（get `3.remarks`）：\n- `3.remarks`：落实H03后的父帧候选准备责任；AI先修正问题并核对材料，再最终重测；不代签用户验收\n最近记录：2026-10-12T08:30:07.110538000Z [UPDATE]；历史用show log W-03查看。\n\n## 暂停末端（不代表后台停止）\n- [W-02] 协助用户澄清条件选择；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '形成可供Owner判断的优化方案' --goal '形成有依据的完整优化比较，供owner决定是否采用' -r 'H04允许独立可选评估，不取得本轮实施许可'",
+    "stdout": "· 新建帧 W-04 形成可供Owner判断的优化方案\n· 新增帧 W-04 形成可供Owner判断的优化方案\n· W-03: status active → paused\n· W-03: log +1\n已提交 9d7a0b633bc7d884\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-04 --result-add '模拟：AI已列初步收益与成本，收益未核实，尚未形成完整可采用方案' -r '交付边界明确，不把AI草案变成owner已采用'",
+    "stdout": "· W-04: content（结果/原则/备注）改变\n· W-04: log +1\n已提交 23254f148706b3db\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '后续线索=据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论' -r '登记owner取消及成果使用范围'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 edf3c07fcc3b28f2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-04 --expired --summary 'H04终止未完成的可选评估回合' --pos '保留初步收益/成本材料' --focus-to W-03 -r '按owner取消退出，返回已暂停的技术责任'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n· W-04: status active → expired\n· W-04: log +1\n已提交 6be95b04e66e204c\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '核对供Owner使用的交付材料' --goal '核对候选与材料对应关系，将依据交还实施责任' -r '独立核对目的与回程，按H01委派的技术标准执行'",
+    "stdout": "· 新建帧 W-05 核对供Owner使用的交付材料\n· 新增帧 W-05 核对供Owner使用的交付材料\n· W-03: status active → paused\n· W-03: log +1\n已提交 ef9d82b918320225\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --plan-add '核对材料与版本对应关系' --principle-add '据模拟H04确认：证据交付与owner采用必须分别登记' --principle-add '本层技术规则：只核对当前候选的材料对应关系' --remark '本层Owner=据H01，AI主线程负责技术核对达成；不判断用户已读报告，根验收仍归用户' -r '登记有效来源及局部判断边界，不只列AI待办'",
+    "stdout": "· W-05: plan 改变\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 c10473e7302d2d59\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice push W-01 --title '形成另一条线索的取证安排' --goal '形成有依据的线索取证安排，供owner判断是否继续' -r '模拟Owner允许暂留独立线索，不承诺实施'",
+    "stdout": "· 新建帧 W-06 形成另一条线索的取证安排\n· 新增帧 W-06 形成另一条线索的取证安排\n· W-05: status active → paused\n· W-05: log +1\n已提交 54f7413717973a0f\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-06 -r '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'",
+    "stdout": "· W-06: status active → paused\n· W-06: log +1\n已提交 59874ecfc6e606fe\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show tree",
+    "stdout": "[W-01] 支持用户判断并完成交付\n- [W-02] [PAUSED] 协助用户澄清条件选择\n- [W-03] [PAUSED] 在授权内准备并直接测试候选\n- [W-05] [PAUSED] 核对供Owner使用的交付材料\n- [W-06] [PAUSED] 形成另一条线索的取证安排\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-03 -r '恢复承担核对责任的技术父帧；Paused只用于tip'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n已提交 eddcae140a355140\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export yaml --out candidate.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 -c 'from pathlib import Path; p=Path(\"candidate.yaml\"); t=p.read_text(); p.write_text(t.replace(\"\\n  5:\\n    parent: 1\\n\",\"\\n  5:\\n    parent: 3\\n\",1))'",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice apply candidate.yaml -r '核对归实施责任，原授权范围与PUSH历史保留'",
+    "stdout": "· W-05: 改挂（parent 变更）\n已提交 f841b28670a901a6\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-05 -r '按已委派核对标准继续本层技术工作'",
+    "stdout": "· W-05: status paused → active\n· W-05: log +1\n已提交 a2dfff0bb49e91d4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3]' --value '{\"text\":\"核对材料后重新运行直接测试\",\"fork\":[5]}' -r '技术计划定位核对子责任，不复制另一份进度账'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 633854ad4360b1db\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan[3]' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan[3]\",\"value\":{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},\"version\":\"633854ad4360b1db\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-05.plan[0].progress' --value '\"done\"' -r '模拟对应检查通过，属于本层技术判断'",
+    "stdout": "· W-05: plan 改变\n· W-05: log +1\n已提交 8621f3f20b3a3c4a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-05 --result-add '模拟：当前候选与交付材料对应关系已核对，供上层采用；不证明用户已读/接受' --settle 0=release:W-01 --settle 1=kept_local -r '技术目标达成，通用规则归根责任、局部规则留本帧'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n· W-05: content（结果/原则/备注）改变\n· W-05: log +1\n已提交 86407b16a63ab774\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-05 --summary '技术owner在H01范围内确认材料核对达成' --pos '模拟材料对应检查依据，交还上层使用' -r '关闭已委派技术子目标，不代签用户验收'",
+    "stdout": "· W-05: status active → done\n· W-05: log +1\n已提交 208f940a2a2513e4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '材料核对依据=见 {{W-05.results[0]}}；用户阅读/采用状态仍由根责任登记' -r '明确技术成果与人类协作不是同一事实'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 b3c58e00bdd15b36\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-06 --expired --summary '模拟Owner取消尚未完成的线索取证回合' --residual '保留线索，不构成当前交付义务' -r '据明确取消收尾，不包装成已完成方案'",
+    "stdout": "· W-06: status paused → expired\n· W-06: log +1\n已提交 3958e9163d97a747\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice insert 'W-03.plan[2]' --value '\"重复核对候选材料\"' -r '模拟暂列一项与目标相关的检查'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 8689b143057ac4f2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[2].text' --value '\"再核对候选材料\"' -r '明确对象后再判断必要性'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 c56e361608eb9b7d\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice move 'W-03.plan' --from 'W-03.plan[2]' -r '调整执行顺序，不改Owner目标'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 d4faaa55059dd017\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice get 'W-03.plan' --json",
+    "stdout": "{\"ok\":true,\"path\":\"W-03.plan\",\"value\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"实现共通部分\"},{\"children\":[{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"常见输入\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"边界输入\"}],\"fork\":[],\"progress\":{\"kind\":\"item_done\"},\"text\":\"准备测试样例\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"修正直接测试发现的问题\"},{\"children\":[],\"fork\":[5],\"progress\":{\"kind\":\"ready\"},\"text\":\"核对材料后重新运行直接测试\"},{\"children\":[],\"fork\":[],\"progress\":{\"kind\":\"ready\"},\"text\":\"再核对候选材料\"}],\"version\":\"d4faaa55059dd017\"}\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice remove 'W-03.plan[4]' -r '已有对应核对足够，重复项无新增贡献，移除当前冗余'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 8141a86d292e3bef\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[2].progress' --value '\"done\"' -r '模拟修正已完成'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 6c9895dce1296bd4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '先登记模拟R1重测通过；下一节将核实其误记'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 52d03449b5c2209b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --result-add '模拟R1：v1共通候选被登记为直接测试通过，争议条件仍显式；不表示用户已接受' -r '技术判断只适用于本层范围'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 58b58ec59144daab\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '先按R1登记技术准备完成，根用户判断仍open' --pos '当时登记的R1结果与材料核对' -r '本层技术owner收尾，不将交付当用户认识完成'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 90794f271bd245b1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：候选v1；AI已交技术材料，用户审阅/采信未反馈，状态未知；根责任仍欠可用性判断，不声称用户未读或完全理解' -r '成果事实与最新人类状态分别登记'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 46d9824a29e177f2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n焦点：无；不自动选择暂停分支。\n\n根目标 [W-01] 支持用户判断并完成交付\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n\n## 暂停末端（不代表后台停止）\n- [W-02] 协助用户澄清条件选择；show context W-02查看该分支。\n- `2.status.reason`：[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export yaml --out before-correct.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --reopen active -r 'AI核实R1遗漏必要重测，原技术Done依据不成立；在原授权内纠正'",
+    "stdout": "· W-03: status done → active\n· W-03: log +1\n已提交 092a72b7f906d6c2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.results[0]' --value '\"v1候选及材料已交，但原R1通过判断撤回：一次必要重测未完成。原判断保存在before-correct.yaml及阶段快照。\"' -r '替换旧当前成果判断，保留错误依据，不无限append更正'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 91c5b6ff13c3888b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"in_progress\"' -r '恢复真实未完重测，保留fork'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 10d657c92cd67301\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '误记更正=AI曾将R1未完成重测混答为通过；更正责任在AI，不能将其写成用户认识错误' --principle-add '模拟事实误列为规则：v1候选材料对应关系已核对' -r '保留错误及责任，识别事实并非行为规则'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 033c97a29bef540b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --settle 0=reclass:results -r '将已核对的材料事实从原则转存，不从重要性产生规范效力'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 3885885f679bb00b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '设定模拟R2实际补跑通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e5d0aee9f68bc5b7\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.results[0]' --value '\"模拟R2：v2补跑直接测试通过；v1通过判断曾被撤回，不能倒写成当时已证实。\"' -r '当前技术成果指向可靠补跑依据，保留必要反例'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 fe85361ba7552bc1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '技术owner据R2确认v2准备目标达成，原误关已更正' --pos '模拟R2与材料对应证据；不声明用户已经采用' -r '在已委派范围内据补齐依据收尾'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 6ecec2fe68c43950\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：v2及R1更正说明；AI已提供补跑依据，用户是否阅读更正尚无反馈，状态未知；AI需在沟通时解释v1/v2差别' -r '更新最新人类协作对象，不反写过去理解'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 9a8d4476b4312f15\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-02 -r '收到模拟H05对条件解释的明确选择'",
+    "stdout": "· W-02: status paused → active\n· W-02: log +1\n已提交 d6de9a7865de381a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-02 --result-add '据模拟H05：用户选择第一种解释；这只闭合条件选择，不等于接受候选v2的整体效果' --remark '用户协作=H05明确选择第一种条件，选择目标已成立；不推定全部报告审阅或所有细节理解' -r '保存具体选择及适用范围，不提升为全域接受'",
+    "stdout": "· W-02: content（结果/原则/备注）改变\n· W-02: log +1\n已提交 8bac0b0158f33638\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-02 --summary '用户owner在H05完成条件选择' --pos 'H05的明确选择，只适用于该条件' -r '关闭本层已达裁决目标并返回根责任'",
+    "stdout": "· W-02: status active → done\n· W-02: log +1\n已提交 534acc875d17a991\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[0].progress' --value '\"done\"' -r '条件选择已明确'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 128620d714c286b0\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[1].progress' --value '\"done\"' -r 'R2技术准备已达，不代签根用户判断'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 dd5611dd47c2eb39\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"in_progress\"' -r 'AI仍需帮助用户理解v2依据，不能直接全挂待用户'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 b52f041690eada0a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=据H05：条件选择明确，v2报告审阅/具体采信尚无反馈；AI欠v1/v2与效果边界说明，用户后续决定是否满足约定条件' -r '下一责任同时保留AI欠项与owner裁决'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 68cc63fd16b3ea40\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2]' --value '\"协助用户判断候选：对象v2，据H06，A/B已确认，C待AI解释；详见候选报告人类协作备注，当前不能代签验收。\"' -r '复杂plan保留任务并附短协作说明；字符串set不改状态/子项'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 e27639d61fcdbbb8\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：报告v2；据模拟H06。用户明确已看主结论、未看附录，确认A/B，询问C适用范围；AI欠C反例与范围解释。尚未作整体接受决定，问题不是错误信念。' --remark 'AI解释责任=先说明C的证据只覆盖有限输入，解释v1/R1为何更正为v2/R2；用户判断不能替代AI提供这些材料' -r '按具体对话更新成果的最新人类状态，不改技术历史达成'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 9f6b2045451baf31\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\nTOP：[W-01] 支持用户判断并完成交付\nFOCUS：协助用户判断候选：对象v2，据H06，A/B已确认，C待AI解释；详见候选报告人类协作备注，当前不能代签验收。\n\n## [W-01] 支持用户判断并完成交付 [active]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [in_progress]\n- `1.plan[2]`：协助用户判断候选：对象v2，据H06，A/B已确认，C待AI解释；详见候选报告人类协作备注，当前不能代签验收。\n备注 AI解释责任（get `1.remarks`）：\n- `1.remarks`：先说明C的证据只覆盖有限输入，解释v1/R1为何更正为v2/R2；用户判断不能替代AI提供这些材料\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：报告v2；据模拟H06。用户明确已看主结论、未看附录，确认A/B，询问C适用范围；AI欠C反例与范围解释。尚未作整体接受决定，问题不是错误信念。\n备注 后续线索（get `1.remarks`）：\n- `1.remarks`：据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留\n原则处置 [null]\n- `1.content.principles[0].rule`：据模拟H04确认：证据交付与owner采用必须分别登记\n  引用来源：5.principles[0]\n最近记录：2026-10-12T08:30:08.134847000Z [UPDATE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --result-add '模拟：AI已交v2的C反例/范围说明及R1到R2的更正依据，技术结论仍只覆盖约定输入' --remark 'AI解释责任=据模拟H07，C解释与版本更正说明已提供；后续新疑问仍须响应，不声称交付自动证明理解' -r 'AI补齐自身解释义务，保留适用条件'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 276e540ad9650e72\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：报告v2及C补充说明；据模拟H07复述，A/B/C已具体对齐；用户明确未读附录，只批准约定输入试用，未接受整体效果。H08试用反馈未返回；AI继续回答新疑问，最终判断归用户。' -r '更新具体对齐、有限批准和未知，不用笼统完全理解'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 173bba0ecd4171ca\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2]' --value '\"用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\"' -r '复杂项最新说明与成果备注同一来源，不把试用许可当验收'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 a9833678fec00b0e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"blocked:等待约定试用结果及用户裁决\"' -r '当前AI本轮材料/解释已齐，实际缺试用与owner保留决定'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 707a8c4c98ffd005\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-01 -r '[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项'",
+    "stdout": "· W-01: status active → paused\n· W-01: log +1\n已提交 793737bf88f6d2e4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context W-01",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\n所选分支（不切换焦点）：[W-01] 支持用户判断并完成交付\nFOCUS：用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\n\n## [W-01] 支持用户判断并完成交付 [paused]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [blocked]\n- `1.plan[2]`：用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\n- `1.plan[2].progress.reason`：等待约定试用结果及用户裁决\n已记录结果（不按写入顺序判断效力）：\n- `1.results[0]`：模拟：AI已交v2的C反例/范围说明及R1到R2的更正依据，技术结论仍只覆盖约定输入\n备注 AI解释责任（get `1.remarks`）：\n- `1.remarks`：据模拟H07，C解释与版本更正说明已提供；后续新疑问仍须响应，不声称交付自动证明理解\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：报告v2及C补充说明；据模拟H07复述，A/B/C已具体对齐；用户明确未读附录，只批准约定输入试用，未接受整体效果。H08试用反馈未返回；AI继续回答新疑问，最终判断归用户。\n备注 后续线索（get `1.remarks`）：\n- `1.remarks`：据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留\n原则处置 [null]\n- `1.content.principles[0].rule`：据模拟H04确认：证据交付与owner采用必须分别登记\n  引用来源：5.principles[0]\n- `1.status.reason`：[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项\n最近记录：2026-10-12T08:30:08.259982000Z [PAUSE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n- [W-01] 支持用户判断并完成交付；show context W-01查看该分支。\n- `1.status.reason`：[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice resume W-01 -r '收到模拟H09约定试用结果及明确验收'",
+    "stdout": "· W-01: status paused → active\n· W-01: log +1\n已提交 83dcc448ecc7b347\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：v2及约定范围试用；据模拟H09，用户明确确认约定条件满足并接受本次交付。A/B/C此前已对齐，附录仍未读；不推出全域效果或全部细节理解。' -r '据实际设定的owner裁决更新当前人类状态，不从计划勾选推出验收'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 4f71b24b5aa9de05\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"done\"' -r '根用户判断目标由H09明确闭合'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 10103b590368df90\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --result-add '据模拟R2及H09：技术直接测试通过，用户确认约定范围验收条件满足；未覆盖输入仍不在结论中' --settle 0=kept_local -r '两项根目标各有依据，规则归根责任保留'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 dee6ad410ca82599\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-01 --summary '用户owner据H09接受约定范围交付，两项根目标满足' --pos 'R2技术依据与H09约定范围试用/明确验收，不声明全域结论' -r '依据owner目标与裁决收尾，而非AI完成清单'",
+    "stdout": "· W-01: status active → done\n· W-01: log +1\n已提交 4e70562995940b34\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice validate",
+    "stdout": "OK\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice timeline",
+    "stdout": "# 事件时间线\n\n同刻事件仅保留稳定展示顺序；时间不完整的记录列在末尾，不推断因果。\n\n- [2026-10-12T08:30:06.813408000Z] [stack log[0]] [UPDATE] 登记明确模拟授权来源，不由调度身份取得裁决权\n- [2026-10-12T08:30:06.821191000Z] [stack log[1]] [UPDATE] 建立owner范围与材料导览，不复制动态进度账\n- [2026-10-12T08:30:06.829538000Z] [W-01 log[0]] [PUSH] 依据H01登记完整委托，技术交付不替人类裁决\n- [2026-10-12T08:30:06.837739000Z] [W-01 log[1]] [UPDATE] 把owner要求、AI责任与保留裁决登记到所属工作；变更字段：content.remarks.Owner与边界、content.remarks.候选报告｜人类协作、plan\n- [2026-10-12T08:30:06.883525000Z] [W-02 log[0]] [PUSH] H02涉及保留给用户的条件裁决，需要独立上下文\n- [2026-10-12T08:30:06.892887000Z] [W-02 log[1]] [UPDATE] 保留用户具体问题及AI欠项，不给理解评分；变更字段：content.remarks.用户协作、plan\n- [2026-10-12T08:30:06.905782000Z] [W-02 log[2]] [UPDATE] 登记解释交付，不把交付变成用户已理解；变更字段：content.remarks.用户协作、content.results、plan[0].progress.kind\n- [2026-10-12T08:30:06.915528000Z] [W-02 log[3]] [PAUSE] [HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择\n- [2026-10-12T08:30:06.957238000Z] [W-03 log[0]] [PUSH] 共通部分不依赖等待中的选择，主线程可在授权内推进\n- [2026-10-12T08:30:06.966495000Z] [W-03 log[1]] [UPDATE] 明确局部自治责任，不为每个技术步骤新增人审；变更字段：content.remarks.本层Owner、plan\n- [2026-10-12T08:30:06.975869000Z] [stack log[2]] [UPDATE] 单份检查提示，不复制到每个帧\n- [2026-10-12T08:30:07.018186000Z] [W-03 log[2]] [UPDATE] 技术准备发现缺样例，按既有授权补必要步骤；变更字段：plan\n- [2026-10-12T08:30:07.028523000Z] [W-03 log[3]] [UPDATE] 把样例步骤细化，不增加人类审阅关卡；变更字段：plan[1].children\n- [2026-10-12T08:30:07.046993000Z] [W-03 log[4]] [UPDATE] 模拟技术回执暴露问题：保留已完成部分并重拟剩余工作；变更字段：plan\n- [2026-10-12T08:30:07.056728000Z] [W-03 log[5]] [UPDATE] 记录具体对象与技术欠项，不迁怒用户；变更字段：content.remarks.测试发现\n- [2026-10-12T08:30:07.100534000Z] [W-01 log[2]] [UPDATE] 从用户实际选择更新父责任，不仅记AI收到消息；变更字段：content.remarks.候选报告｜人类协作、content.remarks.顺序裁决、plan[1].text\n- [2026-10-12T08:30:07.110538000Z] [W-03 log[6]] [UPDATE] 同步局部自治路线及当前理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text\n- [2026-10-12T08:30:07.163327000Z] [W-03 log[7]] [PAUSE] 去向：新帧 W-04\n- [2026-10-12T08:30:07.163327000Z] [W-04 log[0]] [PUSH] H04允许独立可选评估，不取得本轮实施许可\n- [2026-10-12T08:30:07.174619000Z] [W-04 log[1]] [UPDATE] 交付边界明确，不把AI草案变成owner已采用；变更字段：content.results\n- [2026-10-12T08:30:07.186057000Z] [W-01 log[3]] [UPDATE] 登记owner取消及成果使用范围；变更字段：content.remarks.后续线索\n- [2026-10-12T08:30:07.198133000Z] [W-03 log[8]] [RESUME] 承接自 W-04 的 pop；焦点转移\n- [2026-10-12T08:30:07.198133000Z] [W-04 log[2]] [POP] 按owner取消退出，返回已暂停的技术责任\n- [2026-10-12T08:30:07.248340000Z] [W-03 log[9]] [PAUSE] 去向：新帧 W-05\n- [2026-10-12T08:30:07.248340000Z] [W-05 log[0]] [PUSH] 独立核对目的与回程，按H01委派的技术标准执行\n- [2026-10-12T08:30:07.260044000Z] [W-05 log[1]] [UPDATE] 登记有效来源及局部判断边界，不只列AI待办；变更字段：content.principles、content.remarks.本层Owner、plan\n- [2026-10-12T08:30:07.272146000Z] [W-05 log[2]] [PAUSE] 去向：新帧 W-06\n- [2026-10-12T08:30:07.272146000Z] [W-06 log[0]] [PUSH] 模拟Owner允许暂留独立线索，不承诺实施\n- [2026-10-12T08:30:07.284244000Z] [W-06 log[1]] [PAUSE] [HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受\n- [2026-10-12T08:30:07.343334000Z] [W-03 log[10]] [RESUME] 恢复承担核对责任的技术父帧；Paused只用于tip\n- [2026-10-12T08:30:07.393130000Z] [W-05 log[3]] [RESUME] 按已委派核对标准继续本层技术工作\n- [2026-10-12T08:30:07.405451000Z] [W-03 log[11]] [UPDATE] 技术计划定位核对子责任，不复制另一份进度账；变更字段：plan[3].fork\n- [2026-10-12T08:30:07.464704000Z] [W-05 log[4]] [UPDATE] 模拟对应检查通过，属于本层技术判断；变更字段：plan[0].progress.kind\n- [2026-10-12T08:30:07.477202000Z] [W-01 log[4]] [UPDATE] 承接自 W-05 原则1（released）；变更字段：content.principles\n- [2026-10-12T08:30:07.477202000Z] [W-05 log[5]] [UPDATE] 技术目标达成，通用规则归根责任、局部规则留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results\n- [2026-10-12T08:30:07.489428000Z] [W-05 log[6]] [POP] 关闭已委派技术子目标，不代签用户验收\n- [2026-10-12T08:30:07.502331000Z] [W-03 log[12]] [UPDATE] 明确技术成果与人类协作不是同一事实；变更字段：content.remarks.材料核对依据\n- [2026-10-12T08:30:07.515336000Z] [W-06 log[2]] [POP] 据明确取消收尾，不包装成已完成方案\n- [2026-10-12T08:30:07.571437000Z] [W-03 log[13]] [UPDATE] 模拟暂列一项与目标相关的检查；变更字段：plan\n- [2026-10-12T08:30:07.584334000Z] [W-03 log[14]] [UPDATE] 明确对象后再判断必要性；变更字段：plan[2].text\n- [2026-10-12T08:30:07.597193000Z] [W-03 log[15]] [UPDATE] 调整执行顺序，不改Owner目标；变更字段：plan[2].text、plan[3].fork、plan[3].text、plan[4].fork、plan[4].text\n- [2026-10-12T08:30:07.615706000Z] [W-03 log[16]] [UPDATE] 已有对应核对足够，重复项无新增贡献，移除当前冗余；变更字段：plan\n- [2026-10-12T08:30:07.674455000Z] [W-03 log[17]] [UPDATE] 模拟修正已完成；变更字段：plan[2].progress.kind\n- [2026-10-12T08:30:07.688579000Z] [W-03 log[18]] [UPDATE] 先登记模拟R1重测通过；下一节将核实其误记；变更字段：plan[3].progress.kind\n- [2026-10-12T08:30:07.702285000Z] [W-03 log[19]] [UPDATE] 技术判断只适用于本层范围；变更字段：content.results\n- [2026-10-12T08:30:07.715321000Z] [W-03 log[20]] [POP] 本层技术owner收尾，不将交付当用户认识完成\n- [2026-10-12T08:30:07.728762000Z] [W-01 log[5]] [UPDATE] 成果事实与最新人类状态分别登记；变更字段：content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:07.800490000Z] [W-03 log[21]] [CORRECT] AI核实R1遗漏必要重测，原技术Done依据不成立；在原授权内纠正\n  原 Closure：[done] 先按R1登记技术准备完成，根用户判断仍open\n- [2026-10-12T08:30:07.815422000Z] [W-03 log[22]] [UPDATE] 替换旧当前成果判断，保留错误依据，不无限append更正；变更字段：content.results[0]\n- [2026-10-12T08:30:07.828361000Z] [W-03 log[23]] [UPDATE] 恢复真实未完重测，保留fork；变更字段：plan[3].progress.kind\n- [2026-10-12T08:30:07.842600000Z] [W-03 log[24]] [UPDATE] 保留错误及责任，识别事实并非行为规则；变更字段：content.principles、content.remarks.误记更正\n- [2026-10-12T08:30:07.856468000Z] [W-03 log[25]] [UPDATE] 将已核对的材料事实从原则转存，不从重要性产生规范效力；变更字段：content.principles[0].fate、content.results\n- [2026-10-12T08:30:07.870479000Z] [W-03 log[26]] [UPDATE] 设定模拟R2实际补跑通过；变更字段：plan[3].progress.kind\n- [2026-10-12T08:30:07.884390000Z] [W-03 log[27]] [UPDATE] 当前技术成果指向可靠补跑依据，保留必要反例；变更字段：content.results[0]\n- [2026-10-12T08:30:07.898594000Z] [W-03 log[28]] [POP] 在已委派范围内据补齐依据收尾\n- [2026-10-12T08:30:07.911960000Z] [W-01 log[6]] [UPDATE] 更新最新人类协作对象，不反写过去理解；变更字段：content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:07.974632000Z] [W-02 log[4]] [RESUME] 收到模拟H05对条件解释的明确选择\n- [2026-10-12T08:30:07.988764000Z] [W-02 log[5]] [UPDATE] 保存具体选择及适用范围，不提升为全域接受；变更字段：content.remarks.用户协作、content.results\n- [2026-10-12T08:30:08.002853000Z] [W-02 log[6]] [POP] 关闭本层已达裁决目标并返回根责任\n- [2026-10-12T08:30:08.016467000Z] [W-01 log[7]] [UPDATE] 条件选择已明确；变更字段：plan[0].progress.kind\n- [2026-10-12T08:30:08.030254000Z] [W-01 log[8]] [UPDATE] R2技术准备已达，不代签根用户判断；变更字段：plan[1].progress.kind\n- [2026-10-12T08:30:08.044666000Z] [W-01 log[9]] [UPDATE] AI仍需帮助用户理解v2依据，不能直接全挂待用户；变更字段：plan[2].progress.kind\n- [2026-10-12T08:30:08.059475000Z] [W-01 log[10]] [UPDATE] 下一责任同时保留AI欠项与owner裁决；变更字段：content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:08.119851000Z] [W-01 log[11]] [UPDATE] 复杂plan保留任务并附短协作说明；字符串set不改状态/子项；变更字段：plan[2].text\n- [2026-10-12T08:30:08.134847000Z] [W-01 log[12]] [UPDATE] 按具体对话更新成果的最新人类状态，不改技术历史达成；变更字段：content.remarks.AI解释责任、content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:08.200692000Z] [W-01 log[13]] [UPDATE] AI补齐自身解释义务，保留适用条件；变更字段：content.remarks.AI解释责任、content.results\n- [2026-10-12T08:30:08.214888000Z] [W-01 log[14]] [UPDATE] 更新具体对齐、有限批准和未知，不用笼统完全理解；变更字段：content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:08.229858000Z] [W-01 log[15]] [UPDATE] 复杂项最新说明与成果备注同一来源，不把试用许可当验收；变更字段：plan[2].text\n- [2026-10-12T08:30:08.244923000Z] [W-01 log[16]] [UPDATE] 当前AI本轮材料/解释已齐，实际缺试用与owner保留决定；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T08:30:08.259982000Z] [W-01 log[17]] [PAUSE] [HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项\n- [2026-10-12T08:30:08.327791000Z] [W-01 log[18]] [RESUME] 收到模拟H09约定试用结果及明确验收\n- [2026-10-12T08:30:08.342607000Z] [W-01 log[19]] [UPDATE] 据实际设定的owner裁决更新当前人类状态，不从计划勾选推出验收；变更字段：content.remarks.候选报告｜人类协作\n- [2026-10-12T08:30:08.357357000Z] [W-01 log[20]] [UPDATE] 根用户判断目标由H09明确闭合；变更字段：plan[2].progress.kind、plan[2].progress.reason\n- [2026-10-12T08:30:08.372319000Z] [W-01 log[21]] [UPDATE] 两项根目标各有依据，规则归根责任保留；变更字段：content.principles[0].fate、content.results\n- [2026-10-12T08:30:08.387136000Z] [W-01 log[22]] [POP] 依据owner目标与裁决收尾，而非AI完成清单\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice export md --out practice.md",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "{\"stack\":\"practice\",\"op\":\"show\",\"args\":{\"what\":\"context\"}}",
+    "stdout": "{\"diff\":[],\"ok\":true,\"text\":\"# 工作上下文：Owner判断候选是否可用\\n\\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\\n\\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\\n  引用来源：note:累计原则.body\\n\\n焦点：无；不自动选择暂停分支。\\n\\n## 暂停末端（不代表后台停止）\\n\\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\\n\",\"version\":null,\"warnings\":[]}\n",
+    "exit_code": 0
+  }
+]

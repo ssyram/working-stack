@@ -85,7 +85,8 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
             run([binary, 'import', str(snapshot), '-o', imported])
             restored = json.loads(run([binary, imported, 'export', 'json']))
             assert restored['notes'] == model['notes']
-            assert '全局范围约束' in context and '验收仍由用户决定' in context
+            assert '用户是根owner' in context and 'AI主线程' in context
+            assert '不表示用户已理解或接受' in context
             if '3' in model['frames']:
                 push3 = [event for event in model['frames']['3']['log'] if event['action'] == 'push'][0]
                 if implementation_push is not None:
@@ -108,9 +109,29 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
             if title.startswith('5A.'):
                 assert [model['frames'][str(i)]['parent'] for i in [2, 3, 5, 6]] == [1, 1, 1, 1]
                 assert all(model['frames'][str(i)]['status']['kind'] == 'paused' for i in [2, 3, 5, 6])
-            if title.startswith('7.'):
-                assert model['frames']['1']['status']['kind'] == 'paused'
-                assert model['frames']['1']['plan'][2]['progress']['kind'] == 'blocked'
+            root = model['frames']['1']
+            if title.startswith('6.'):
+                assert model['frames']['3']['status']['kind'] == 'done'
+                assert root['status']['kind'] != 'done'
+                assert '状态未知' in root['content']['remarks']['候选报告｜人类协作']
+            if title.startswith('7.') or title.startswith('7A.'):
+                assert root['status']['kind'] == 'active'
+                assert root['plan'][2]['progress']['kind'] == 'in_progress'
+            if title.startswith('7A.'):
+                human = root['content']['remarks']['候选报告｜人类协作']
+                for part in ['H06', '已看主结论、未看附录', '确认A/B', 'AI欠C反例与范围解释', '尚未作整体接受']:
+                    assert part in human
+                assert '当前不能代签验收' in root['plan'][2]['text']
+            if title.startswith('7B.'):
+                assert root['status']['kind'] == 'paused'
+                assert root['plan'][2]['progress']['kind'] == 'blocked'
+                human = root['content']['remarks']['候选报告｜人类协作']
+                assert 'A/B/C已具体对齐' in human and '只批准约定输入试用' in human
+                assert '未接受整体效果' in human
+            if title.startswith('8.'):
+                assert root['status']['kind'] == 'done'
+                assert 'H09' in root['status']['closure']['summary']
+                assert '附录仍未读' in root['content']['remarks']['候选报告｜人类协作']
             sections_saved.append({'prefix': prefix, 'title': title})
             previous_md, previous_yaml = md, yaml
 
@@ -128,6 +149,7 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
         (destination / 'commands.json').write_text(json.dumps(events, ensure_ascii=False, indent=2))
         (destination / 'final.md').write_text(previous_md)
         (destination / 'final.yaml').write_text(previous_yaml)
+        shutil.copy2(cwd / 'before-correct.yaml', destination / 'before-correct.yaml')
         git = cwd / '.working-stack' / '.git'
         if mode == 'managed':
             assert git.exists()
@@ -139,7 +161,9 @@ for mode, target in [('managed', 'practice'), ('single', './practice.yaml')]:
         result = {'mode': mode, 'commands': len(events), 'frames': 6, 'stages': sections_saved,
                   'root_goals_preserved': True, 'reparent_keeps_push_history': True,
                   'awaiting_acceptance_stays_open': True, 'route_change_updates_parent': True,
-                  'all_stage_notes_roundtrip': True, 'validate': 'OK'}
+                  'all_stage_notes_roundtrip': True, 'technical_autonomy_without_human_gate': True,
+                  'ai_explanation_debt_stays_active': True, 'partial_human_adoption_is_not_acceptance': True,
+                  'h09_acceptance_without_all_details_read': True, 'validate': 'OK'}
         (destination / 'report.json').write_text(json.dumps(result, ensure_ascii=False, indent=2))
         results.append(result)
 (args.output / 'report.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))

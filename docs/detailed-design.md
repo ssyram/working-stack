@@ -2,6 +2,8 @@
 
 > 规约源：`../playground.md`（核心语言，权威）+ `architecture.md`（P/M/R）。本文按 /workflow §4.3.3 与 /hoare-prompt 纪律给出函数级合同与论证；规约一律取自设计文档，不从直觉补设。错误模型：`WsError { Usage(String), Parse(String), Invalid(Vec<Problem>), Conflict, Locked, Io, Yaml }`；CLI exit：0 成功 / 2 Invalid+Usage+Parse / 3 Conflict / 4 Io+Locked+Yaml。
 
+Owner中心协作及复杂plan/成果的人类状态填写见owner-collaboration.md。它是方法合同，不改变下面的核心类型/函数：progress仍表示工作推进，不作为理解/批准枚举；Closure仍是关闭时达成记录。人类为owner时AI主动解释并保留双方责任，明确委派的技术自治不强制加人工关卡。
+
 ## 1. 范围
 
 - 覆盖：text/model/view/resolve/validate/ops/persist/diff/print/import/cli/web。

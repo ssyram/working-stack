@@ -1,0 +1,22 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '形成可供Owner判断的优化方案' --goal '形成有依据的完整优化比较，供owner决定是否采用' -r 'H04允许独立可选评估，不取得本轮实施许可'",
+    "stdout": "· 新建帧 W-04 形成可供Owner判断的优化方案\n· 新增帧 W-04 形成可供Owner判断的优化方案\n· W-03: status active → paused\n· W-03: log +1\n已提交 f13cecfd7c507fee\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-04 --result-add '模拟：AI已列初步收益与成本，收益未核实，尚未形成完整可采用方案' -r '交付边界明确，不把AI草案变成owner已采用'",
+    "stdout": "· W-04: content（结果/原则/备注）改变\n· W-04: log +1\n已提交 b71587966b77efc3\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '后续线索=据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论' -r '登记owner取消及成果使用范围'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 da4bc8d2d023aea1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-04 --expired --summary 'H04终止未完成的可选评估回合' --pos '保留初步收益/成本材料' --focus-to W-03 -r '按owner取消退出，返回已暂停的技术责任'",
+    "stdout": "· W-03: status paused → active\n· W-03: log +1\n· W-04: status active → expired\n· W-04: log +1\n已提交 7108c15caf6542d9\n",
+    "exit_code": 0
+  }
+]

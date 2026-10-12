@@ -1,0 +1,44 @@
+--- previous.yaml
++++ current.yaml
+@@ -47,6 +47,41 @@
+     - action: update
+       at: 2026-10-12T08:30:03.452463000Z
+       detail: 把owner要求、AI责任与保留裁决登记到所属工作；变更字段：content.remarks.Owner与边界、content.remarks.候选报告｜人类协作、plan
++  2:
++    parent: 1
++    title: 协助用户澄清条件选择
++    goal:
++    - 取得用户对争议条件的明确选择
++    origin: []
++    status:
++      kind: paused
++      reason: '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'
++    plan:
++    - text: 解释两种条件的对象、差异与依据
++      children: []
++      progress:
++        kind: item_done
++      fork: []
++    content:
++      results:
++      - 模拟：AI已说明两种条件的适用对象与覆盖差别，尚无用户选择
++      side_effects: []
++      principles: []
++      remarks:
++        用户协作: 对象：条件解释v1；据模拟H02后AI说明。解释材料已交，用户是否审阅/采信无反馈，状态未知；选择仍归用户，后续提问AI继续负责回答
++    log:
++    - action: push
++      at: 2026-10-12T08:30:03.518423000Z
++      detail: H02涉及保留给用户的条件裁决，需要独立上下文
++    - action: update
++      at: 2026-10-12T08:30:03.550859000Z
++      detail: 保留用户具体问题及AI欠项，不给理解评分；变更字段：content.remarks.用户协作、plan
++    - action: update
++      at: 2026-10-12T08:30:03.590114000Z
++      detail: 登记解释交付，不把交付变成用户已理解；变更字段：content.remarks.用户协作、content.results、plan[0].progress.kind
++    - action: pause
++      at: 2026-10-12T08:30:03.625296000Z
++      detail: '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'
+ log:
+ - action: update
+   at: 2026-10-12T08:30:03.357510000Z

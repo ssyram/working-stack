@@ -1,0 +1,52 @@
+[
+  {
+    "command": "working-stack practice export yaml --out before-correct.yaml",
+    "stdout": "",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --reopen active -r 'AI核实R1遗漏必要重测，原技术Done依据不成立；在原授权内纠正'",
+    "stdout": "· W-03: status done → active\n· W-03: log +1\n已提交 092a72b7f906d6c2\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.results[0]' --value '\"v1候选及材料已交，但原R1通过判断撤回：一次必要重测未完成。原判断保存在before-correct.yaml及阶段快照。\"' -r '替换旧当前成果判断，保留错误依据，不无限append更正'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 91c5b6ff13c3888b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"in_progress\"' -r '恢复真实未完重测，保留fork'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 10d657c92cd67301\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --remark '误记更正=AI曾将R1未完成重测混答为通过；更正责任在AI，不能将其写成用户认识错误' --principle-add '模拟事实误列为规则：v1候选材料对应关系已核对' -r '保留错误及责任，识别事实并非行为规则'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 033c97a29bef540b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --settle 0=reclass:results -r '将已核对的材料事实从原则转存，不从重要性产生规范效力'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 3885885f679bb00b\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.plan[3].progress' --value '\"done\"' -r '设定模拟R2实际补跑通过'",
+    "stdout": "· W-03: plan 改变\n· W-03: log +1\n已提交 e5d0aee9f68bc5b7\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-03.results[0]' --value '\"模拟R2：v2补跑直接测试通过；v1通过判断曾被撤回，不能倒写成当时已证实。\"' -r '当前技术成果指向可靠补跑依据，保留必要反例'",
+    "stdout": "· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 fe85361ba7552bc1\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pop W-03 --summary '技术owner据R2确认v2准备目标达成，原误关已更正' --pos '模拟R2与材料对应证据；不声明用户已经采用' -r '在已委派范围内据补齐依据收尾'",
+    "stdout": "· W-03: status active → done\n· W-03: log +1\n已提交 6ecec2fe68c43950\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：v2及R1更正说明；AI已提供补跑依据，用户是否阅读更正尚无反馈，状态未知；AI需在沟通时解释v1/v2差别' -r '更新最新人类协作对象，不反写过去理解'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 9a8d4476b4312f15\n",
+    "exit_code": 0
+  }
+]

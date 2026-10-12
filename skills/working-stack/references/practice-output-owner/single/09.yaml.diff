@@ -1,0 +1,120 @@
+--- previous.yaml
++++ current.yaml
+@@ -40,7 +40,9 @@
+     content:
+       results: []
+       side_effects: []
+-      principles: []
++      principles:
++      - rule: '{{5.principles[0]}}'
++        fate: null
+       remarks:
+         Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
+         候选报告｜人类协作: 据模拟H03：用户已明确选择准备顺序；最终候选审阅尚无反馈，状态未知；AI仍欠材料核对和可靠重测，不将顺序许可当验收
+@@ -59,6 +61,9 @@
+     - action: update
+       at: 2026-10-12T08:30:07.186057000Z
+       detail: 登记owner取消及成果使用范围；变更字段：content.remarks.后续线索
++    - action: update
++      at: 2026-10-12T08:30:07.477202000Z
++      detail: 承接自 W-05 原则1（released）；变更字段：content.principles
+   2:
+     parent: 1
+     title: 协助用户澄清条件选择
+@@ -141,6 +146,7 @@
+       principles: []
+       remarks:
+         本层Owner: AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户
++        材料核对依据: 见 {{5.results[0]}}；用户阅读/采用状态仍由根责任登记
+         测试发现: 模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用
+         继续理由: 落实H03后的父帧候选准备责任；AI先修正问题并核对材料，再最终重测；不代签用户验收
+     log:
+@@ -180,6 +186,9 @@
+     - action: update
+       at: 2026-10-12T08:30:07.405451000Z
+       detail: 技术计划定位核对子责任，不复制另一份进度账；变更字段：plan[3].fork
++    - action: update
++      at: 2026-10-12T08:30:07.502331000Z
++      detail: 明确技术成果与人类协作不是同一事实；变更字段：content.remarks.材料核对依据
+   4:
+     parent: 1
+     title: 形成可供Owner判断的优化方案
+@@ -217,21 +226,30 @@
+     - 核对候选与材料对应关系，将依据交还实施责任
+     origin: []
+     status:
+-      kind: active
++      kind: done
++      closure:
++        summary: 技术owner在H01范围内确认材料核对达成
++        positive:
++        - result: 模拟材料对应检查依据，交还上层使用
++          evidence: ''
+     plan:
+     - text: 核对材料与版本对应关系
+       children: []
+       progress:
+-        kind: ready
+-      fork: []
+-    content:
+-      results: []
++        kind: item_done
++      fork: []
++    content:
++      results:
++      - 模拟：当前候选与交付材料对应关系已核对，供上层采用；不证明用户已读/接受
+       side_effects: []
+       principles:
+       - rule: 据模拟H04确认：证据交付与owner采用必须分别登记
+-        fate: null
++        fate:
++          kind: released_to
++          id: 1
+       - rule: 本层技术规则：只核对当前候选的材料对应关系
+-        fate: null
++        fate:
++          kind: kept_local
+       remarks:
+         本层Owner: 据H01，AI主线程负责技术核对达成；不判断用户已读报告，根验收仍归用户
+     log:
+@@ -247,6 +265,15 @@
+     - action: resume
+       at: 2026-10-12T08:30:07.393130000Z
+       detail: 按已委派核对标准继续本层技术工作
++    - action: update
++      at: 2026-10-12T08:30:07.464704000Z
++      detail: 模拟对应检查通过，属于本层技术判断；变更字段：plan[0].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:07.477202000Z
++      detail: 技术目标达成，通用规则归根责任、局部规则留本帧；变更字段：content.principles[0].fate、content.principles[1].fate、content.results
++    - action: pop
++      at: 2026-10-12T08:30:07.489428000Z
++      detail: 关闭已委派技术子目标，不代签用户验收
+   6:
+     parent: 1
+     title: 形成另一条线索的取证安排
+@@ -254,8 +281,12 @@
+     - 形成有依据的线索取证安排，供owner判断是否继续
+     origin: []
+     status:
+-      kind: paused
+-      reason: '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'
++      kind: expired
++      closure:
++        summary: 模拟Owner取消尚未完成的线索取证回合
++        residuals:
++        - result: 保留线索，不构成当前交付义务
++          evidence: ''
+     plan: []
+     content:
+       results: []
+@@ -269,6 +300,9 @@
+     - action: pause
+       at: 2026-10-12T08:30:07.284244000Z
+       detail: '[HumanReady] 模拟Owner暂未决定继续此可选方向；不伪造接受'
++    - action: pop
++      at: 2026-10-12T08:30:07.515336000Z
++      detail: 据明确取消收尾，不包装成已完成方案
+ log:
+ - action: update
+   at: 2026-10-12T08:30:06.813408000Z

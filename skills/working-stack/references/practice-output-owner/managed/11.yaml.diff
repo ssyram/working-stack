@@ -1,0 +1,75 @@
+--- previous.yaml
++++ current.yaml
+@@ -45,7 +45,7 @@
+         fate: null
+       remarks:
+         Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
+-        候选报告｜人类协作: 据模拟H03：用户已明确选择准备顺序；最终候选审阅尚无反馈，状态未知；AI仍欠材料核对和可靠重测，不将顺序许可当验收
++        候选报告｜人类协作: 对象：候选v1；AI已交技术材料，用户审阅/采信未反馈，状态未知；根责任仍欠可用性判断，不声称用户未读或完全理解
+         后续线索: 据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论
+         顺序裁决: 据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留
+     log:
+@@ -64,6 +64,9 @@
+     - action: update
+       at: 2026-10-12T08:30:04.723425000Z
+       detail: 承接自 W-05 原则1（released）；变更字段：content.principles
++    - action: update
++      at: 2026-10-12T08:30:05.262226000Z
++      detail: 成果事实与最新人类状态分别登记；变更字段：content.remarks.候选报告｜人类协作
+   2:
+     parent: 1
+     title: 协助用户澄清条件选择
+@@ -107,7 +110,12 @@
+     origin:
+     - 据H01技术委派，成果支持根owner的可用性判断；不承担用户验收
+     status:
+-      kind: active
++      kind: done
++      closure:
++        summary: 先按R1登记技术准备完成，根用户判断仍open
++        positive:
++        - result: 当时登记的R1结果与材料核对
++          evidence: ''
+     plan:
+     - text: 实现共通部分
+       children: []
+@@ -132,16 +140,17 @@
+     - text: 修正直接测试发现的问题
+       children: []
+       progress:
+-        kind: ready
++        kind: item_done
+       fork: []
+     - text: 核对材料后重新运行直接测试
+       children: []
+       progress:
+-        kind: ready
++        kind: item_done
+       fork:
+       - 5
+     content:
+-      results: []
++      results:
++      - 模拟R1：v1共通候选被登记为直接测试通过，争议条件仍显式；不表示用户已接受
+       side_effects: []
+       principles: []
+       remarks:
+@@ -201,6 +210,18 @@
+     - action: update
+       at: 2026-10-12T08:30:05.032339000Z
+       detail: 已有对应核对足够，重复项无新增贡献，移除当前冗余；变更字段：plan
++    - action: update
++      at: 2026-10-12T08:30:05.113042000Z
++      detail: 模拟修正已完成；变更字段：plan[2].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:05.150021000Z
++      detail: 先登记模拟R1重测通过；下一节将核实其误记；变更字段：plan[3].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:05.187466000Z
++      detail: 技术判断只适用于本层范围；变更字段：content.results
++    - action: pop
++      at: 2026-10-12T08:30:05.224601000Z
++      detail: 本层技术owner收尾，不将交付当用户认识完成
+   4:
+     parent: 1
+     title: 形成可供Owner判断的优化方案

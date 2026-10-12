@@ -31,6 +31,12 @@ JSON 调用不需要嵌套转义 value：
 
 CLI 的 `--value` 接收 JSON：`working-stack mytask insert 'T-01.plan[1]' --value '"新步骤"' -r '补项'`。读取例：`working-stack mytask get 'T-01.plan[0]' --json`。插入/删除/重排会改变位置索引含义，不新增计划 ID，不自动改写既有引用；需要稳定承接时仍用 Frame ID。
 
+## 维护Owner的工作理解
+
+路径编辑不判断owner是否理解或批准。复杂plan可用字符串set保留任务名称及当前协作说明，progress/children/fork不动；说明绑定具体对象/版本与对话来源，不加理解百分比或owner字段。成果最新人类状态用所属帧按标题覆盖备注/note，不用不断append代替更新。JSON value直接承载正文，格式见`working-stack doc owner-collaboration`。旧Closure是关闭时口径，不借本编辑器改成动态人类状态。
+
+任务推进、主张依据与行动权限分别判断；人类待决定不隐藏AI欠项，局部技术自治不强制等待人审。操作者写入合法不等于取得owner权力。
+
 ## 设计及合同
 
 stack_path 只负责语法与模型地址；path_edit 在序列化的候选值上操作，转换失败不改变原栈。候选反序列化回 WorkingStack 后，CLI 复用 apply 的净差异事件、apply_checks、validate/save/锁及托管提交。每个被改变的帧追加一个原因事件；note 修改追加栈级事件。无净变化不造事件。
@@ -39,6 +45,6 @@ stack_path 只负责语法与模型地址；path_edit 在序列化的候选值�
 
 ## 测试与边界
 
-测试前/中/末插入、嵌套路径、正文与状态修改、子项拆分、删除、移动、整段替换、其他文本字段/note，以及失败无写入、日志原因、无净变化与引用校验。读取路径和 SourcefulText 引用共享词法，但 get 的结构视图不替代 resolve 的显示投影。任意语义裁决仍归操作者。
+测试前/中/末插入、嵌套路径、正文与状态修改、子项拆分、删除、移动、整段替换、其他文本字段/note，以及失败无写入、日志原因、无净变化与引用校验。读取路径和 SourcefulText 引用共享词法，但 get 的结构视图不替代 resolve 的显示投影。语义裁决仍归授权范围内owner，操作者据其来源登记，不由路径操作推定。
 
 此功能不修复此前多栈测试中的 goal 多行编码/引用展开，也不把尾换行相等重新定义；那些是独立 print/import 问题。

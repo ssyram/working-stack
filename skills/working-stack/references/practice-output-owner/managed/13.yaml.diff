@@ -1,0 +1,102 @@
+--- previous.yaml
++++ current.yaml
+@@ -25,17 +25,17 @@
+     - text: 与用户澄清验收条件
+       children: []
+       progress:
++        kind: item_done
++      fork: []
++    - text: 准备候选：先核对材料，再最终重测
++      children: []
++      progress:
++        kind: item_done
++      fork: []
++    - text: 协助用户判断候选是否满足约定条件
++      children: []
++      progress:
+         kind: in_progress
+-      fork: []
+-    - text: 准备候选：先核对材料，再最终重测
+-      children: []
+-      progress:
+-        kind: ready
+-      fork: []
+-    - text: 协助用户判断候选是否满足约定条件
+-      children: []
+-      progress:
+-        kind: ready
+       fork: []
+     content:
+       results: []
+@@ -45,7 +45,7 @@
+         fate: null
+       remarks:
+         Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
+-        候选报告｜人类协作: 对象：v2及R1更正说明；AI已提供补跑依据，用户是否阅读更正尚无反馈，状态未知；AI需在沟通时解释v1/v2差别
++        候选报告｜人类协作: 据H05：条件选择明确，v2报告审阅/具体采信尚无反馈；AI欠v1/v2与效果边界说明，用户后续决定是否满足约定条件
+         后续线索: 据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论
+         顺序裁决: 据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留
+     log:
+@@ -70,6 +70,18 @@
+     - action: update
+       at: 2026-10-12T08:30:05.656413000Z
+       detail: 更新最新人类协作对象，不反写过去理解；变更字段：content.remarks.候选报告｜人类协作
++    - action: update
++      at: 2026-10-12T08:30:05.856044000Z
++      detail: 条件选择已明确；变更字段：plan[0].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:05.893013000Z
++      detail: R2技术准备已达，不代签根用户判断；变更字段：plan[1].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:05.928212000Z
++      detail: AI仍需帮助用户理解v2依据，不能直接全挂待用户；变更字段：plan[2].progress.kind
++    - action: update
++      at: 2026-10-12T08:30:05.967034000Z
++      detail: 下一责任同时保留AI欠项与owner裁决；变更字段：content.remarks.候选报告｜人类协作
+   2:
+     parent: 1
+     title: 协助用户澄清条件选择
+@@ -77,8 +89,12 @@
+     - 取得用户对争议条件的明确选择
+     origin: []
+     status:
+-      kind: paused
+-      reason: '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'
++      kind: done
++      closure:
++        summary: 用户owner在H05完成条件选择
++        positive:
++        - result: H05的明确选择，只适用于该条件
++          evidence: ''
+     plan:
+     - text: 解释两种条件的对象、差异与依据
+       children: []
+@@ -88,10 +104,11 @@
+     content:
+       results:
+       - 模拟：AI已说明两种条件的适用对象与覆盖差别，尚无用户选择
++      - 据模拟H05：用户选择第一种解释；这只闭合条件选择，不等于接受候选v2的整体效果
+       side_effects: []
+       principles: []
+       remarks:
+-        用户协作: 对象：条件解释v1；据模拟H02后AI说明。解释材料已交，用户是否审阅/采信无反馈，状态未知；选择仍归用户，后续提问AI继续负责回答
++        用户协作: H05明确选择第一种条件，选择目标已成立；不推定全部报告审阅或所有细节理解
+     log:
+     - action: push
+       at: 2026-10-12T08:30:03.518423000Z
+@@ -105,6 +122,15 @@
+     - action: pause
+       at: 2026-10-12T08:30:03.625296000Z
+       detail: '[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择'
++    - action: resume
++      at: 2026-10-12T08:30:05.741878000Z
++      detail: 收到模拟H05对条件解释的明确选择
++    - action: update
++      at: 2026-10-12T08:30:05.778833000Z
++      detail: 保存具体选择及适用范围，不提升为全域接受；变更字段：content.remarks.用户协作、content.results
++    - action: pop
++      at: 2026-10-12T08:30:05.814666000Z
++      detail: 关闭本层已达裁决目标并返回根责任
+   3:
+     parent: 1
+     title: 在授权内准备并直接测试候选

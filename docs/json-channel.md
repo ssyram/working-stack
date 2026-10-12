@@ -1,8 +1,10 @@
 # JSON 输入通道合同
 
-## 目的与范围（Q → owner P）
+## 目的与范围（Q → 接口职责）
 
 依据用户裁决：增加 JSON 输入，不替换原 CLI；AI 可用结构化请求操作同一 WorkingStack，每次修改记录理由。不增加尚未触发的防御机制。本次修正只承接已复现的字段丢失、错误回退、原因丢失以及 CLI/Web 转换漂移。
+
+Owner中心协作不改变请求schema。计划/成果的当前人类说明使用既有text/remark/note正文及明确来源，不传未定义的owner/human_status参数。JSON成功只证明操作完成，不证明owner已理解/采用或取得上层授权；方法见owner-collaboration.md。
 
 ## 设计（D）
 

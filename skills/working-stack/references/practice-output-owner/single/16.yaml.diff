@@ -1,0 +1,65 @@
+--- previous.yaml
++++ current.yaml
+@@ -20,8 +20,12 @@
+     - 用户确认约定的验收条件满足
+     origin: []
+     status:
+-      kind: paused
+-      reason: '[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项'
++      kind: done
++      closure:
++        summary: 用户owner据H09接受约定范围交付，两项根目标满足
++        positive:
++        - result: R2技术依据与H09约定范围试用/明确验收，不声明全域结论
++          evidence: ''
+     plan:
+     - text: 与用户澄清验收条件
+       children: []
+@@ -36,20 +40,21 @@
+     - text: 用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。
+       children: []
+       progress:
+-        kind: blocked
+-        reason: 等待约定试用结果及用户裁决
++        kind: item_done
+       fork: []
+     content:
+       results:
+       - 模拟：AI已交v2的C反例/范围说明及R1到R2的更正依据，技术结论仍只覆盖约定输入
++      - 据模拟R2及H09：技术直接测试通过，用户确认约定范围验收条件满足；未覆盖输入仍不在结论中
+       side_effects: []
+       principles:
+       - rule: '{{5.principles[0]}}'
+-        fate: null
++        fate:
++          kind: kept_local
+       remarks:
+         AI解释责任: 据模拟H07，C解释与版本更正说明已提供；后续新疑问仍须响应，不声称交付自动证明理解
+         Owner与边界: 据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收
+-        候选报告｜人类协作: 对象：报告v2及C补充说明；据模拟H07复述，A/B/C已具体对齐；用户明确未读附录，只批准约定输入试用，未接受整体效果。H08试用反馈未返回；AI继续回答新疑问，最终判断归用户。
++        候选报告｜人类协作: 对象：v2及约定范围试用；据模拟H09，用户明确确认约定条件满足并接受本次交付。A/B/C此前已对齐，附录仍未读；不推出全域效果或全部细节理解。
+         后续线索: 据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论
+         顺序裁决: 据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留
+     log:
+@@ -107,6 +112,21 @@
+     - action: pause
+       at: 2026-10-12T08:30:08.259982000Z
+       detail: '[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项'
++    - action: resume
++      at: 2026-10-12T08:30:08.327791000Z
++      detail: 收到模拟H09约定试用结果及明确验收
++    - action: update
++      at: 2026-10-12T08:30:08.342607000Z
++      detail: 据实际设定的owner裁决更新当前人类状态，不从计划勾选推出验收；变更字段：content.remarks.候选报告｜人类协作
++    - action: update
++      at: 2026-10-12T08:30:08.357357000Z
++      detail: 根用户判断目标由H09明确闭合；变更字段：plan[2].progress.kind、plan[2].progress.reason
++    - action: update
++      at: 2026-10-12T08:30:08.372319000Z
++      detail: 两项根目标各有依据，规则归根责任保留；变更字段：content.principles[0].fate、content.results
++    - action: pop
++      at: 2026-10-12T08:30:08.387136000Z
++      detail: 依据owner目标与裁决收尾，而非AI完成清单
+   2:
+     parent: 1
+     title: 协助用户澄清条件选择

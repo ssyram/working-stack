@@ -1,0 +1,269 @@
+{
+  "title": "Owner判断候选是否可用",
+  "prefix": "W",
+  "notes": {
+    "checklist": {
+      "meta": [
+        "appendix"
+      ],
+      "body": "技术回执、AI采用的结论、用户理解/采用与根验收分别登记；不因计划全勾推断后者。"
+    },
+    "description": {
+      "meta": [],
+      "body": "本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：{{note:累计原则.body}}。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。"
+    },
+    "累计原则": {
+      "meta": [],
+      "body": "模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。"
+    }
+  },
+  "frames": {
+    "1": {
+      "parent": null,
+      "title": "支持用户判断并完成交付",
+      "goal": [
+        "候选版本通过直接测试",
+        "用户确认约定的验收条件满足"
+      ],
+      "origin": [],
+      "status": {
+        "kind": "active"
+      },
+      "plan": [
+        {
+          "text": "与用户澄清验收条件",
+          "children": [],
+          "progress": {
+            "kind": "in_progress"
+          },
+          "fork": []
+        },
+        {
+          "text": "准备候选：先核对材料，再最终重测",
+          "children": [],
+          "progress": {
+            "kind": "ready"
+          },
+          "fork": []
+        },
+        {
+          "text": "协助用户判断候选是否满足约定条件",
+          "children": [],
+          "progress": {
+            "kind": "ready"
+          },
+          "fork": []
+        }
+      ],
+      "content": {
+        "results": [],
+        "side_effects": [],
+        "principles": [],
+        "remarks": {
+          "Owner与边界": "据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收",
+          "候选报告｜人类协作": "据模拟H03：用户已明确选择准备顺序；最终候选审阅尚无反馈，状态未知；AI仍欠材料核对和可靠重测，不将顺序许可当验收",
+          "顺序裁决": "据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留"
+        }
+      },
+      "log": [
+        {
+          "action": "push",
+          "at": "2026-10-12T08:30:03.420641000Z",
+          "detail": "依据H01登记完整委托，技术交付不替人类裁决"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.452463000Z",
+          "detail": "把owner要求、AI责任与保留裁决登记到所属工作；变更字段：content.remarks.Owner与边界、content.remarks.候选报告｜人类协作、plan"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:04.017174000Z",
+          "detail": "从用户实际选择更新父责任，不仅记AI收到消息；变更字段：content.remarks.候选报告｜人类协作、content.remarks.顺序裁决、plan[1].text"
+        }
+      ]
+    },
+    "2": {
+      "parent": 1,
+      "title": "协助用户澄清条件选择",
+      "goal": [
+        "取得用户对争议条件的明确选择"
+      ],
+      "origin": [],
+      "status": {
+        "kind": "paused",
+        "reason": "[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择"
+      },
+      "plan": [
+        {
+          "text": "解释两种条件的对象、差异与依据",
+          "children": [],
+          "progress": {
+            "kind": "item_done"
+          },
+          "fork": []
+        }
+      ],
+      "content": {
+        "results": [
+          "模拟：AI已说明两种条件的适用对象与覆盖差别，尚无用户选择"
+        ],
+        "side_effects": [],
+        "principles": [],
+        "remarks": {
+          "用户协作": "对象：条件解释v1；据模拟H02后AI说明。解释材料已交，用户是否审阅/采信无反馈，状态未知；选择仍归用户，后续提问AI继续负责回答"
+        }
+      },
+      "log": [
+        {
+          "action": "push",
+          "at": "2026-10-12T08:30:03.518423000Z",
+          "detail": "H02涉及保留给用户的条件裁决，需要独立上下文"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.550859000Z",
+          "detail": "保留用户具体问题及AI欠项，不给理解评分；变更字段：content.remarks.用户协作、plan"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.590114000Z",
+          "detail": "登记解释交付，不把交付变成用户已理解；变更字段：content.remarks.用户协作、content.results、plan[0].progress.kind"
+        },
+        {
+          "action": "pause",
+          "at": "2026-10-12T08:30:03.625296000Z",
+          "detail": "[HumanReady] 解释材料已提供，当前等待用户选择条件；不代签选择"
+        }
+      ]
+    },
+    "3": {
+      "parent": 1,
+      "title": "在授权内准备并直接测试候选",
+      "goal": [
+        "共通部分实现并完成直接测试，争议条件留下显式接口"
+      ],
+      "origin": [
+        "据H01技术委派，成果支持根owner的可用性判断；不承担用户验收"
+      ],
+      "status": {
+        "kind": "active"
+      },
+      "plan": [
+        {
+          "text": "实现共通部分",
+          "children": [],
+          "progress": {
+            "kind": "item_done"
+          },
+          "fork": []
+        },
+        {
+          "text": "准备测试样例",
+          "children": [
+            {
+              "text": "常见输入",
+              "children": [],
+              "progress": {
+                "kind": "item_done"
+              },
+              "fork": []
+            },
+            {
+              "text": "边界输入",
+              "children": [],
+              "progress": {
+                "kind": "item_done"
+              },
+              "fork": []
+            }
+          ],
+          "progress": {
+            "kind": "item_done"
+          },
+          "fork": []
+        },
+        {
+          "text": "修正直接测试发现的问题",
+          "children": [],
+          "progress": {
+            "kind": "ready"
+          },
+          "fork": []
+        },
+        {
+          "text": "核对材料后重新运行直接测试",
+          "children": [],
+          "progress": {
+            "kind": "ready"
+          },
+          "fork": []
+        }
+      ],
+      "content": {
+        "results": [],
+        "side_effects": [],
+        "principles": [],
+        "remarks": {
+          "本层Owner": "AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户",
+          "测试发现": "模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用",
+          "继续理由": "落实H03后的父帧候选准备责任；AI先修正问题并核对材料，再最终重测；不代签用户验收"
+        }
+      },
+      "log": [
+        {
+          "action": "push",
+          "at": "2026-10-12T08:30:03.693820000Z",
+          "detail": "共通部分不依赖等待中的选择，主线程可在授权内推进"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.727437000Z",
+          "detail": "明确局部自治责任，不为每个技术步骤新增人审；变更字段：content.remarks.本层Owner、plan"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.831549000Z",
+          "detail": "技术准备发现缺样例，按既有授权补必要步骤；变更字段：plan"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.866452000Z",
+          "detail": "把样例步骤细化，不增加人类审阅关卡；变更字段：plan[1].children"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.911370000Z",
+          "detail": "模拟技术回执暴露问题：保留已完成部分并重拟剩余工作；变更字段：plan"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:03.946676000Z",
+          "detail": "记录具体对象与技术欠项，不迁怒用户；变更字段：content.remarks.测试发现"
+        },
+        {
+          "action": "update",
+          "at": "2026-10-12T08:30:04.050441000Z",
+          "detail": "同步局部自治路线及当前理由，保留原进入历史；变更字段：content.remarks.继续理由、plan[3].text"
+        }
+      ]
+    }
+  },
+  "log": [
+    {
+      "action": "update",
+      "at": "2026-10-12T08:30:03.357510000Z",
+      "detail": "登记明确模拟授权来源，不由调度身份取得裁决权"
+    },
+    {
+      "action": "update",
+      "at": "2026-10-12T08:30:03.389124000Z",
+      "detail": "建立owner范围与材料导览，不复制动态进度账"
+    },
+    {
+      "action": "update",
+      "at": "2026-10-12T08:30:03.761699000Z",
+      "detail": "单份检查提示，不复制到每个帧"
+    }
+  ]
+}

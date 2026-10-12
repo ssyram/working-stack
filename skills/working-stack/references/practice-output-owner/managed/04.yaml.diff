@@ -1,0 +1,61 @@
+--- previous.yaml
++++ current.yaml
+@@ -99,9 +99,29 @@
+     - text: 实现共通部分
+       children: []
+       progress:
+-        kind: in_progress
++        kind: item_done
+       fork: []
+-    - text: 直接测试
++    - text: 准备测试样例
++      children:
++      - text: 常见输入
++        children: []
++        progress:
++          kind: item_done
++        fork: []
++      - text: 边界输入
++        children: []
++        progress:
++          kind: item_done
++        fork: []
++      progress:
++        kind: item_done
++      fork: []
++    - text: 修正直接测试发现的问题
++      children: []
++      progress:
++        kind: ready
++      fork: []
++    - text: 重新运行直接测试
+       children: []
+       progress:
+         kind: ready
+@@ -112,6 +132,7 @@
+       principles: []
+       remarks:
+         本层Owner: AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户
++        测试发现: 模拟：边界输入尚不符合约定，AI需修正/重测；不是用户提出问题就证明用户错误或候选全域不可用
+     log:
+     - action: push
+       at: 2026-10-12T08:30:03.693820000Z
+@@ -119,6 +140,18 @@
+     - action: update
+       at: 2026-10-12T08:30:03.727437000Z
+       detail: 明确局部自治责任，不为每个技术步骤新增人审；变更字段：content.remarks.本层Owner、plan
++    - action: update
++      at: 2026-10-12T08:30:03.831549000Z
++      detail: 技术准备发现缺样例，按既有授权补必要步骤；变更字段：plan
++    - action: update
++      at: 2026-10-12T08:30:03.866452000Z
++      detail: 把样例步骤细化，不增加人类审阅关卡；变更字段：plan[1].children
++    - action: update
++      at: 2026-10-12T08:30:03.911370000Z
++      detail: 模拟技术回执暴露问题：保留已完成部分并重拟剩余工作；变更字段：plan
++    - action: update
++      at: 2026-10-12T08:30:03.946676000Z
++      detail: 记录具体对象与技术欠项，不迁怒用户；变更字段：content.remarks.测试发现
+ log:
+ - action: update
+   at: 2026-10-12T08:30:03.357510000Z

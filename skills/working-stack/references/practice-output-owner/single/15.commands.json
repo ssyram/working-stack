@@ -1,0 +1,32 @@
+[
+  {
+    "command": "working-stack practice update W-01 --result-add '模拟：AI已交v2的C反例/范围说明及R1到R2的更正依据，技术结论仍只覆盖约定输入' --remark 'AI解释责任=据模拟H07，C解释与版本更正说明已提供；后续新疑问仍须响应，不声称交付自动证明理解' -r 'AI补齐自身解释义务，保留适用条件'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 276e540ad9650e72\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-01 --remark '候选报告｜人类协作=对象：报告v2及C补充说明；据模拟H07复述，A/B/C已具体对齐；用户明确未读附录，只批准约定输入试用，未接受整体效果。H08试用反馈未返回；AI继续回答新疑问，最终判断归用户。' -r '更新具体对齐、有限批准和未知，不用笼统完全理解'",
+    "stdout": "· W-01: content（结果/原则/备注）改变\n· W-01: log +1\n已提交 173bba0ecd4171ca\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2]' --value '\"用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\"' -r '复杂项最新说明与成果备注同一来源，不把试用许可当验收'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 a9833678fec00b0e\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice set 'W-01.plan[2].progress' --value '\"blocked:等待约定试用结果及用户裁决\"' -r '当前AI本轮材料/解释已齐，实际缺试用与owner保留决定'",
+    "stdout": "· W-01: plan 改变\n· W-01: log +1\n已提交 707a8c4c98ffd005\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice pause W-01 -r '[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项'",
+    "stdout": "· W-01: status active → paused\n· W-01: log +1\n已提交 793737bf88f6d2e4\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice show context W-01",
+    "stdout": "# 工作上下文：Owner判断候选是否可用\n\n仅为已录入快照，可能不含最新对话裁决；记录不等于已验证/已接受，事件时间不等于事实观察时间。\n\n- `note:description.body`：本栈承接用户关于候选可用性的工作与认识进程，不是AI完成清单。Owner及授权：模拟H01：用户是根owner；AI主线程在已委派技术标准内自主准备/核对共通部分。用户保留范围变化、发布与整体验收；AI交付不表示用户已理解或接受。。当前用户提问/对齐/采用与AI欠项在根帧所属备注；技术成果在各子责任，共享checklist按需读取。\n  引用来源：note:累计原则.body\n\n责任路径：W-01\n所选分支（不切换焦点）：[W-01] 支持用户判断并完成交付\nFOCUS：用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\n\n## [W-01] 支持用户判断并完成交付 [paused]\n- `1.goal[0]`：候选版本通过直接测试\n- `1.goal[1]`：用户确认约定的验收条件满足\n未完成计划：\n计划 [blocked]\n- `1.plan[2]`：用户判断候选是否满足约定条件：H07已对齐A/B/C且仅批准试用；H08试用反馈待返回，AI已补本轮解释，不要求用户理解全部底层细节。\n- `1.plan[2].progress.reason`：等待约定试用结果及用户裁决\n已记录结果（不按写入顺序判断效力）：\n- `1.results[0]`：模拟：AI已交v2的C反例/范围说明及R1到R2的更正依据，技术结论仍只覆盖约定输入\n备注 AI解释责任（get `1.remarks`）：\n- `1.remarks`：据模拟H07，C解释与版本更正说明已提供；后续新疑问仍须响应，不声称交付自动证明理解\n备注 Owner与边界（get `1.remarks`）：\n- `1.remarks`：据模拟H01：根owner为用户；AI可自主技术准备，但不能扩大范围、发布或代签整体验收\n备注 候选报告｜人类协作（get `1.remarks`）：\n- `1.remarks`：对象：报告v2及C补充说明；据模拟H07复述，A/B/C已具体对齐；用户明确未读附录，只批准约定输入试用，未接受整体效果。H08试用反馈未返回；AI继续回答新疑问，最终判断归用户。\n备注 后续线索（get `1.remarks`）：\n- `1.remarks`：据模拟H04：用户取消本轮深入优化，保留初步材料而不增加交付义务；没有表示接受优化结论\n备注 顺序裁决（get `1.remarks`）：\n- `1.remarks`：据模拟H03：用户新增材料核对先于最终重测的顺序；仅改变路线，整体验收仍保留\n原则处置 [null]\n- `1.content.principles[0].rule`：据模拟H04确认：证据交付与owner采用必须分别登记\n  引用来源：5.principles[0]\n- `1.status.reason`：[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项\n最近记录：2026-10-12T08:30:08.259982000Z [PAUSE]；历史用show log W-01查看。\n\n## 暂停末端（不代表后台停止）\n- [W-01] 支持用户判断并完成交付；show context W-01查看该分支。\n- `1.status.reason`：[HumanReady] 据H08等待约定试用反馈/用户裁决；不表示后台自动停止，也不是推卸AI欠项\n\n使用边界：本视图提供复工材料，不代判继续理由、具体下一步或行动授权；缺失的新裁决和回执由调用方补齐，不把正文完整当全栈已校准证明。\n\n",
+    "exit_code": 0
+  }
+]

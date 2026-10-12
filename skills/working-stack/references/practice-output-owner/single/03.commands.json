@@ -1,0 +1,17 @@
+[
+  {
+    "command": "working-stack practice push W-01 --title '在授权内准备并直接测试候选' --goal '共通部分实现并完成直接测试，争议条件留下显式接口' --origin '据H01技术委派，成果支持根owner的可用性判断；不承担用户验收' -r '共通部分不依赖等待中的选择，主线程可在授权内推进'",
+    "stdout": "· 新建帧 W-03 在授权内准备并直接测试候选\n· 新增帧 W-03 在授权内准备并直接测试候选\n已提交 6ce0bb792de5a678\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice update W-03 --plan-add '实现共通部分' --plan-add '直接测试' --plan-set 0=in_progress --remark '本层Owner=AI主线程；据模拟H01的技术委派，以实际回执判断本层达成，范围与根验收仍归用户' -r '明确局部自治责任，不为每个技术步骤新增人审'",
+    "stdout": "· W-03: plan 改变\n· W-03: content（结果/原则/备注）改变\n· W-03: log +1\n已提交 112325a18109c12a\n",
+    "exit_code": 0
+  },
+  {
+    "command": "working-stack practice note checklist --body '技术回执、AI采用的结论、用户理解/采用与根验收分别登记；不因计划全勾推断后者。' --meta appendix -r '单份检查提示，不复制到每个帧'",
+    "stdout": "· 新增 note checklist\n已提交 5dccb3ae2053cd36\n",
+    "exit_code": 0
+  }
+]
